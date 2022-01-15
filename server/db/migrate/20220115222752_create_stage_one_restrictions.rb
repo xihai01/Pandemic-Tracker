@@ -8,6 +8,7 @@ class CreateStageOneRestrictions < ActiveRecord::Migration
       t.string :food_establishment
       t.string :sports_recreational
       t.string :entertainment
+      t.string :personal_care
       t.string :color_code
       t.timestamps null: false
     end
