@@ -17,4 +17,27 @@ end
   HealthRegion.create(region_name: "Toronto", region_code: "3595", max_indoor_gathering: 5, max_outdoor_gathering: 10
   retail: "50% capacity of the room", ceremony: "50% capacity of the room", food_establishment: "take-out allowed, indoor dining closed", sports_recreational: "", entertainment: "", color_code: "orange")
 
+  {
+    stage1:{
+      retail:
+      max_outdoor_gathering:
+      ceremony:
+      color_code: "red"
+      entertainment:
+    },
+    stage2:{
+      retail:
+      max_outdoor_gathering:
+      ceremony:
+      color_code: "orange"
+      entertainment:
+    },
+    stage3:{
+      retail:
+      max_outdoor_gathering:
+      ceremony:
+      color_code:
+      entertainment: "green"
+    },
 
+  }
