@@ -84,6 +84,8 @@ GEM
     parser (3.1.0.0)
       ast (~> 2.4.1)
     rack (1.6.13)
+    rack-cors (1.0.6)
+      rack (>= 1.6.0)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.6)
@@ -177,6 +179,7 @@ DEPENDENCIES
   faker
   jbuilder (~> 2.0)
   jquery-rails
+  rack-cors
   rails (= 4.2.6)
   rubocop
   sass-rails (~> 5.0)

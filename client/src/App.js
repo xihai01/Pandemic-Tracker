@@ -1,23 +1,18 @@
-import logo from "./logo.svg";
+import useApplicationData from "./hooks/useApplicationData";
 import "./App.css";
 
 function App() {
+  const { state } = useApplicationData();
+  const userList = state.users.map((user) => (
+    <li key={user.id}>
+      {" "}
+      {user.first_name} {user.last_name} {user.email}{" "}
+    </li>
+  ));
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Hello world
-        </a>
-      </header>
+      <h1> Users </h1>
+      <ul> {userList} </ul>
     </div>
   );
 }
