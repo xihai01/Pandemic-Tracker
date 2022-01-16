@@ -9,16 +9,14 @@ const useApplicationData = () => {
     loading: true,
   });
   useEffect(() => {
-    const test = function () {
-      D3.json("http://localhost:3000/api/maps")
-        .then((data) => {
-          console.log(data);
-        })
-        .catch((error) => {
-          console.log("error reading file");
-        });
-    };
-    test();
+    D3.json("http://localhost:3000/api/maps")
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log("error reading file");
+      });
+
     axios({
       method: "GET",
       url: "http://localhost:3000/api/users",
