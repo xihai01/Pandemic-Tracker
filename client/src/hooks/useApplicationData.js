@@ -1,6 +1,7 @@
 import { useEffect, useReducer } from "react";
 import dataReducer, { SET_USERS } from "../reducer/data_reducer";
 import axios from "axios";
+import * as D3 from "d3";
 
 const useApplicationData = () => {
   const [state, dispatch] = useReducer(dataReducer, {
@@ -8,6 +9,16 @@ const useApplicationData = () => {
     loading: true,
   });
   useEffect(() => {
+    const test = function () {
+      D3.json("http://localhost:3000/api/maps")
+        .then((data) => {
+          console.log(data);
+        })
+        .catch((error) => {
+          console.log("error reading file");
+        });
+    };
+    test();
     axios({
       method: "GET",
       url: "http://localhost:3000/api/users",

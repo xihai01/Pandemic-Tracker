@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :users
+    resources :maps, only: [:index]
   end
 
   # You can have the root of your site routed with "root"
