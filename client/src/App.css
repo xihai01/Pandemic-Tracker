@@ -6,7 +6,8 @@
 svg {
   height: 1000px;
   width: 2000px;
-  outline: darkgreen;
+  border: darkgreen;
+  border-style: ridge;
 }
 
 .App-logo {
