@@ -1,13 +1,10 @@
 import useApplicationData from "./hooks/useApplicationData";
 import HealthRegion from "./components/HealthRegion";
 import HealthRegionList from "./components/HealthRegionList";
+import { handleZoom, zoomMap } from "./helpers/handleZoom";
 import { useState } from "react";
 import * as d3 from "d3";
 import "./App.css";
-
-const handleZoom = function (e) {
-  d3.selectAll("path").attr("transform", e.transform);
-};
 
 function App() {
   const [svgLoad, setSvgLoad] = useState(0);
@@ -22,19 +19,7 @@ function App() {
   ));
   console.log(state);
 
-  if (svgLoad) {
-    console.log("svg exists");
-    // get module for zoom and pan behaviour
-    let zoom = d3
-      .zoom()
-      .scaleExtent([1, 5])
-      .translateExtent([
-        [0, 0],
-        [1000, 1500],
-      ])
-      .on("zoom", handleZoom);
-    d3.select("svg").call(zoom);
-  }
+  zoomMap(svgLoad);
 
   return (
     <div className="App">

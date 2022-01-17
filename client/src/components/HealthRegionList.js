@@ -8,7 +8,6 @@ import * as d3 from "d3";
  */
 export default function HealthRegionList(props) {
   const { mapData, svgLoad, setSvgLoad } = props;
-  let enableZoomPan = false;
   // wait until mapData is loaded and ready for use
   if (mapData.features) {
     const projection = d3.geoAlbers();
