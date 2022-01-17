@@ -1,4 +1,5 @@
 export const SET_USERS = "SET_USERS";
+export const SET_DATA = "SET_DATA";
 
 const dataReducer = (state, action) => {
   switch (action.type) {
@@ -6,6 +7,12 @@ const dataReducer = (state, action) => {
       return {
         ...state,
         users: action.users,
+        loading: false,
+      };
+    case SET_DATA:
+      return {
+        ...state,
+        mapData: action.mapData,
         loading: false,
       };
     default:

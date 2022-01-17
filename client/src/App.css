@@ -1,5 +1,11 @@
 .App {
+  height: inherit;
   text-align: center;
+}
+
+svg {
+  height: 1000px;
+  width: 2000px;
 }
 
 .App-logo {
