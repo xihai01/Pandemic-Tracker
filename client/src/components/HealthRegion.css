@@ -1,0 +1,9 @@
+path {
+  fill: blueviolet;
+  stroke: cornsilk;
+}
+
+path:hover {
+  cursor: pointer;
+  fill: darkgoldenrod;
+}
