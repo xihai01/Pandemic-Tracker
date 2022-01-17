@@ -25,7 +25,14 @@ function App() {
   if (svgLoad) {
     console.log("svg exists");
     // get module for zoom and pan behaviour
-    let zoom = d3.zoom().on("zoom", handleZoom);
+    let zoom = d3
+      .zoom()
+      .scaleExtent([1, 5])
+      .translateExtent([
+        [0, 0],
+        [1000, 1500],
+      ])
+      .on("zoom", handleZoom);
     d3.select("svg").call(zoom);
   }
 
