@@ -24,7 +24,7 @@ export default function healthRegionList(props) {
       <HealthRegion key={data.properties.FID} pathData={path(data)} />
     ));
     return (
-      <svg viewBox="-500 500 2000 1000" preserveAspectRatio="xMidYmid meet">
+      <svg viewBox="-500 490 2000 1000" preserveAspectRatio="xMidYmid meet">
         {healthRegionList}
       </svg>
     );
