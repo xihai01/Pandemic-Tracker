@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20220115222823) do
+ActiveRecord::Schema.define(version: 20220118040714) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "first_name"
@@ -27,42 +27,17 @@ ActiveRecord::Schema.define(version: 20220115222823) do
     t.string   "region_code"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "stage_id"
   end
 
-  create_table "stage_one_restrictions", force: :cascade do |t|
-    t.string   "ceremony"
+  add_index "health_regions", ["stage_id"], name: "index_health_regions_on_stage_id"
+
+  create_table "stages", force: :cascade do |t|
     t.integer  "max_indoor_gathering"
     t.integer  "max_outdoor_gathering"
     t.string   "retail"
-    t.string   "food_establishment"
-    t.string   "sports_recreational"
-    t.string   "entertainment"
-    t.string   "personal_care"
-    t.string   "color_code"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
-  end
-
-  create_table "stage_three_restrictions", force: :cascade do |t|
     t.string   "ceremony"
-    t.integer  "max_indoor_gathering"
-    t.integer  "max_outdoor_gathering"
-    t.string   "retail"
-    t.string   "food_establishment"
-    t.string   "sports_recreational"
-    t.string   "entertainment"
-    t.string   "personal_care"
-    t.string   "color_code"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
-  end
-
-  create_table "stage_two_restrictions", force: :cascade do |t|
-    t.string   "ceremony"
-    t.integer  "max_indoor_gathering"
-    t.integer  "max_outdoor_gathering"
-    t.string   "retail"
-    t.string   "food_establishment"
+    t.string   "food_establishments"
     t.string   "sports_recreational"
     t.string   "entertainment"
     t.string   "personal_care"

@@ -1,11 +1,11 @@
-class CreateStageOneRestrictions < ActiveRecord::Migration
+class CreateStages < ActiveRecord::Migration
   def change
-    create_table :stage_one_restrictions do |t|
-      t.string :ceremony
+    create_table :stages do |t|
       t.integer :max_indoor_gathering
       t.integer :max_outdoor_gathering
       t.string :retail
-      t.string :food_establishment
+      t.string :ceremony
+      t.string :food_establishments
       t.string :sports_recreational
       t.string :entertainment
       t.string :personal_care
