@@ -11,6 +11,7 @@ require('faker')
   User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: Faker::Internet.password)
 end
 
+
   HealthRegion.create(id: 1, region_name: "Algoma", region_code: 3526, stage_id: 2)
   HealthRegion.create(id: 2, region_name: "Brant County", region_code: 3527, stage_id: 2)
   HealthRegion.create(id: 3, region_name: "Durham Region", region_code: 3530, stage_id: 2)
@@ -93,4 +94,5 @@ end
      personal_care: "Services that require removal of face coverings capacity is limited to the number of people that can
      maintain a physical distance of two metres;",
      color_code: "green")
+
 
