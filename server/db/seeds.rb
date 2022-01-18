@@ -11,44 +11,44 @@ require('faker')
   User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: Faker::Internet.password)
 end
 
-  HealthRegion.create(region_name: "Algoma", region_code: "3526")
-  HealthRegion.create(region_name: "Brant County", region_code: "3527")
-  HealthRegion.create(region_name: "Durham Region", region_code: "3530")
-  HealthRegion.create(region_name: "Elgin-St Thomas", region_code: "3531")
-  HealthRegion.create(region_name: "Grey Bruce", region_code: "3533")
-  HealthRegion.create(region_name: "Haldimand-Norfolk", region_code: "3534")
-  HealthRegion.create(region_name: "Haliburton, Kawartha, Pine Ridge", region_code: "3535")
-  HealthRegion.create(region_name: "Halton Region", region_code: "3536")
-  HealthRegion.create(region_name: "Hamilton", region_code: "3537")
-  HealthRegion.create(region_name: "Hastings and Prince Edward Counties", region_code: "3538")
-  HealthRegion.create(region_name: "Huron County", region_code: "3539")
-  HealthRegion.create(region_name: "Chatham-Kent", region_code: "3540")
-  HealthRegion.create(region_name: "Kingston, Frontenac and Lennox and Addington", region_code: "3541")
-  HealthRegion.create(region_name: "Lambton", region_code: "3542")
-  HealthRegion.create(region_name: "Leeds, Grenville and Lanark", region_code: "3543")
-  HealthRegion.create(region_name: "Middlesex–London", region_code: "3544")
-  HealthRegion.create(region_name: "Niagara Regional Area", region_code: "3546")
-  HealthRegion.create(region_name: "North Bay Parry Sound", region_code: "3547")
-  HealthRegion.create(region_name: "Ottawa", region_code: "3551")
-  HealthRegion.create(region_name: "Oxford County", region_code: "3552")
-  HealthRegion.create(region_name: "Peel Region", region_code: "3553")
-  HealthRegion.create(region_name: "Perth District", region_code: "3554")
-  HealthRegion.create(region_name: "Peterborough County–City", region_code: "3555")
-  HealthRegion.create(region_name: "Porcupine ", region_code: "3556")
-  HealthRegion.create(region_name: "Renfrew County and District", region_code: "3557")
-  HealthRegion.create(region_name: "Eastern Ontario", region_code: "3558")
-  HealthRegion.create(region_name: "Simcoe Muskoka Distric", region_code: "3560")
-  HealthRegion.create(region_name: "Sudbury and District", region_code: "3561")
-  HealthRegion.create(region_name: "Thunder Bay District", region_code: "3562")
-  HealthRegion.create(region_name: "Timiskaming", region_code: "3563")
-  HealthRegion.create(region_name: "Waterloo", region_code: "3565")
-  HealthRegion.create(region_name: "Wellington–Dufferin-Guelph ", region_code: "3566")
-  HealthRegion.create(region_name: "Windsor–Essex County", region_code: "3568")
-  HealthRegion.create(region_name: "York", region_code: "3570")
-  HealthRegion.create(region_name: "Toronto", region_code: "3595")
+  HealthRegion.create(id: 1, region_name: "Algoma", region_code: 3526, stage_id: 2)
+  HealthRegion.create(id: 2, region_name: "Brant County", region_code: 3527, stage_id: 2)
+  HealthRegion.create(id: 3, region_name: "Durham Region", region_code: 3530, stage_id: 2)
+  HealthRegion.create(id: 4,region_name: "Elgin-St Thomas", region_code: 3531, stage_id: 2)
+  HealthRegion.create(id: 5, region_name: "Grey Bruce", region_code: 3533, stage_id: 2)
+  HealthRegion.create(id: 6, region_name: "Haldimand-Norfolk", region_code: 3534, stage_id: 2)
+  HealthRegion.create(id: 7, region_name: "Haliburton, Kawartha, Pine Ridge", region_code: 3535, stage_id: 2)
+  HealthRegion.create(id: 8, region_name: "Halton Region", region_code: 3536, stage_id: 2)
+  HealthRegion.create(id: 9, region_name: "Hamilton", region_code: 3537, stage_id: 2)
+  HealthRegion.create(id: 10, region_name: "Hastings and Prince Edward Counties", region_code: 3538, stage_id: 2)
+  HealthRegion.create(id: 11, region_name: "Huron County", region_code: 3539, stage_id: 2)
+  HealthRegion.create(id: 12, region_name: "Chatham-Kent", region_code: 3540, stage_id: 2)
+  HealthRegion.create(id: 13, region_name: "Kingston, Frontenac and Lennox and Addington", region_code: 3541, stage_id: 2)
+  HealthRegion.create(id: 14, region_name: "Lambton", region_code: 3542, stage_id: 2)
+  HealthRegion.create(id: 15, region_name: "Leeds, Grenville and Lanark", region_code: 3543, stage_id: 2)
+  HealthRegion.create(id: 16, region_name: "Middlesex–London", region_code: 3544, stage_id: 2)
+  HealthRegion.create(id: 17, region_name: "Niagara Regional Area", region_code: 3546, stage_id: 2)
+  HealthRegion.create(id: 18, region_name: "North Bay Parry Sound", region_code: 3547, stage_id: 2)
+  HealthRegion.create(id: 19, region_name: "Ottawa", region_code: 3551, stage_id: 2)
+  HealthRegion.create(id: 20, region_name: "Oxford County", region_code: 3552, stage_id: 2)
+  HealthRegion.create(id: 21, region_name: "Peel Region", region_code: 3553, stage_id: 2)
+  HealthRegion.create(id: 22, region_name: "Perth District", region_code: 3554, stage_id: 2)
+  HealthRegion.create(id: 23, region_name: "Peterborough County–City", region_code: 3555, stage_id: 2)
+  HealthRegion.create(id: 24, region_name: "Porcupine ", region_code: 3556, stage_id: 2)
+  HealthRegion.create(id: 25, region_name: "Renfrew County and District", region_code: 3557, stage_id: 2)
+  HealthRegion.create(id: 26, region_name: "Eastern Ontario", region_code: 3558, stage_id: 2)
+  HealthRegion.create(id: 27, region_name: "Simcoe Muskoka Distric", region_code: 3560, stage_id: 2)
+  HealthRegion.create(id: 28, region_name: "Sudbury and District", region_code: 3561, stage_id: 2)
+  HealthRegion.create(id: 29, region_name: "Thunder Bay District", region_code: 3562, stage_id: 2)
+  HealthRegion.create(id: 30, region_name: "Timiskaming", region_code: 3563, stage_id: 2)
+  HealthRegion.create(id: 30, region_name: "Waterloo", region_code: 3565, stage_id: 2)
+  HealthRegion.create(id: 31, region_name: "Wellington–Dufferin-Guelph ", region_code: 3566, stage_id: 2)
+  HealthRegion.create(id: 32, region_name: "Windsor–Essex County", region_code: 3568, stage_id: 2)
+  HealthRegion.create(id: 33, region_name: "York", region_code: 3570, stage_id: 2)
+  HealthRegion.create(id: 34, region_name: "Toronto", region_code: 3595, stage_id: 2)
 
 
-  StageOneRestriction.create( max_indoor_gathering: 5, max_outdoor_gathering: 10,
+  Stages.create( id: 1, max_indoor_gathering: 5, max_outdoor_gathering: 10,
     food_establishment: "Indoor dining is closed. Takeout & Outdoor dining: Maximum of 4 people per table exclusing 
     large households.", 
     retail: "25% capacity of essential retail and 15% capacity of Non-essential retail both with no restricitons on 
@@ -64,7 +64,7 @@ end
     personal_care: "Salons and Barbershops closed to the general public",
     color_code: "red")
 
-  StageTwoRestrictions.create(max_indoor_gathering: 5, 
+  Stages.create(id: 2, max_indoor_gathering: 5, 
     max_outdoor:10 , food_establishments: "Indoor dining is closed. Outdoor dining has some restrictions. ", 
     retail:"50% capacity. For shopping malls physical distancing will be required in line-ups, 
     loitering will not be permitted and food courts will be required to close." , 
@@ -78,7 +78,7 @@ end
     and oxygen bars closed." 
     color_code: "orange")
 
-  StageThreeRestriction.create(max_indoor_gathering: 25, max_outdoor_gathering: 100,
+  Stages.create( id: 3, max_indoor_gathering: 25, max_outdoor_gathering: 100,
      food_establishment: "Indoor dining permitted with no limits to number of peopl per table. Indoor food or 
      drink establishments where dance facilities are provided, including nightclubs and 
      restobars, permitted up to 25 per cent capacity or up to a maximum limit of 250 people (whichever is less)",
