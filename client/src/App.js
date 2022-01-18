@@ -6,14 +6,17 @@ import { handleZoom, zoomMap } from "./helpers/handleZoom";
 import { useState } from "react";
 import * as d3 from "d3";
 import "./App.css";
+import Home from "./components/Home";
 
 function App() {
+
   // setup application for use
   const { svgLoad, setSvgLoad, mapData } = useInitialize();
 
   return (
+
     <>
-      <div className="App"></div>
+      <div className="App">  <Home /> </div>
       <div>
         <HealthRegionList
           svgLoad={svgLoad}
@@ -22,6 +25,7 @@ function App() {
         />
       </div>
     </>
+
   );
 }
 
