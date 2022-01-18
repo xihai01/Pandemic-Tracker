@@ -1,0 +1,2 @@
+module Api::MapColorHelper
+end
