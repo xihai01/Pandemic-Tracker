@@ -38,6 +38,7 @@ group :development, :test do
   gem 'rubocop', require: false
   gem 'faker'
   gem 'rack-cors'
+  gem 'rspec-rails', '~> 3.5'
 end
 
 group :development do
