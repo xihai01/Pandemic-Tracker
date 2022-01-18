@@ -11,8 +11,9 @@ require('faker')
   User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: Faker::Internet.password)
 end
 
+5.times do
   Admin.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: Faker::Internet.password)
-  
+end
 
   # HealthRegion.create(region_name: "Algoma", region_code: "3526")
   # HealthRegion.create(region_name: "Brant County", region_code: "3527")
