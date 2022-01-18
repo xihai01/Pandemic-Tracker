@@ -60,39 +60,12 @@ Stage.create(max_indoor_gathering: 25, max_outdoor_gathering: 100,
    maintain a physical distance of two metres;",
    color_code: "green")
 
-
-  HealthRegion.create(region_name: "Algoma", region_code: 3526, stage_id: 2)
-  HealthRegion.create(region_name: "Brant County", region_code: 3527, stage_id: 2)
-  HealthRegion.create(region_name: "Durham Region", region_code: 3530, stage_id: 2)
-  HealthRegion.create(region_name: "Elgin-St Thomas", region_code: 3531, stage_id: 2)
-  HealthRegion.create(region_name: "Grey Bruce", region_code: 3533, stage_id: 2)
-  HealthRegion.create(region_name: "Haldimand-Norfolk", region_code: 3534, stage_id: 2)
-  HealthRegion.create(region_name: "Haliburton, Kawartha, Pine Ridge", region_code: 3535, stage_id: 2)
-  HealthRegion.create(region_name: "Halton Region", region_code: 3536, stage_id: 2)
-  HealthRegion.create(region_name: "Hamilton", region_code: 3537, stage_id: 2)
-  HealthRegion.create(region_name: "Hastings and Prince Edward Counties", region_code: 3538, stage_id: 2)
-  HealthRegion.create(region_name: "Huron County", region_code: 3539, stage_id: 2)
-  HealthRegion.create(region_name: "Chatham-Kent", region_code: 3540, stage_id: 2)
-  HealthRegion.create(region_name: "Kingston, Frontenac and Lennox and Addington", region_code: 3541, stage_id: 2)
-  HealthRegion.create(region_name: "Lambton", region_code: 3542, stage_id: 2)
-  HealthRegion.create(region_name: "Leeds, Grenville and Lanark", region_code: 3543, stage_id: 2)
-  HealthRegion.create(region_name: "Middlesex–London", region_code: 3544, stage_id: 2)
-  HealthRegion.create(region_name: "Niagara Regional Area", region_code: 3546, stage_id: 2)
-  HealthRegion.create(region_name: "North Bay Parry Sound", region_code: 3547, stage_id: 2)
-  HealthRegion.create(region_name: "Ottawa", region_code: 3551, stage_id: 2)
-  HealthRegion.create(region_name: "Oxford County", region_code: 3552, stage_id: 2)
-  HealthRegion.create(region_name: "Peel Region", region_code: 3553, stage_id: 2)
-  HealthRegion.create(region_name: "Perth District", region_code: 3554, stage_id: 2)
-  HealthRegion.create(region_name: "Peterborough County–City", region_code: 3555, stage_id: 2)
-  HealthRegion.create(region_name: "Porcupine ", region_code: 3556, stage_id: 2)
-  HealthRegion.create(region_name: "Renfrew County and District", region_code: 3557, stage_id: 2)
-  HealthRegion.create(region_name: "Eastern Ontario", region_code: 3558, stage_id: 2)
-  HealthRegion.create(region_name: "Simcoe Muskoka Distric", region_code: 3560, stage_id: 2)
-  HealthRegion.create(region_name: "Sudbury and District", region_code: 3561, stage_id: 2)
-  HealthRegion.create(region_name: "Thunder Bay District", region_code: 3562, stage_id: 2)
-  HealthRegion.create(region_name: "Timiskaming", region_code: 3563, stage_id: 2)
-  HealthRegion.create(region_name: "Waterloo", region_code: 3565, stage_id: 2)
-  HealthRegion.create(region_name: "Wellington–Dufferin-Guelph ", region_code: 3566, stage_id: 2)
-  HealthRegion.create(region_name: "Windsor–Essex County", region_code: 3568, stage_id: 2)
-  HealthRegion.create(region_name: "York", region_code: 3570, stage_id: 2)
-  HealthRegion.create(region_name: "Toronto", region_code: 3595, stage_id: 2)
+# seed health regions table
+data = File.read("./docs/map_data.geojson")
+dataHash = JSON.parse(data)
+dataHash['features'].each do |healthRegion|
+  name = healthRegion['properties']['NAME_ENG']
+  phuID = healthRegion['properties']['PHU_ID']
+  stage = 1 + rand(3)
+  HealthRegion.create(region_name: name, region_code: phuID, stage_id: stage)
+end
