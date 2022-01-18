@@ -9,14 +9,15 @@ import "./App.css";
 import Home from "./components/Home";
 
 function App() {
-
   // setup application for use
   const { svgLoad, setSvgLoad, mapData } = useInitialize();
 
   return (
-
     <>
-      <div className="App">  <Home /> </div>
+      <div className="App">
+        {" "}
+        <Home />{" "}
+      </div>
       <div>
         <HealthRegionList
           svgLoad={svgLoad}
@@ -25,7 +26,6 @@ function App() {
         />
       </div>
     </>
-
   );
 }
 
