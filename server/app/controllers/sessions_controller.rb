@@ -8,8 +8,9 @@ class SessionsController < ApplicationController
       # Save the user id inside the browser cookie. This is how we keep the user 
       # logged in when they navigate around our website.
       session[:user_id] = admin.id
-      users = User.all
-      render json: users
+      # users = User.all
+      # render json: users
+      redirect_to '/api/users'
     else
     # If user's login doesn't work, send them back to the login form.
       render json: { message: "Bad credentials" }, status: :unauthorized

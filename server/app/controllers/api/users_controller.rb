@@ -1,8 +1,12 @@
 class Api::UsersController < ApplicationController
-  # def index
-  #   users = User.all
-  #   render json: users
-  # end
+  def index
+    if session
+      users = User.all
+      render json: users
+    else 
+      render json: { message: "Unauthorized user: Permission denied" }
+    end
+  end
 
 
 
