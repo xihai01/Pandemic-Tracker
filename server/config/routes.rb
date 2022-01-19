@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
 
+  
+
   namespace :admin do
     get '/login' => 'sessions#create'
     get '/logout' => 'sessions#destroy'
     resources :dashboard, only: [:index]
     resources :health_regions, only: [:index, :update]
+    resources :stages, only: [:index, :update]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
