@@ -1,15 +1,15 @@
 Rails.application.routes.draw do
+
   namespace :admin do
     get '/login' => 'sessions#create'
     get '/logout' => 'sessions#destroy'
-    resources :dashboard
+    resources :dashboard, only: [:index]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   namespace :api do
-    resources :users
 
     resources :maps, only: [:index]
 

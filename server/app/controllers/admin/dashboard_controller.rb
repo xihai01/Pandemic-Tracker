@@ -1,12 +1,11 @@
-class Api::AdminController < ApplicationController
+class Admin::DashboardController < ApplicationController
   before_action :require_login
 
   def index
     data = {
       admins: Admin.all,
-      users: User.all,
-      health_regions: HealthRegion.all
-      # stages: Stage.all 
+      health_regions: HealthRegion.all,
+      stages: Stage.all 
     }
     render json: data
   end
