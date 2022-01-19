@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     get '/login' => 'sessions#create'
     get '/logout' => 'sessions#destroy'
     resources :dashboard, only: [:index]
-    resources :health_region, only: [:index, :update]
+    resources :health_regions, only: [:index, :update]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

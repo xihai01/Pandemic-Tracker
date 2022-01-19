@@ -1,6 +1,7 @@
 class Admin::HealthRegionsController < ApplicationController
   before_action :find_region, only: [:update, :destroy]
-  
+
+
   #GET health regions
   def index
     @health_regions = HealthRegion.all
@@ -24,6 +25,11 @@ class Admin::HealthRegionsController < ApplicationController
 
   def find_region
     @health_region = HealthRegion.find(params[:id])
+  end
+
+  private
+  def require_login
+    render json: { message: "Unauthorized user: Permission denied" } unless session[:user_id]
   end
 
 end
