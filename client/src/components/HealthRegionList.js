@@ -7,9 +7,9 @@ import * as d3 from "d3";
  * This component takes in mapData and renders each health region
  */
 export default function HealthRegionList(props) {
-  const { svgLoad, setSvgLoad, mapData, stageObj } = props;
+  const { svgLoad, setSvgLoad, mapData, stageObj, loading } = props;
   // wait until mapData is loaded and ready for use
-  if (mapData.features) {
+  if (!loading) {
     const projection = d3.geoAlbers();
     const path = d3.geoPath().projection(projection);
     // adjust projection to fit area of svg

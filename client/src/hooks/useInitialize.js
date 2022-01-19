@@ -13,7 +13,7 @@ export default function useInitialize() {
   // load map data from api
   const { state } = useApplicationData();
   // mapData contains the geoJSON data we need
-  const { mapData, stageObj } = state;
+  const { mapData, stageObj, loading } = state;
   console.log(state);
   zoomMap(svgLoad);
   return {
@@ -21,5 +21,6 @@ export default function useInitialize() {
     setSvgLoad,
     mapData,
     stageObj,
+    loading,
   };
 }

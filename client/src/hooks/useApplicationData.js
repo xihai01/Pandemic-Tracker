@@ -1,5 +1,8 @@
 import { useEffect, useReducer } from "react";
-import dataReducer, { SET_STAGE_COLOR, SET_DATA } from "../reducer/data_reducer";
+import dataReducer, {
+  SET_STAGE_COLOR,
+  SET_DATA,
+} from "../reducer/data_reducer";
 import axios from "axios";
 import * as d3 from "d3";
 
@@ -10,31 +13,23 @@ const useApplicationData = () => {
     loading: true,
   });
   useEffect(() => {
-    // get geoJSON from server
-    d3.json("http://localhost:3000/api/maps")
-      .then((data) => {
-        console.log(data);
+    // load geoJSON data and stage # data for each region
+    Promise.all([
+      d3.json("http://localhost:3000/api/maps"),
+      axios.get("http://localhost:3000/api/map_color"),
+    ])
+      .then((response) => {
+        const mapData = response[0];
+        const stageObj = response[1].data;
         dispatch({
           type: SET_DATA,
-          mapData: data,
+          mapData: mapData,
+          stageObj: stageObj,
         });
       })
       .catch((error) => {
-        console.log("error reading file");
+        console.log("error getting map data");
       });
-
-    axios({
-      method: "GET",
-      url: "http://localhost:3000/api/map_color",
-    })
-      .then(({ data }) => {
-        console.log(data);
-        dispatch({
-          type: SET_STAGE_COLOR,
-          stageObj: data,
-        });
-      })
-      .catch((err) => console.log(err));
   }, []);
 
   return {
