@@ -14,10 +14,8 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   namespace :api do
-    resources :users
     resources :maps, only: [:index] # fetches geoJSON
     resources :map_color, only: [:index] # fetches stage colors of regions
-    resources :admin
   end
 
   # You can have the root of your site routed with "root"
