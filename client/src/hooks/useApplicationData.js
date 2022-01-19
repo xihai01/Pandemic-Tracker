@@ -18,13 +18,11 @@ const useApplicationData = () => {
       d3.json("http://localhost:3000/api/maps"),
       axios.get("http://localhost:3000/api/map_color"),
     ])
-      .then((response) => {
-        const mapData = response[0];
-        const stageObj = response[1].data;
+      .then(([mapData, stageObj]) => {
         dispatch({
           type: SET_DATA,
           mapData: mapData,
-          stageObj: stageObj,
+          stageObj: stageObj.data,
         });
       })
       .catch((error) => {
