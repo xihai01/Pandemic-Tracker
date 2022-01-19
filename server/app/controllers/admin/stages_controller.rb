@@ -21,7 +21,7 @@ class Admin::StagesController < ApplicationController
   private
   def stage_params
     params.require(:stage).permit(:max_indoor_gathering, :max_outdoor_gathering, 
-    :retail, :ceremony, :food_establishments, :sports_recreational, :entertainment, :personal_care
+    :retail, :ceremony, :food_establishments, :sports_recreational, :entertainment, :personal_care,
     :color_code)
   end
 
