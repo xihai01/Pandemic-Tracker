@@ -1,6 +1,6 @@
 class Admin::HealthRegionsController < ApplicationController
   before_action :find_region, only: [:update, :destroy]
-
+  before_action :require_login
 
   #GET health regions
   def index
