@@ -6,7 +6,7 @@ const dataReducer = (state, action) => {
     case SET_USERS:
       return {
         ...state,
-        users: action.users,
+        stage: action.users,
         loading: false,
       };
     case SET_DATA:
