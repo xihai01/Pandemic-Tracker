@@ -1,11 +1,11 @@
 import { useEffect, useReducer } from "react";
-import dataReducer, { SET_USERS, SET_DATA } from "../reducer/data_reducer";
+import dataReducer, { SET_STAGE_COLOR, SET_DATA } from "../reducer/data_reducer";
 import axios from "axios";
 import * as d3 from "d3";
 
 const useApplicationData = () => {
   const [state, dispatch] = useReducer(dataReducer, {
-    users: [],
+    stageObj: {},
     mapData: [],
     loading: true,
   });
@@ -25,13 +25,13 @@ const useApplicationData = () => {
 
     axios({
       method: "GET",
-      url: "http://localhost:3000/api/users",
+      url: "http://localhost:3000/api/map_color",
     })
       .then(({ data }) => {
         console.log(data);
         dispatch({
-          type: SET_USERS,
-          users: data,
+          type: SET_STAGE_COLOR,
+          stageObj: data,
         });
       })
       .catch((err) => console.log(err));

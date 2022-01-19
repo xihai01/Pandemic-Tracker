@@ -10,7 +10,7 @@ import Home from "./components/Home";
 
 function App() {
   // setup application for use
-  const { svgLoad, setSvgLoad, mapData } = useInitialize();
+  const { svgLoad, setSvgLoad, mapData, stageObj } = useInitialize();
 
   return (
     <>
@@ -23,6 +23,7 @@ function App() {
           svgLoad={svgLoad}
           setSvgLoad={setSvgLoad}
           mapData={mapData}
+          stageObj={stageObj}
         />
       </div>
     </>
