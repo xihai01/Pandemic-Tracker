@@ -27,7 +27,6 @@ class Admin::HealthRegionsController < ApplicationController
     @health_region = HealthRegion.find(params[:id])
   end
 
-  private
   def require_login
     render json: { message: "Unauthorized user: Permission denied" } unless session[:user_id]
   end
