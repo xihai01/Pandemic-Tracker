@@ -7,7 +7,6 @@ class Admin::SessionsController < ApplicationController
       # logged in when they navigate around our website.
       session[:user_id] = admin.id
       
-      # redirect_to '/admin/dashboard'
       render json: { message: "User authorization successful" }, status: 200
 
     else
