@@ -19,6 +19,7 @@ const useApplicationData = () => {
       axios.get("http://localhost:3000/api/map_color"),
     ])
       .then(([mapData, stageObj]) => {
+        console.log('data got fetched again');
         dispatch({
           type: SET_DATA,
           mapData: mapData,
