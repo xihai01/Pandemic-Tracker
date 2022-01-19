@@ -5,4 +5,5 @@ class ApplicationController < ActionController::Base
 
   # load geoJSON for health regions
   @@data = File.read("./docs/map_data.geojson")
+
 end
