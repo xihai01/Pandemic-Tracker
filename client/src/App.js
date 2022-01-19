@@ -9,23 +9,25 @@ import "./App.css";
 import Home from "./components/Home";
 
 function App() {
-
   // setup application for use
-  const { svgLoad, setSvgLoad, mapData } = useInitialize();
+  const { svgLoad, setSvgLoad, mapData, stageObj, loading } = useInitialize();
 
   return (
-
     <>
-      <div className="App">  <Home /> </div>
+      <div className="App">
+        {" "}
+        <Home />{" "}
+      </div>
       <div>
         <HealthRegionList
           svgLoad={svgLoad}
           setSvgLoad={setSvgLoad}
           mapData={mapData}
+          stageObj={stageObj}
+          loading={loading}
         />
       </div>
     </>
-
   );
 }
 
