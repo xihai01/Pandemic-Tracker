@@ -8,9 +8,12 @@
 require('faker')
 
 3.times do
-  User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: Faker::Internet.password)
+  Admin.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: 'test@test.com', password: '123')
 end
 
+6.times do
+  Admin.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: 'test@test.com', password: '123')
+end
 
 Stage.create(max_indoor_gathering: 5, max_outdoor_gathering: 10,
   food_establishments: "Indoor dining is closed. Takeout & Outdoor dining: Maximum of 4 people per table exclusing
@@ -28,7 +31,6 @@ Stage.create(max_indoor_gathering: 5, max_outdoor_gathering: 10,
   personal_care: "Salons and Barbershops closed to the general public",
   color_code: "red")
 
-
 Stage.create(max_indoor_gathering: 5,
   max_outdoor_gathering: 10 , food_establishments: "Indoor dining is closed. Outdoor dining has some restrictions. ",
   retail:"50% capacity. For shopping malls physical distancing will be required in line-ups,
@@ -43,6 +45,21 @@ Stage.create(max_indoor_gathering: 5,
   and oxygen bars closed.",
   color_code: "orange")
 
+Stage.create(max_indoor_gathering: 25, max_outdoor_gathering: 100,
+  food_establishments: "Indoor dining permitted with no limits to number of peopl per table. Indoor food or
+  drink establishments where dance facilities are provided, including nightclubs and
+  restobars, permitted up to 25 per cent capacity or up to a maximum limit of 250 people (whichever is less)",
+  retail: "Capacity limited to the number of people that can maintain a physical distance of two metres",
+  ceremony:"Indoor religious services, rites or ceremonies, including wedding services and
+  funeral services permitted with physical distancing;",
+  sports_recreational: "Maximum 50% capacity or 1000 people(whichever is less). Outdoor: 75% capacity or 15,000 people
+  whichever is less",
+  entertainment: "Concert, cinemas, and theatres can operate at  50 per cent capacity indoors or 1000 peopl which ever
+  is less or 75% Capacity outdoors or a maximum of 5,000 people for unseated events (whichever is less); 75% capacity
+  outdoors or a maximum of 15,000 people for events with fixed seating (whichever is less)",
+  personal_care: "Services that require removal of face coverings capacity is limited to the number of people that can
+  maintain a physical distance of two metres;",
+  color_code: "green")
 
 Stage.create(max_indoor_gathering: 25, max_outdoor_gathering: 100,
    food_establishments: "Indoor dining permitted with no limits to number of peopl per table. Indoor food or

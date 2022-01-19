@@ -1,5 +1,4 @@
-class SessionsController < ApplicationController
-
+class Admin::SessionsController < ApplicationController
   #/login endpoint creates a session and redirects to user controller for data
   def create
     # If the user exists AND the password entered is correct.
@@ -8,7 +7,8 @@ class SessionsController < ApplicationController
       # logged in when they navigate around our website.
       session[:user_id] = admin.id
       
-      redirect_to '/api/admin'
+      render json: { message: "User authorization successful" }, status: 200
+
     else
     # If user's login doesn't work, send them back to the login form.
       render json: { message: "Bad credentials" }, status: :unauthorized
