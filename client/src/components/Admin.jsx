@@ -28,7 +28,7 @@ export function AdminBoard(){
 
 
     return(
-      <h2>Admin Page</h2>
+      <h2>Admin Page Dashboard</h2>
     )
 
 

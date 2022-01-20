@@ -15,8 +15,8 @@ const useApplicationData = () => {
   useEffect(() => {
     // load geoJSON data and stage # data for each region
     Promise.all([
-      d3.json("http://localhost:3000/api/maps"),
-      axios.get("http://localhost:3000/api/map_color"),
+      d3.json("/api/maps"),
+      axios.get("/api/map_color"),
     ])
       .then(([mapData, stageObj]) => {
         dispatch({
