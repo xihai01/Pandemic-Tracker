@@ -15,29 +15,26 @@ function App() {
   // setup application for use
   const { svgLoad, setSvgLoad, mapData, stageObj, loading } = useInitialize();
 
-  return (
-    <>
-      <Router>
-        <Routes>
-          <div className="App">  
-            <Route path="/home" element={<Home />} />
-            <Route path="/admin" element={<AdminBoard />} />
-            <Route path="*" element={<h2>Page not found</h2>} />
-            
-            <AdminBoard />
-          </div>
-        </Routes>
-      </Router>
-      <div>
-        <HealthRegionList
+  return ( 
+  
+    <Router>
+      <Routes>
+        
+        <Route path="/home" element={<Home />} />
+        <Route path="/admin" element={<AdminBoard />} />
+        <Route path="/map" element={<HealthRegionList
           svgLoad={svgLoad}
           setSvgLoad={setSvgLoad}
           mapData={mapData}
           stageObj={stageObj}
           loading={loading}
-        />
-      </div>
-    </>
+          />} />
+        <Route path="*" element={<h2>Page not found</h2>} />
+          
+      </Routes>
+    </Router>
+  
+  
   );
 }
 
