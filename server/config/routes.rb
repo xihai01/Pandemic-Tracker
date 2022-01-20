@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   namespace :api do
     resources :maps, only: [:index] # fetches geoJSON
     resources :map_color, only: [:index] # fetches stage colors of regions
-    resources :restrictions, only: [:index] # fetches restriction data of each region
+    resources :restrictions, only: [:show] # fetches restriction data of each region
   end
 
   # You can have the root of your site routed with "root"
