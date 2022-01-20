@@ -12,12 +12,10 @@ import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 
 
 function App() {
-
   // setup application for use
-  const { svgLoad, setSvgLoad, mapData } = useInitialize();
+  const { svgLoad, setSvgLoad, mapData, stageObj, loading } = useInitialize();
 
   return (
-
     <>
       <Router>
         <Routes>
@@ -30,16 +28,16 @@ function App() {
           </div>
         </Routes>
       </Router>
-      
       <div>
         <HealthRegionList
           svgLoad={svgLoad}
           setSvgLoad={setSvgLoad}
           mapData={mapData}
+          stageObj={stageObj}
+          loading={loading}
         />
       </div>
     </>
-
   );
 }
 
