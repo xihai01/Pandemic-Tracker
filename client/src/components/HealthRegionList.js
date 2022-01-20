@@ -21,13 +21,15 @@ export default function HealthRegionList(props) {
       mapData
     );
     const healthRegionList = mapData.features.map((data) => {
-      // get the stage # for each health region
-      let stageID = stageObj[data.properties["PHU_ID"]];
+      // get the stage # and phuID for each health region
+      let phuID = data.properties["PHU_ID"];
+      let stageID = stageObj[phuID];
       return (
         <HealthRegion
           key={data.properties.FID}
           pathData={path(data)}
           stageID={stageID}
+          phuID={phuID}
         />
       );
     });

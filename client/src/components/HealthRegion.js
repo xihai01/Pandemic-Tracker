@@ -1,6 +1,10 @@
 import "./HealthRegion.css";
 import classNames from "classnames";
 
+const handleClick = function (phuID) {
+  console.log(phuID);
+};
+
 /**
  *
  * @param {*} props => { pathData }
@@ -13,5 +17,13 @@ export default function HealthRegion(props) {
     "path--stage_two": props.stageID === 2,
     "path--stage_three": props.stageID === 3,
   });
-  return <path className={pathClass} d={props.pathData} />;
+  return (
+    <path
+      className={pathClass}
+      onClick={() => {
+        handleClick(props.phuID);
+      }}
+      d={props.pathData}
+    />
+  );
 }
