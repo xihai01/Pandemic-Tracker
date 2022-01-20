@@ -1,20 +1,16 @@
-export const SET_STAGE = "SET_STAGE";
-export const SET_REGION = "SET_REGION";
+export const SET_DATA = "SET_DATA";
 
 const adminReducer = (state, action) => {
   switch (action.type) {
-    case SET_STAGE:
+    case SET_DATA:
       return {
         ...state,
-        stage: action.stage,
+        stages: action.stages,
+        healthRegions: action.healthRegions,
         loading: false,
+        error: null
       };
-    case SET_REGION:
-      return {
-        ...state,
-        health_regions: action.health_regions,
-        loading: false,
-      };
+    
     default:
       return state;
   }
