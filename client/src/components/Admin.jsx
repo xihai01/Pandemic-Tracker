@@ -1,29 +1,35 @@
 import {useReducer, useEffect} from 'react';
 import axios from "axios";
-import adminReducer, { SET_STAGE, SET_REGION } from "reducer/admin_reducer";
-
-
-
+import adminReducer, { SET_DATA } from "reducer/admin_reducer";
 
 
 
 export function AdminBoard(){
 
   const [state, dispatch] = useReducer(adminReducer,{
-    stage: [],  
+    stages: [],  
     health_regions: [],
-    loading: true
+    loading: true,
+    error: null
   });
 
 
   useEffect(()=>{
-    Promise.all(axios.get('/admin/dashboard')
-    .then(([dashboard])=>{
-      dispatch({ type: SET_APPLICATION_DATA, days, appointments, interviewers });
-    }))
-    
-  },[])
+    Promise.all(axios.get('/admin/health_regions'),
+    axios.get('/admin/stages'))
+    .then(([healthRegions, stages])=>{
+      dispatch({ type: SET_DATA, healthRegions, stages });
+    })
+    .catch((error) => {
 
+      console.log("error reading file");
+    });}
+  ,[])
+
+
+    return(
+      <h2>Admin Page</h2>
+    )
 
 
 }
