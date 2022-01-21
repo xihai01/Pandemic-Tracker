@@ -5,7 +5,7 @@ import SortIcon from "@material-ui/icons/Sort";
 import AdjustIcon from "@material-ui/icons/Adjust";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import {Link as Scroll} from 'react-scroll'; 
-import Modal from '@material-ui/core/Modal'; 
+import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'; 
 import CloseIcon from '@material-ui/icons/Close'
 import Link from '@material-ui/core/Link'
 import List from '@material-ui/core/List'
@@ -41,19 +41,16 @@ const useStyles = makeStyles((theme) => ({
   },
   quote: {
     color: "#fff",
-    fontSize: "1.5rem",
+    fontSize: "2rem",
+    
   },
   goDown: {
     color: "#fff",
-    fontSize: "3rem",
+    fontSize: "3.5rem",
   },
   menuWrapper: { 
     backgroundColor: "#fff", 
-    width: "100vh", 
-    height: "100vh",
-    display: "flex", 
-    flexDirection: "row", 
-    alignContent: "space-around"
+
   }, 
   link: {
    color: "#84c2d4", 
@@ -91,12 +88,12 @@ export default function Nav() {
         </Toolbar>
       </AppBar>
      
-      <Modal  open={open} onClose={() => setOpen(false)} className={classes.menuWrapper} >
-      <div className={classes.menuWrapper}> 
-          <IconButton onClick={() => setOpen(false)}>
-            <CloseIcon className={classes.close}/>
+      <SwipeableDrawer  anchor="right" open={open} onOpen={() => setOpen(true)}  onClose={() => setOpen(false)} className={classes.menuWrapper} >
+      <div onClick={() => setOpen(false)} className={classes.close} >
+          <IconButton>
+            <CloseIcon/>
           </IconButton>
-      
+          </div>
           <List> 
           {navigationLinks.map((item)=> (
             <ListItem> 
@@ -113,8 +110,8 @@ export default function Nav() {
            ))}
          
           </List>
-      </div>    
-      </Modal>
+        
+      </SwipeableDrawer>
 
       
       <Collapse

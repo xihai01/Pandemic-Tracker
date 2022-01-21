@@ -23,8 +23,8 @@ export default function CardBox () {
     const checked = useWindowPosition('header'); 
     return ( 
         <div className={classes.root} id="card-scroll">
-            <ImageCard pic={pics[0]} checked={checked}/>
-            <ImageCard pic={pics[1]} checked={checked}/>
+            <ImageCard buttonName="Map" hrefLocation="/map" pic={pics[0]} checked={checked}/>
+            <ImageCard buttonName="Connect" hrefLocation="https://www.twitter.com" pic={pics[1]} checked={checked}/>
         </div>
        
     ) 
