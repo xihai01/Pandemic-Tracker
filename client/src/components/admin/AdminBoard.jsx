@@ -1,6 +1,7 @@
 import {useReducer, useEffect} from 'react';
 import axios from "axios";
 import adminReducer, { SET_DATA } from "reducer/admin_reducer";
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -12,6 +13,10 @@ export default function AdminBoard(){
     loading: true,
     error: null
   });
+  const navigate = useNavigate();
+
+
+
 
 
   useEffect(()=>{
@@ -23,8 +28,19 @@ export default function AdminBoard(){
   },[])
   
   console.log(`state`, state);
-  
+  const auth = localStorage.getItem('auth') === 'true';
+  if(!auth){return navigate('/admin')};
+
+  function clearAuth(){
+    localStorage.clear();
+    axios.get('/admin/logout').then(()=>{
+      navigate('/admin');
+    })
+  }
   return(
-    <h2>Admin Page Dashboard</h2>
+    <>
+      <h2>Admin Page Dashboard</h2>
+      <button onClick={clearAuth}>Logout</button>
+    </>
   )
 }

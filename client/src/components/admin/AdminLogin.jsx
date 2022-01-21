@@ -9,17 +9,15 @@ export default function AdminLogin(){
 
 const [state, setState] = useState({email: '',
 password: '',
-auth: false,
 error: false})
 const navigate = useNavigate();
 
 function validate(){
   axios.get(`/admin/login?email=${state.email}&password=${state.password}`)
   .then((res)=>{
-    if(res.data.message ===){
-      setState((prevState)=>{
-        return ({...prevState,auth: true})
-      })
+    if(res.status === 200){
+  
+      localStorage.setItem('auth','true');
       navigate('/adminboard')
       
     }  
