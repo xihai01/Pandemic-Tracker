@@ -2,6 +2,7 @@ import {useReducer, useEffect} from 'react';
 import axios from "axios";
 import adminReducer, { SET_DATA } from "reducer/admin_reducer";
 import { useNavigate } from 'react-router-dom';
+import AdminLogin from './AdminLogin';
 
 
 
@@ -20,16 +21,23 @@ export default function AdminBoard(){
 
 
   useEffect(()=>{
+    
+    const auth = localStorage.getItem('auth') === 'true';
+    if(!auth){
+      return navigate('/admin')
+    };
+
     Promise.all([axios.get('/admin/health_regions'),axios.get('/admin/stages')])
     .then(([healthRegions, stages])=>{
       dispatch({type: SET_DATA, healthRegions: healthRegions.data, stages: stages.data});
     })
     .catch(err=>console.log(`Unable to fecth API data`))
+
+ 
   },[])
   
   console.log(`state`, state);
-  const auth = localStorage.getItem('auth') === 'true';
-  if(!auth){return navigate('/admin')};
+
 
   function clearAuth(){
     localStorage.clear();
