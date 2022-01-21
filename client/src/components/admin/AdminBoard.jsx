@@ -2,7 +2,7 @@ import {useReducer, useEffect} from 'react';
 import axios from "axios";
 import adminReducer, { SET_DATA } from "reducer/admin_reducer";
 import { useNavigate } from 'react-router-dom';
-import AdminLogin from './AdminLogin';
+import { Box, AppBar } from '@mui/material';
 
 
 
@@ -21,7 +21,7 @@ export default function AdminBoard(){
 
 
   useEffect(()=>{
-    
+
     const auth = localStorage.getItem('auth') === 'true';
     if(!auth){
       return navigate('/admin')
@@ -33,8 +33,10 @@ export default function AdminBoard(){
     })
     .catch(err=>console.log(`Unable to fecth API data`))
 
- 
+
   },[])
+
+
   
   console.log(`state`, state);
 
@@ -47,8 +49,14 @@ export default function AdminBoard(){
   }
   return(
     <>
-      <h2>Admin Page Dashboard</h2>
-      <button onClick={clearAuth}>Logout</button>
+      <h2>Hello World</h2>
+      <Box>
+        <AppBar>
+        <h2>Admin Page Dashboard</h2>
+        <button onClick={clearAuth}>Logout</button>
+        </AppBar>
+        <button>hello</button>
+      </Box>
     </>
   )
 }
