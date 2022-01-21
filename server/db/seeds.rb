@@ -61,22 +61,6 @@ Stage.create(max_indoor_gathering: 25, max_outdoor_gathering: 100,
   maintain a physical distance of two metres;",
   color_code: "green")
 
-Stage.create(max_indoor_gathering: 25, max_outdoor_gathering: 100,
-   food_establishments: "Indoor dining permitted with no limits to number of peopl per table. Indoor food or
-   drink establishments where dance facilities are provided, including nightclubs and
-   restobars, permitted up to 25 per cent capacity or up to a maximum limit of 250 people (whichever is less)",
-   retail: "Capacity limited to the number of people that can maintain a physical distance of two metres",
-   ceremony:"Indoor religious services, rites or ceremonies, including wedding services and
-   funeral services permitted with physical distancing;",
-   sports_recreational: "Maximum 50% capacity or 1000 people(whichever is less). Outdoor: 75% capacity or 15,000 people
-   whichever is less",
-   entertainment: "Concert, cinemas, and theatres can operate at  50 per cent capacity indoors or 1000 peopl which ever
-   is less or 75% Capacity outdoors or a maximum of 5,000 people for unseated events (whichever is less); 75% capacity
-   outdoors or a maximum of 15,000 people for events with fixed seating (whichever is less)",
-   personal_care: "Services that require removal of face coverings capacity is limited to the number of people that can
-   maintain a physical distance of two metres;",
-   color_code: "green")
-
 # seed health regions table
 data = File.read("./docs/map_data.geojson")
 dataHash = JSON.parse(data)

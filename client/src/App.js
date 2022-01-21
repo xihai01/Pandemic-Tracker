@@ -13,7 +13,15 @@ import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 
 function App() {
   // setup application for use
-  const { svgLoad, setSvgLoad, mapData, stageObj, loading } = useInitialize();
+  const {
+    svgLoad,
+    setSvgLoad,
+    mapData,
+    stageObj,
+    loading,
+    restriction,
+    setRestriction,
+  } = useInitialize();
 
   return ( 
   
@@ -28,7 +36,7 @@ function App() {
           mapData={mapData}
           stageObj={stageObj}
           loading={loading}
-          />} />
+          setRestriction={setRestriction} />} />
         <Route path="*" element={<h2>Page not found</h2>} />
           
       </Routes>

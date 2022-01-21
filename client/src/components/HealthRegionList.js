@@ -7,7 +7,8 @@ import * as d3 from "d3";
  * This component takes in mapData and renders each health region
  */
 export default function HealthRegionList(props) {
-  const { svgLoad, setSvgLoad, mapData, stageObj, loading } = props;
+  const { svgLoad, setSvgLoad, mapData, stageObj, loading, setRestriction } =
+    props;
   // wait until mapData is loaded and ready for use
   if (!loading) {
     const projection = d3.geoAlbers();
@@ -21,13 +22,16 @@ export default function HealthRegionList(props) {
       mapData
     );
     const healthRegionList = mapData.features.map((data) => {
-      // get the stage # for each health region
-      let stageID = stageObj[data.properties["PHU_ID"]];
+      // get the stage # and phuID for each health region
+      let phuID = data.properties["PHU_ID"];
+      let stageID = stageObj[phuID];
       return (
         <HealthRegion
           key={data.properties.FID}
           pathData={path(data)}
           stageID={stageID}
+          setRestriction={setRestriction}
+          phuID={phuID}
         />
       );
     });

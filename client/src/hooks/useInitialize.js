@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useApplicationData from "./useApplicationData";
 import { zoomMap } from "../helpers/handleZoom";
 
@@ -10,17 +10,25 @@ import { zoomMap } from "../helpers/handleZoom";
 export default function useInitialize() {
   // when svgLoad is true => meaning svg elm exists, then enable pan/zoom
   const [svgLoad, setSvgLoad] = useState(0);
+  // restriction holds restrictions data for health regions
+  const [restriction, setRestriction] = useState({});
   // load map data from api
   const { state } = useApplicationData();
   // mapData contains the geoJSON data we need
   const { mapData, stageObj, loading } = state;
   console.log(state);
-  zoomMap(svgLoad);
+  // enable pan/zoom only once
+  useEffect(() => {
+    zoomMap(svgLoad);
+  }, [svgLoad]);
+
   return {
     svgLoad,
     setSvgLoad,
     mapData,
     stageObj,
     loading,
+    restriction,
+    setRestriction,
   };
 }

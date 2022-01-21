@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
-  
-
+  # admin/.. => secure api
   namespace :admin do
     get '/login' => 'sessions#create'
     get '/logout' => 'sessions#destroy'
@@ -13,9 +12,11 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
+  # api/.. => public api
   namespace :api do
     resources :maps, only: [:index] # fetches geoJSON
     resources :map_color, only: [:index] # fetches stage colors of regions
+    resources :restrictions, only: [:show] # fetches restriction data of each region
   end
 
   # You can have the root of your site routed with "root"
