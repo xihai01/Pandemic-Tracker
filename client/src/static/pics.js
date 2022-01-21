@@ -9,7 +9,7 @@ const pics = [
 {
     title: 'Connect With Us', 
     description: "To know the latest on government restrictions.",
-    imageUrl: '/images/vaccine.jpg', 
+    imageUrl: '/images/connect.jpg', 
     time:1500
 }, 
 

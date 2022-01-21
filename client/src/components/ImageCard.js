@@ -9,11 +9,12 @@ import { Grow } from "@material-ui/core";
 
 
 const useStyles = makeStyles({
-  root: {
+   root: {
     flex: 1,
     maxWidth: 645,
-    background: "rgba(0,0,0,0.5)",
+    // background: "rgba(0,0,0,0.5)",
     margin: "20px",
+    boxShadow: "0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);",
   },
 
   media: {
@@ -23,12 +24,12 @@ const useStyles = makeStyles({
     fontFamily: "Nunito",
     fontWeight: "bold",
     fontSize: "2rem",
-    color: "#fff",
+    color: "#ba000d",
   },
   desc: {
     fontFamily: "Nunito",
     fontSize: "1.1rem",
-    color: "#ddd",
+    color: "#000000",
   },
 });
 

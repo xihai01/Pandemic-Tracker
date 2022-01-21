@@ -5,8 +5,13 @@ import SortIcon from "@material-ui/icons/Sort";
 import AdjustIcon from "@material-ui/icons/Adjust";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import {Link as Scroll} from 'react-scroll'; 
+import Modal from '@material-ui/core/Modal'; 
+import CloseIcon from '@material-ui/icons/Close'
+import Link from '@material-ui/core/Link'
+import List from '@material-ui/core/List'
+import ListItem  from "@material-ui/core/ListItem";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme) => ({ 
   root: {
     display: "flex",
     justifyContent: "center",
@@ -42,6 +47,21 @@ const useStyles = makeStyles((theme) => ({
     color: "#fff",
     fontSize: "3rem",
   },
+  menuWrapper: { 
+    backgroundColor: "#fff", 
+    width: "100vh", 
+    height: "100vh",
+    display: "flex", 
+    flexDirection: "row", 
+    alignContent: "space-around"
+  }, 
+  link: {
+   color: "#84c2d4", 
+  }, 
+
+  close: {
+    color: "#84c2d4",
+  }, 
 }));
 export default function Nav() {
   const classes = useStyles();
@@ -49,21 +69,54 @@ export default function Nav() {
   useEffect(() => {
     setChecked(true);
   }, []);
+
+  const navigationLinks = [
+    {name: "Home", href: ""}, 
+    {name: "Map", href: ""}
+  ]
+ const [open, setOpen] = useState(false)
   return (
     <div className={classes.root} id="header">
       <AppBar className={classes.appbar} elevation={0}>
         <Toolbar className={classes.appbarWrapper}>
           <h1 className={classes.appbarTitle}>
             Pandemic Tracker
-            <spam className={classes.dotcolor}>
+            <span className={classes.dotcolor}>
               <AdjustIcon />
-            </spam>
+            </span>
           </h1>
-          <IconButton>
+          <IconButton onClick={() => setOpen(true)}>
             <SortIcon className={classes.icon} />
           </IconButton>
         </Toolbar>
       </AppBar>
+     
+      <Modal  open={open} onClose={() => setOpen(false)} className={classes.menuWrapper} >
+      <div className={classes.menuWrapper}> 
+          <IconButton onClick={() => setOpen(false)}>
+            <CloseIcon className={classes.close}/>
+          </IconButton>
+      
+          <List> 
+          {navigationLinks.map((item)=> (
+            <ListItem> 
+          <Link
+                className={classes.link}
+                color="textPrimary"
+                varaint="button"
+                underline="none"
+                href={item.href}
+          >
+            {item.name}
+          </Link>
+          </ListItem> 
+           ))}
+         
+          </List>
+      </div>    
+      </Modal>
+
+      
       <Collapse
         in={checked}
         {...(checked ? { timeout: 1000 } : {})}
