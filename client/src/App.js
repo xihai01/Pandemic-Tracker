@@ -7,6 +7,9 @@ import { useState } from "react";
 import * as d3 from "d3";
 import "./App.css";
 import Home from "./components/Home";
+import { AdminBoard } from "components/Admin";
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
+
 
 function App() {
   // setup application for use
@@ -20,26 +23,26 @@ function App() {
     setRestriction,
   } = useInitialize();
 
-  return (
-    <>
-      <div className="App">
-        {" "}
-        <Home />{" "}
-      </div>
-      <div>
-        <HealthRegionList
+  return ( 
+  
+    <Router>
+      <Routes>
+        
+        <Route path="/home" element={<Home />} />
+        <Route path="/admin" element={<AdminBoard />} />
+        <Route path="/map" element={<HealthRegionList
           svgLoad={svgLoad}
           setSvgLoad={setSvgLoad}
           mapData={mapData}
           stageObj={stageObj}
           loading={loading}
-          setRestriction={setRestriction}
-        />
-        <div>
-          {JSON.stringify(restriction)}
-        </div>
-      </div>
-    </>
+          setRestriction={setRestriction} />} />
+        <Route path="*" element={<h2>Page not found</h2>} />
+          
+      </Routes>
+    </Router>
+  
+  
   );
 }
 

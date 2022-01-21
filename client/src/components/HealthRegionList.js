@@ -46,7 +46,7 @@ export default function HealthRegionList(props) {
         >
           enable pan and zoom
         </button>
-        <svg viewBox="-500 490 2000 1000" preserveAspectRatio="xMidYmid meet">
+        <svg viewBox="-500 490 2000 1000">
           <g>{healthRegionList}</g>
         </svg>
       </>
