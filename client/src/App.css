@@ -1,4 +1,7 @@
-
+#map {
+  width: 500px;
+  height: 500px;
+}
 
 svg {
   height: 1000px;
@@ -6,9 +9,3 @@ svg {
   border: darkgreen;
   border-style: ridge;
 }
-
-
-
-
-
-
