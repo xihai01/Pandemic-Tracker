@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import HealthRegion from "./HealthRegion";
 import * as d3 from "d3";
-
+const tooltipData = "Toronto Public Health";
 /**
  *
  * @param {mapData} props
@@ -11,6 +11,15 @@ export default function HealthRegionList(props) {
   // restriction holds restrictions data for health regions
   const [restriction, setRestriction] = useState({});
   const { svgLoad, setSvgLoad, mapData, stageObj, loading } = props;
+  // create a tooltip only once
+  useEffect(() => {
+     /// tooltip
+     d3.select('body')
+     .append('div')
+     .attr('id', 'tooltip')
+     .attr('style', 'position: absolute; opacity: 0');
+     ///
+  }, []);
   // wait until mapData is loaded and ready for use
   if (!loading) {
     const projection = d3.geoAlbers();
@@ -23,9 +32,11 @@ export default function HealthRegionList(props) {
       ],
       mapData
     );
+
     const healthRegionList = mapData.features.map((data) => {
       // get the stage # and phuID for each health region
       let phuID = data.properties["PHU_ID"];
+      let region_name = data.properties["NAME_ENG"];
       let stageID = stageObj[phuID];
       return (
         <HealthRegion
@@ -34,6 +45,7 @@ export default function HealthRegionList(props) {
           stageID={stageID}
           setRestriction={setRestriction}
           phuID={phuID}
+          tooltipData={region_name}
         />
       );
     });
