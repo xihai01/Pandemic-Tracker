@@ -3,9 +3,30 @@
   height: 500px;
 }
 
-svg {
+/* svg {
   height: 1000px;
   width: 1500px;
   border: darkgreen;
   border-style: ridge;
+} */
+
+.SvgOverlay {
+  position: relative;
+  width: 500px;
+  height: 500px;
+}
+
+.SvgOverlay svg {
+  position: absolute;
+  top: -4000px;
+  left: -4000px;
+  width: 8000px;
+  height: 8000px;
+}
+
+.SvgOverlay path {
+  stroke: Orange;
+  stroke-width: 2px;
+  fill: Orange;
+  fill-opacity: 0.3;
 }

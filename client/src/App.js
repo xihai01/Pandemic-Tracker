@@ -41,7 +41,7 @@ function App() {
             />
           }
         />
-        <Route path="/maps" element={<Map />} />
+        <Route path="/maps" element={<Map mapData={mapData} loading={loading} />} />
         <Route path="*" element={<h2>Page not found</h2>} />
       </Routes>
     </Router>
