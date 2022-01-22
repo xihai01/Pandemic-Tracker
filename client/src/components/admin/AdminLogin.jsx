@@ -22,13 +22,8 @@ function validate(){
   axios.get(`/admin/login?email=${state.email}&password=${state.password}`)
   .then((res)=>{
     if(res.status === 200){
-
-      setState((prevState)=>{
-        return {...prevState,auth: true}
-      })
       localStorage.setItem('auth','true');
       setTimeout(()=>navigate('/adminboard'),2000)
-      
       
     }  
 
