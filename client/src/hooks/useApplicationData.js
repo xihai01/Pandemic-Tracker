@@ -1,25 +1,34 @@
 import { useEffect, useReducer } from "react";
-import dataReducer, { SET_USERS } from "../reducer/data_reducer";
+import dataReducer, {
+  SET_STAGE_COLOR,
+  SET_DATA,
+} from "../reducer/data_reducer";
 import axios from "axios";
+import * as d3 from "d3";
 
 const useApplicationData = () => {
   const [state, dispatch] = useReducer(dataReducer, {
-    users: [],
+    stageObj: {},
+    mapData: [],
     loading: true,
   });
   useEffect(() => {
-    axios({
-      method: "GET",
-      url: "http://localhost:3000/api/users",
-    })
-      .then(({ data }) => {
-        console.log(data);
+    // load geoJSON data and stage # data for each region
+    Promise.all([
+      d3.json("/api/maps"),
+      axios.get("/api/map_color"),
+    ])
+      .then(([mapData, stageObj]) => {
+        console.log('data got fetched again');
         dispatch({
-          type: SET_USERS,
-          users: data,
+          type: SET_DATA,
+          mapData: mapData,
+          stageObj: stageObj.data,
         });
       })
-      .catch((err) => console.log(err));
+      .catch((error) => {
+        console.log("error getting map data");
+      });
   }, []);
 
   return {

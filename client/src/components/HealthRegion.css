@@ -1,0 +1,21 @@
+.path {
+  fill: blueviolet;
+  stroke: cornsilk;
+}
+
+.path:hover {
+  cursor: pointer;
+  fill: darkgoldenrod;
+}
+
+.path--stage_one {
+  fill: red;
+}
+
+.path--stage_two {
+  fill: orange;
+}
+
+.path--stage_three {
+  fill: green;
+}
