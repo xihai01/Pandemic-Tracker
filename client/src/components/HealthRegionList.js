@@ -1,3 +1,4 @@
+import { useState } from "react";
 import HealthRegion from "./HealthRegion";
 import * as d3 from "d3";
 
@@ -7,8 +8,9 @@ import * as d3 from "d3";
  * This component takes in mapData and renders each health region
  */
 export default function HealthRegionList(props) {
-  const { svgLoad, setSvgLoad, mapData, stageObj, loading, setRestriction } =
-    props;
+  // restriction holds restrictions data for health regions
+  const [restriction, setRestriction] = useState({});
+  const { svgLoad, setSvgLoad, mapData, stageObj, loading } = props;
   // wait until mapData is loaded and ready for use
   if (!loading) {
     const projection = d3.geoAlbers();
@@ -49,6 +51,9 @@ export default function HealthRegionList(props) {
         <svg viewBox="-500 490 2000 1000">
           <g>{healthRegionList}</g>
         </svg>
+        <div>
+          {JSON.stringify(restriction.data)}
+        </div>
       </>
     );
   }

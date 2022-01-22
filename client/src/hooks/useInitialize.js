@@ -10,8 +10,6 @@ import { zoomMap } from "../helpers/handleZoom";
 export default function useInitialize() {
   // when svgLoad is true => meaning svg elm exists, then enable pan/zoom
   const [svgLoad, setSvgLoad] = useState(0);
-  // restriction holds restrictions data for health regions
-  const [restriction, setRestriction] = useState({});
   // load map data from api
   const { state } = useApplicationData();
   // mapData contains the geoJSON data we need
@@ -28,7 +26,5 @@ export default function useInitialize() {
     mapData,
     stageObj,
     loading,
-    restriction,
-    setRestriction,
   };
 }

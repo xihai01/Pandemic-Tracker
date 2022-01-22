@@ -19,8 +19,6 @@ function App() {
     mapData,
     stageObj,
     loading,
-    restriction,
-    setRestriction,
   } = useInitialize();
 
   return (
@@ -38,7 +36,6 @@ function App() {
               mapData={mapData}
               stageObj={stageObj}
               loading={loading}
-              setRestriction={setRestriction}
             />
           }
         />
