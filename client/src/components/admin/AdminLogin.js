@@ -15,12 +15,12 @@ function validate(){
   axios.get(`/admin/login?email=${state.email}&password=${state.password}`)
   .then((res)=>{
     if(res.status === 200){
-  
-      localStorage.setItem('auth','true');
+
+      localStorage.setItem('auth','true'); //-> put the key and value in .env
       navigate('/adminboard')
-      
-    }  
- 
+
+    }
+
   })
   .catch((e)=>{
       console.log(e.message);
@@ -28,7 +28,7 @@ function validate(){
         return ({...prevState,error: true})
       })
   })
-  
+
 }
 
 console.log(`error-----::">`,state.error);
@@ -65,10 +65,10 @@ return(
       Login
     </button>
     </form>
-    
+
   </>
-  
-    
+
+
 )
 
 }
