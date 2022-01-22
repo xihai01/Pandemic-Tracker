@@ -9,6 +9,7 @@ import "./App.css";
 import Home from "./components/Home";
 import AdminBoard  from "components/admin/AdminBoard";
 import AdminLogin from "components/admin/AdminLogin";
+import Page404 from "components/admin/Page404";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 
 
@@ -39,7 +40,7 @@ function App() {
           stageObj={stageObj}
           loading={loading}
           setRestriction={setRestriction} />} />
-        <Route path="*" element={<h2>Page not found</h2>} />
+        <Route path="*" element={<Page404 />} />
           
       </Routes>
     </Router>
