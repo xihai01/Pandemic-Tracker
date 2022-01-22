@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
    root: {
        minHeight: '100vh', 
        backgroundColor: "#84c2d4", 
-       display: 'flex', 
+       display: 'flex',
        justifyContent: 'center', 
        alignItems: 'center', 
        [theme.breakpoints.down("md")]: {
@@ -24,7 +24,7 @@ export default function CardBox () {
     return ( 
         <div className={classes.root} id="card-scroll">
             <ImageCard buttonName="Map" hrefLocation="/map" pic={pics[0]} checked={checked}/>
-            <ImageCard buttonName="Connect" hrefLocation="https://www.twitter.com" pic={pics[1]} checked={checked}/>
+            <ImageCard buttonName="Connect" hrefLocation="https://twitter.com/pandemicpt" pic={pics[1]} checked={checked}/>
         </div>
        
     ) 

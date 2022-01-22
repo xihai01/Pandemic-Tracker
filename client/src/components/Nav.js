@@ -75,7 +75,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center", 
     marginRight: "4.5px", 
     marginLeft: "15px", 
-    marginTop: "290px", 
+    marginTop: "240px", 
     color: "#fff", 
   },
 }));
@@ -89,6 +89,7 @@ export default function Nav() {
   const navigationLinks = [
     { name: "Home", href: "" },
     { name: "Map", href: "" },
+    { name: "Tweet Us", href: "https://twitter.com/pandemicpt" }
   ];
   const [open, setOpen] = useState(false);
   return (

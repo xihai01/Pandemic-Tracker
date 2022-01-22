@@ -13,6 +13,8 @@ const useStyles = makeStyles({
   root: {
     flexDirection: "column",
     display: "flex",
+    alignItems: "stretch",
+    flex: 1, 
     maxWidth: 645,
     margin: "20px",
     boxShadow: " 0 10px 20px rgba(0,0,0,0.19)",
@@ -38,14 +40,14 @@ const useStyles = makeStyles({
   },
 
   content: {
-    display: "flex",
-    // flex: 1,
-    flexDirection: "column",
+    // display: "flex",
+    // flex: 1,  
+    // flexDirection: "column",
     marginTop: "30px", 
   }, 
 
   buttonContainer: {
-    marginTop: "auto",  
+    marginTop: "15px",  
     backgroundColor: "#ba000d",  
     textAlign: "center",
   
