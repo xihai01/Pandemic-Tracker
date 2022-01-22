@@ -2,6 +2,7 @@ import "./HealthRegion.css";
 import { handleClick } from "../helpers/handleClick";
 import classNames from "classnames";
 import * as d3 from "d3";
+import axios from "axios";
 
 /**
  *
@@ -23,7 +24,11 @@ export default function HealthRegion(props) {
         handleClick(setRestriction, phuID);
       }}
       onMouseOver={() => {
-        d3.select("#tooltip").style("opacity", 1).style("background-color", "burlywood").text(tooltipData);
+        // display region name and key covid stats when hovered over
+        d3.select("#tooltip")
+          .style("opacity", 1)
+          .style("background-color", "burlywood")
+          .text(tooltipData);
       }}
       onMouseOut={() => {
         d3.select("#tooltip").style("opacity", 0);
@@ -32,7 +37,7 @@ export default function HealthRegion(props) {
         d3.select("#tooltip")
           .style("left", event.pageX + 10 + "px")
           .style("top", event.pageY + 10 + "px");
-          console.log([event.pageX, event.pageY]);
+        console.log([event.pageX, event.pageY]);
       }}
       d={props.pathData}
     />

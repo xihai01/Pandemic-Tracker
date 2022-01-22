@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import HealthRegion from "./HealthRegion";
 import * as d3 from "d3";
-const tooltipData = "Toronto Public Health";
+
 /**
  *
  * @param {mapData} props
@@ -64,7 +64,10 @@ export default function HealthRegionList(props) {
           <g>{healthRegionList}</g>
         </svg>
         <div>
-          {JSON.stringify(restriction.data)}
+          {JSON.stringify(restriction.restrictions)}
+        </div>
+        <div>
+          {JSON.stringify(restriction.stats)}
         </div>
       </>
     );
