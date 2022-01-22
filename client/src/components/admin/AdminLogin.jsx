@@ -15,7 +15,6 @@ export default function AdminLogin(){
 
 const [state, setState] = useState({email: '',
 password: '',
-auth: false,
 error: false})
 const navigate = useNavigate();
 
@@ -43,6 +42,16 @@ function validate(){
   
 }
 
+function handleChange(e){
+  const {name,value} = e.target;
+  setState((prevState)=>{
+    return {...prevState,error: false}
+  });
+  setState((prevState)=>{
+    return {...prevState,[name]: value}
+  });
+}
+
 const paperStyle = {padding:20, height:'70vh', width:280, margin:'20px auto'}
 const avatarStyle = {backgroundColor: '#1bbd7e'}
 const btnStyle = {margin:'8px 0'}
@@ -65,26 +74,20 @@ return(
         <TextField fullWidth
           required
           type="email"
+          name="email"
           placeholder='Enter Email address'
           label="Email"
           value={state.email}
-          onChange={(e) => {
-            setState((prevState)=>{
-              return ({...prevState,email: e.target.value})
-            });
-          }}
+          onChange={handleChange}
         />
         <TextField fullWidth
           required
+          name="password"
           type="password"
           placeholder='Enter valid password'
           label="Password"
           value={state.password}
-          onChange={(e) => {
-            setState((prevState)=>{
-              return ({...prevState,password: e.target.value})
-            });
-          }}
+          onChange={handleChange}
         />
         <Button type="submit" onClick={validate} color="primary" variant="contained" fullWidth style={btnStyle}>
           SIGN IN
@@ -101,38 +104,7 @@ return(
         </Typography>
       </Paper>
     </Grid>
-    // <form onSubmit={(e) => e.preventDefault()} autoComplete="on">
-    // {state.error && <p>Invalid email or password</p>}
-    // <input
-    //   name="email"
-    //   type="text"
-    //   placeholder="Enter Email"
-    //   value={state.email}
-    //   onChange={(e) => {
-    //     setState((prevState)=>{
-    //       return ({...prevState,email: e.target.value})
-    //     });
-    //   }}
-    // />
-    // <input
-    //   name="password"
-    //   type="password"
-    //   placeholder="Enter Password"
-    //   value={state.password}
-    //   onChange={(e) => {
-    //     setState((prevState)=>{
-    //       return ({...prevState,password: e.target.value})
-    //     });
-    //   }}
-    // />
-    // <button onClick={validate} >
-    //   Login
-    // </button>
-    // </form>
-    
- 
-  
-    
+      
 )
 
 }
