@@ -3,7 +3,23 @@ import axios from "axios";
 import adminReducer, { SET_DATA } from "reducer/admin_reducer";
 import { useNavigate } from 'react-router-dom';
 import { Grid, Container, Button,Paper } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
+import Drawer from '@mui/material/Drawer';
+import { makeStyles } from '@mui/styles';
 
+
+const drawerWidth = 180
+const useStyles = makeStyles({
+  drawer:{
+    width: drawerWidth
+  },
+  drawerPaper:{
+    width: drawerWidth
+  },
+  root:{
+    display: 'flex'
+  }
+})
 
 
 export default function AdminBoard(){
@@ -47,27 +63,40 @@ export default function AdminBoard(){
       navigate('/admin');
     })
   }
-  return(
-    <>
-    <Container>
-      <Grid container>
-        <Grid item xs={12} sm={6} md={3}>
-          <Paper>
-            <h2>Hello World</h2>
-            <Button onClick={clearAuth}>
-              Logout
-            </Button>
-          </Paper>
-        </Grid>
-        <Grid item xs={12} sm={6} md={3}>
-          <Paper elevation={3}>
-            <h2>Grids</h2>
-          </Paper>
-          
-        </Grid>
-      </Grid>
 
-    </Container>
-    </>
+  const classes = useStyles();
+
+  return(
+    <div className={classes.root}>
+      <Drawer className={classes.drawer}
+      variant="permanent"
+      anchor="left"
+      classes={{paper:classes.drawerPaper}}
+      >
+          <Typography variant="h6">
+            Starting to build
+          </Typography>
+      </Drawer>
+      <Container>
+        
+        <Grid container>
+          <Grid item xs={12} sm={6} md={3}>
+            <Paper>
+              <h2>Hello World</h2>
+              <Button onClick={clearAuth}>
+                Logout
+              </Button>
+            </Paper>
+          </Grid>
+          <Grid item xs={12} sm={6} md={3}>
+            <Paper elevation={3}>
+              <h2>Grids</h2>
+            </Paper>
+            
+          </Grid>
+        </Grid>
+
+      </Container>
+    </div>
   )
 }
