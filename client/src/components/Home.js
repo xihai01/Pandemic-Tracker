@@ -1,27 +1,31 @@
 import React from "react";
-import { makeStyles } from '@material-ui/core/styles'; 
-import { CssBaseline } from '@material-ui/core'; 
-import Nav from './Nav'; 
+import { makeStyles } from '@material-ui/core/styles';
+import { CssBaseline } from '@material-ui/core';
+import Nav from './Nav';
+import CardBox from './CardBox';
+
 
 
 
 const useStyles = makeStyles((theme) => ({
-    root: {
+    homepic: {
         minHeight: '100vh',
-        backgroundImage: `url(${process.env.PUBLIC_URL + "/images/bg.png"})`,
+        backgroundImage: `url("/images/bg.png")`,
         backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',  
+        backgroundSize: 'cover',
+        backgroundColor: "#84c2d4",
     },
 }));
 export default function Home () {
-    const classes = useStyles(); 
-    return ( 
-        <div className="App"> 
-            <div className={classes.root}>
-                <CssBaseline />
-                <Nav />
-            </div>
-        </div>
+    const classes = useStyles();
+    return (
+     <div>
+     <div className={classes.homepic}>
+         <CssBaseline />
+         <Nav />
+     </div>
+     <CardBox />
+     </div>
     );
 }
 
