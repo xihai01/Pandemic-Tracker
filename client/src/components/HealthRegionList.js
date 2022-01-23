@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import HealthRegion from "./HealthRegion";
+import { setMapProjection } from "helpers/setMapProjection";
 import * as d3 from "d3";
 
 /**
@@ -22,19 +23,8 @@ export default function HealthRegionList(props) {
   }, []);
   // wait until mapData is loaded and ready for use
   if (!loading) {
-    const projection = d3.geoAlbers();
- /*    .scale(1480)
-    .translate([960/2, 480/2])
-    .precision(.1); */
-    const path = d3.geoPath().projection(projection);
-    // adjust projection to fit area of svg
-    projection.precision(0).rotate([90, 0, 0]).fitExtent(
-      [
-        [0, 0],
-        [960, 480],
-      ],
-      mapData
-    );
+
+      const path = d3.geoPath().projection(setMapProjection(mapData));
 
     const healthRegionList = mapData.features.map((data) => {
       // get the stage # and phuID for each health region
@@ -55,24 +45,17 @@ export default function HealthRegionList(props) {
 
     // get user's current geo coordinates in lat/long
     const success = function(pos) {
-      const projection = d3.geoAlbers();
+
       const coords = [pos.coords.longitude, pos.coords.latitude];
-      projection.rotate([90, 0, 0]).fitExtent(
-        [
-          [0, 0],
-          [960, 480],
-        ],
-        mapData
-      );
-      const pixels = projection(coords);
-      const body = d3.select("body");
-      body.append("div")
+      const pixels = setMapProjection(mapData, coords);
+      const svg = d3.select("svg");
+      svg.append("rect")
       .style("position", "absolute")
-      .style("width", 50 + "px")
-      .style("height", 50 + "px")
-      .style("background-color", "blue")
-      .style("left", pixels[0] + "px")
-      .style("top", pixels[1] + "px");
+      .style("width", 5 + "px")
+      .style("height", 5 + "px")
+      .style("fill", "blue")
+      .style("x", pixels[0] + "px")
+      .style("y", pixels[1] + "px");
 
       console.log(pixels[0]);
       console.log(pixels[1]);
@@ -84,6 +67,9 @@ export default function HealthRegionList(props) {
 
     return (
       <>
+        <svg>
+          <g>{healthRegionList}</g>
+        </svg>
         <button
           onClick={() => {
             console.log("hi");
@@ -92,9 +78,6 @@ export default function HealthRegionList(props) {
         >
           enable pan and zoom
         </button>
-        <svg>
-          <g>{healthRegionList}</g>
-        </svg>
         <div>
           {JSON.stringify(restriction.restrictions)}
         </div>
