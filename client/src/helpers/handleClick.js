@@ -1,12 +1,17 @@
 import axios from "axios";
+import { GET_REGION } from "misc/phuToregion";
 
 export const handleClick = function (setRestriction, phuID) {
-  // get restrictions data from api
-  axios
-    .get(`http://localhost:3000/api/restrictions/${phuID}`)
-    .then((data) => {
-      // set state variable to render a container with restriction data
-      setRestriction(data);
+  // get restrictions and key covid stats data from api
+  Promise.all([
+    axios.get(`/api/restrictions/${phuID}`),
+    axios.get(`https://api.opencovid.ca/summary?loc=${GET_REGION[phuID]}`),
+  ])
+    .then(([restrictions, stats]) => {
+      setRestriction({
+        restrictions: restrictions.data,
+        stats: stats.data.summary[0],
+      });
     })
     .catch((error) => {
       console.log("error: ", error);

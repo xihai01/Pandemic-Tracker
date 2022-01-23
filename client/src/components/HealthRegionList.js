@@ -1,5 +1,8 @@
+import { useState } from "react";
 import HealthRegion from "./HealthRegion";
+import { setMapProjection } from "helpers/setMapProjection";
 import * as d3 from "d3";
+import useMapTools from "hooks/useMapTools";
 
 /**
  *
@@ -7,23 +10,19 @@ import * as d3 from "d3";
  * This component takes in mapData and renders each health region
  */
 export default function HealthRegionList(props) {
-  const { svgLoad, setSvgLoad, mapData, stageObj, loading, setRestriction } =
-    props;
+  // restriction holds restrictions data for health regions
+  const [restriction, setRestriction] = useState({});
+  const { svgLoad, setSvgLoad, mapData, stageObj, loading } = props;
+  // render tooltip and geoloc marker
+  useMapTools(mapData, loading);
   // wait until mapData is loaded and ready for use
   if (!loading) {
-    const projection = d3.geoAlbers();
-    const path = d3.geoPath().projection(projection);
-    // adjust projection to fit area of svg
-    projection.rotate([90, 0, 0]).fitExtent(
-      [
-        [0, 0],
-        [1000, 2000],
-      ],
-      mapData
-    );
+    const path = d3.geoPath().projection(setMapProjection(mapData));
+
     const healthRegionList = mapData.features.map((data) => {
       // get the stage # and phuID for each health region
       let phuID = data.properties["PHU_ID"];
+      let region_name = data.properties["NAME_ENG"];
       let stageID = stageObj[phuID];
       return (
         <HealthRegion
@@ -32,12 +31,16 @@ export default function HealthRegionList(props) {
           stageID={stageID}
           setRestriction={setRestriction}
           phuID={phuID}
+          tooltipData={region_name}
         />
       );
     });
 
     return (
       <>
+        <svg>
+          <g>{healthRegionList}</g>
+        </svg>
         <button
           onClick={() => {
             console.log("hi");
@@ -46,9 +49,8 @@ export default function HealthRegionList(props) {
         >
           enable pan and zoom
         </button>
-        <svg viewBox="-500 490 2000 1000">
-          <g>{healthRegionList}</g>
-        </svg>
+        <div>{JSON.stringify(restriction.restrictions)}</div>
+        <div>{JSON.stringify(restriction.stats)}</div>
       </>
     );
   }

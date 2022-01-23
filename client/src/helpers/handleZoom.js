@@ -13,7 +13,7 @@ export const zoomMap = function (svgLoad) {
       .scaleExtent([1, 5])
       .translateExtent([
         [0, 0],
-        [1000, 1500],
+        [960, 480],
       ])
       .on("zoom", handleZoom);
     d3.select("svg").call(zoom);
