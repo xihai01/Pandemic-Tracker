@@ -2,10 +2,14 @@ import {useReducer, useEffect} from 'react';
 import axios from "axios";
 import adminReducer, { SET_DATA } from "reducer/admin_reducer";
 import { useNavigate } from 'react-router-dom';
-import { Grid, Container, Button,Paper } from '@material-ui/core';
+import { Grid, Container, Button,Paper, ListItemIcon, List, ListItemText, ListItem } from '@material-ui/core';
 import { Typography } from '@material-ui/core';
 import Drawer from '@mui/material/Drawer';
 import { makeStyles } from '@mui/styles';
+import { AddCircleOutlined, SubjectOutlined } from '@mui/icons-material';
+import { getAuth } from 'helpers/getAuth';
+
+
 
 
 const drawerWidth = 180
@@ -17,12 +21,17 @@ const useStyles = makeStyles({
     width: drawerWidth
   },
   root:{
-    display: 'flex'
+    display: "flex"
+  },
+  active:{
+    background: "#fe2"
+    // f4f4f4
   }
+
 })
 
 
-export default function AdminBoard(){
+export default function AdminBoard({children}){
   
   const [state, dispatch] = useReducer(adminReducer,{
     stages: [],  
@@ -38,8 +47,7 @@ export default function AdminBoard(){
 
   useEffect(()=>{
 
-    const auth = localStorage.getItem('auth') === 'true';
-    if(!auth){
+    if(!getAuth()){
       return navigate('/admin')
     };
 
@@ -66,6 +74,19 @@ export default function AdminBoard(){
 
   const classes = useStyles();
 
+  const menuItems = [
+    {
+      text: "Stages",
+      icon: <SubjectOutlined color="secondary"/>,
+      path: "/"
+    },
+    {
+      text: "Public Health Units",
+      icon: <AddCircleOutlined color="secondary"/>,
+      path: "/"
+    }
+    ]
+
   return(
     <div className={classes.root}>
       <Drawer className={classes.drawer}
@@ -76,14 +97,27 @@ export default function AdminBoard(){
           <Typography variant="h6">
             Starting to build
           </Typography>
+
+        {/* list items */}
+        <List>
+          {menuItems.map(item=>{
+            return <ListItem  key={item.text} onClick={([])=>{}}>
+              <ListItemIcon>
+                {item.icon}
+              </ListItemIcon>
+              <ListItemText primary={item.text}/>
+            </ListItem>
+          })}
+        </List>
+
       </Drawer>
+      
       <Container>
         
         <Grid container>
           <Grid item xs={12} sm={6} md={3}>
             <Paper>
-              <h2>Hello World</h2>
-              <Button onClick={clearAuth}>
+              <Button onClick={clearAuth} variant='contained' color='primary'>
                 Logout
               </Button>
             </Paper>
@@ -91,9 +125,11 @@ export default function AdminBoard(){
           <Grid item xs={12} sm={6} md={3}>
             <Paper elevation={3}>
               <h2>Grids</h2>
+              {children}
             </Paper>
             
           </Grid>
+          
         </Grid>
 
       </Container>

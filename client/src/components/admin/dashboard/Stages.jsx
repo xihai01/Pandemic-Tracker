@@ -1,8 +1,16 @@
+import axios from "axios";
 import { useState, useEffect } from 'react';
+import { Box, Checkbox, TableRow, TableCell, TableHead, TableSortLabel } from '@mui/material';
+import AdminBoard from "./AdminBoard";
 
 function Stages() {
+
+
   return ( 
-    <h2>THIS IS THE STAGE COMPONENT FOR STAGES TABLE</h2>
+    <AdminBoard>
+      <h2>THIS IS THE STAGE COMPONENT FOR STAGES TABLE</h2>
+    </AdminBoard>
+    
   );
 }
 
