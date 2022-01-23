@@ -7,6 +7,7 @@ import { Typography } from '@material-ui/core';
 import Drawer from '@mui/material/Drawer';
 import { makeStyles } from '@mui/styles';
 import { AddCircleOutlined, SubjectOutlined } from '@mui/icons-material';
+import { Card,CardContent } from '@mui/material';
 import { getAuth } from 'helpers/getAuth';
 
 
@@ -117,29 +118,56 @@ export default function AdminBoard({children}){
             Logout
           </Button>
         <Grid container>
-          <Grid item xs={12} sm={6} md={3}>
-            <Paper>
-              <Typography variant="body2">
-                first dashboard card
-              </Typography>
-            </Paper>
+        <Grid item xs={12} sm={6} md={3}>
+            <Card>
+              <CardContent>
+                <Grid align="center">
+                <Typography variant="h3">
+                  6
+                </Typography>
+                <Typography variant="body2">
+                  Admin Users
+                </Typography>
+                </Grid>
+
+              </CardContent>
+            </Card>
           </Grid>
 
-          <Grid item xs={12} sm={6} md={3}>
-            <Paper elevation={3}>
-              <Typography variant="body2">
-              second dashboard card
-              </Typography>
-            </Paper>
-          </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <Paper elevation={3}>
-              <Typography variant="body2">
-                third dashboard card
-              </Typography>
-            </Paper>
+            <Card>
+              <CardContent>
+                <Grid align="center">
+                <Typography variant="h3">
+                  14 
+                </Typography>
+                <Typography variant="body2">
+                  Public Health Units
+                </Typography>
+                </Grid>
+
+              </CardContent>
+            </Card>
           </Grid>
+
+
+          <Grid item xs={12} sm={6} md={3}>
+            <Card>
+              <CardContent>
+                <Grid align="center">
+                <Typography variant="h3">
+                  3 
+                </Typography>
+                <Typography variant="body2">
+                  Stages
+                </Typography>
+                </Grid>
+
+              </CardContent>
+            </Card>
+          </Grid>
+
           
         </Grid>
 
