@@ -1,5 +1,7 @@
 export const SET_REGIONS = "SET_REGIONS";
 export const SET_STAGES = "SET_STAGES";
+export const SET_DASHBOARD = "SET_DASHBOARD";
+
 
 
 const adminReducer = (state, action) => {
@@ -18,6 +20,14 @@ const adminReducer = (state, action) => {
           loading: false,
           error: null
         };
+
+        case SET_DASHBOARD:
+          return {
+            ...state,
+            dashboard: action.dashboard,
+            loading: false,
+            error: null
+          };
     
     default:
       return state;

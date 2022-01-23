@@ -1,6 +1,6 @@
 import {useReducer, useEffect} from 'react';
 import axios from "axios";
-import adminReducer, { SET_DATA } from "reducer/admin_reducer";
+import adminReducer, { SET_DASHBOARD } from "reducer/admin_reducer";
 import { useNavigate } from 'react-router-dom';
 import { Grid, Container, Button,Paper, ListItemIcon, List, ListItemText, ListItem } from '@material-ui/core';
 import { Typography } from '@material-ui/core';
@@ -34,8 +34,7 @@ const useStyles = makeStyles({
 export default function AdminBoard({children}){
   
   const [state, dispatch] = useReducer(adminReducer,{
-    stages: [],  
-    healthRegions: [],
+    dashboard: [],  
     loading: true,
     error: null
   });
@@ -51,9 +50,9 @@ export default function AdminBoard({children}){
       return navigate('/admin')
     };
 
-    Promise.all([axios.get('/admin/health_regions'),axios.get('/admin/stages')])
-    .then(([healthRegions, stages])=>{
-      dispatch({type: SET_DATA, healthRegions: healthRegions.data, stages: stages.data});
+    axios.get('/admin/dashboard')
+    .then((res)=>{
+      dispatch({type: SET_DASHBOARD, dashboard: res.data});
     })
     .catch(()=>console.log(`Unable to fecth API data`))
 
@@ -113,24 +112,38 @@ export default function AdminBoard({children}){
       </Drawer>
       
       <Container>
-        
+          {/* Appbar */}
+          <Button onClick={clearAuth} variant='contained' color='primary'>
+            Logout
+          </Button>
         <Grid container>
           <Grid item xs={12} sm={6} md={3}>
             <Paper>
-              <Button onClick={clearAuth} variant='contained' color='primary'>
-                Logout
-              </Button>
+              <Typography variant="body2">
+                first dashboard card
+              </Typography>
             </Paper>
           </Grid>
+
           <Grid item xs={12} sm={6} md={3}>
             <Paper elevation={3}>
-              <h2>Grids</h2>
-              {children}
+              <Typography variant="body2">
+              second dashboard card
+              </Typography>
             </Paper>
-            
+          </Grid>
+
+          <Grid item xs={12} sm={6} md={3}>
+            <Paper elevation={3}>
+              <Typography variant="body2">
+                third dashboard card
+              </Typography>
+            </Paper>
           </Grid>
           
         </Grid>
+
+        {children}
 
       </Container>
     </div>

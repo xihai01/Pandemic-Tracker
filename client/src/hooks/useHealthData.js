@@ -22,17 +22,17 @@ export default function useHealthData(){
     return axios.put(`/admin/stages/${id}`)
     .then(res=> {
       
-      dispatch({ type: SET_REGIONS, id, interview });
+      dispatch({ type: SET_REGIONS, id});
     });
     
   }
 
   function deleteRow(id, interview, mode) {
     //needs work
-    return axios.put(`/api/appointments/${id}`,{interview})
-    .then(res=> {
-      dispatch({ type: SET_INTERVIEW, id, interview, mode});
-    });
+    // return axios.put(`/api/appointments/${id}`,{interview})
+    // .then(res=> {
+    //   dispatch({ type: SET_INTERVIEW, id, interview, mode});
+    // });
     
 
   }

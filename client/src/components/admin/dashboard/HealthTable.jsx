@@ -4,8 +4,8 @@ import { getAuth } from 'helpers/getAuth';
 import { useNavigate } from 'react-router-dom';
 import useHealthData from 'hooks/useHealthData';
 
-function HealthRegions() {
-  const navigate = useNavigate;
+function HealthTable() {
+  const navigate = useNavigate();
   const {state,editRow,deleteRow}=useHealthData();
 
   useEffect(()=>{
@@ -23,4 +23,4 @@ function HealthRegions() {
   );
 }
 
-export default HealthRegions;
+export default HealthTable;

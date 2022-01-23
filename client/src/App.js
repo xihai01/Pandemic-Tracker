@@ -35,7 +35,7 @@ function App() {
         <Route path="/admin" element={<AdminLogin />} />
         <Route path="/adminboard" element={<AdminBoard />} />
         <Route path="/stages" element={<Stages />} />
-        <Route path="/healthtable" element={<HealthTable />} />
+        <Route path="/regions" element={<HealthTable />} />
 
 
         <Route path="/map" element={<HealthRegionList
