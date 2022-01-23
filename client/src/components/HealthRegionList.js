@@ -23,12 +23,15 @@ export default function HealthRegionList(props) {
   // wait until mapData is loaded and ready for use
   if (!loading) {
     const projection = d3.geoAlbers();
+ /*    .scale(1480)
+    .translate([960/2, 480/2])
+    .precision(.1); */
     const path = d3.geoPath().projection(projection);
     // adjust projection to fit area of svg
     projection.rotate([90, 0, 0]).fitExtent(
       [
         [0, 0],
-        [1000, 2000],
+        [960, 480],
       ],
       mapData
     );
@@ -50,6 +53,35 @@ export default function HealthRegionList(props) {
       );
     });
 
+    // get user's current geo coordinates in lat/long
+    const success = function(pos) {
+      const projection = d3.geoAlbers();
+      const coords = [pos.coords.longitude, pos.coords.latitude];
+      projection.rotate([90, 0, 0]).fitExtent(
+        [
+          [0, 0],
+          [960, 480],
+        ],
+        mapData
+      );
+      const pixels = projection(coords);
+      const body = d3.select("body");
+      body.append("div")
+      .style("position", "absolute")
+      .style("width", 50 + "px")
+      .style("height", 50 + "px")
+      .style("background-color", "blue")
+      .style("left", pixels[0] + "px")
+      .style("top", pixels[1] + "px");
+
+      console.log(pixels[0]);
+      console.log(pixels[1]);
+    }
+    const error = function(error) {
+      console.warn(error);
+    }
+    navigator.geolocation.getCurrentPosition(success, error);
+
     return (
       <>
         <button
@@ -60,7 +92,7 @@ export default function HealthRegionList(props) {
         >
           enable pan and zoom
         </button>
-        <svg viewBox="-500 490 2000 1000">
+        <svg>
           <g>{healthRegionList}</g>
         </svg>
         <div>
