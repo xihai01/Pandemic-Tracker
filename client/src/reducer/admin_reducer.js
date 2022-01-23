@@ -1,16 +1,23 @@
-export const SET_DATA = "SET_DATA";
+export const SET_REGIONS = "SET_REGIONS";
+export const SET_STAGES = "SET_STAGES";
+
 
 const adminReducer = (state, action) => {
   switch (action.type) {
-    case SET_DATA:
-      console.log(`Reduceraction-stages`, action.stages);
+    case SET_REGIONS:
       return {
         ...state,
-        stages: action.stages,
         healthRegions: action.healthRegions,
         loading: false,
         error: null
       };
+      case SET_STAGES:
+        return {
+          ...state,
+          stages: action.stages,
+          loading: false,
+          error: null
+        };
     
     default:
       return state;

@@ -1,19 +1,19 @@
 import { useReducer, useEffect } from 'react';
-import adminReducer, { SET_REGIONS } from "reducer/admin_reducer";
+import adminReducer, { SET_DATA } from "reducer/admin_reducer";
 import axios from 'axios'
 
 
-export default function useHealthData(){
+export default function useStagesData(){
   const [state, dispatch] = useReducer(adminReducer, {
-    healthRegions: [],
+    stages: [],
     loading: true,
     error: null
   })
 
   useEffect(()=>{
-    axios.get(`/admin/health_regions`)
+    axios.get(`/admin/stages`)
     .then((res)=>{
-      dispatch({type: SET_REGIONS, healthRegions: res.data});
+      dispatch({type: SET_DATA, stages: res.data});
     })
     .catch()
   } ,[]);
@@ -22,7 +22,7 @@ export default function useHealthData(){
     return axios.put(`/admin/stages/${id}`)
     .then(res=> {
       
-      dispatch({ type: SET_REGIONS, id, interview });
+      dispatch({ type: SET_DATA, id, interview: null });
     });
     
   }
