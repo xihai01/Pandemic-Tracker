@@ -3,9 +3,9 @@ class Admin::DashboardController < ApplicationController
 
   def index
     @data = {
-      admins: Admin.all,
-      health_regions: HealthRegion.all,
-      stages: Stage.all 
+      admins: Admin.all.count,
+      health_regions: HealthRegion.all.count,
+      stages: Stage.all.count 
     }
     render json: @data
   end
