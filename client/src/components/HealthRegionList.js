@@ -28,7 +28,7 @@ export default function HealthRegionList(props) {
     .precision(.1); */
     const path = d3.geoPath().projection(projection);
     // adjust projection to fit area of svg
-    projection.rotate([90, 0, 0]).fitExtent(
+    projection.precision(0).rotate([90, 0, 0]).fitExtent(
       [
         [0, 0],
         [960, 480],
