@@ -51,8 +51,10 @@ export default function AdminLogin() {
     width: 280,
     margin: "20px auto",
   };
-  const avatarStyle = { backgroundColor: "#1bbd7e" };
-  const btnStyle = { margin: "8px 0" };
+  const avatarStyle = { backgroundColor: "#00AB55" };
+  const btnStyle = { 
+    margin: "8px 0",
+    backgroundColor: "#005249" };
 
   return (
     <Grid>
