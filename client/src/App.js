@@ -7,9 +7,11 @@ import { useState } from "react";
 import * as d3 from "d3";
 import "./App.css";
 import Home from "./components/Home";
-import AdminBoard  from "components/admin/AdminBoard";
+import AdminBoard  from "components/admin/dashboard/AdminBoard";
+import HealthTable from "components/admin/dashboard/HealthTable"
 import AdminLogin from "components/admin/AdminLogin";
 import Page404 from "components/admin/Page404";
+import Stages from "components/admin/dashboard/Stages";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 
 
@@ -29,10 +31,13 @@ function App() {
   
     <Router>
       <Routes>
-        
         <Route path="/" element={<Home />} />
         <Route path="/admin" element={<AdminLogin />} />
         <Route path="/adminboard" element={<AdminBoard />} />
+        <Route path="/stages" element={<Stages />} />
+        <Route path="/regions" element={<HealthTable />} />
+
+
         <Route path="/map" element={<HealthRegionList
           svgLoad={svgLoad}
           setSvgLoad={setSvgLoad}
