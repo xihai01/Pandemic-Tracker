@@ -7,7 +7,7 @@ import { useState } from "react";
 import * as d3 from "d3";
 import "./App.css";
 import Home from "./components/Home";
-import AdminBoard  from "components/admin/AdminBoard";
+import AdminBoard  from "components/admin/dashboard/AdminBoard";
 import AdminLogin from "components/admin/AdminLogin";
 import Page404 from "components/admin/Page404";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom"

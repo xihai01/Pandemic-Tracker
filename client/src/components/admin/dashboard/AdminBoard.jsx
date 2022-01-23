@@ -2,7 +2,7 @@ import {useReducer, useEffect} from 'react';
 import axios from "axios";
 import adminReducer, { SET_DATA } from "reducer/admin_reducer";
 import { useNavigate } from 'react-router-dom';
-import { Box, AppBar } from '@mui/material';
+import { Grid, Container, Button,Paper } from '@material-ui/core';
 
 
 
@@ -31,7 +31,7 @@ export default function AdminBoard(){
     .then(([healthRegions, stages])=>{
       dispatch({type: SET_DATA, healthRegions: healthRegions.data, stages: stages.data});
     })
-    .catch(err=>console.log(`Unable to fecth API data`))
+    .catch(()=>console.log(`Unable to fecth API data`))
 
 
   },[])
@@ -49,14 +49,25 @@ export default function AdminBoard(){
   }
   return(
     <>
-      <h2>Hello World</h2>
-      <Box>
-        <AppBar>
-        <h2>Admin Page Dashboard</h2>
-        <button onClick={clearAuth}>Logout</button>
-        </AppBar>
-        <button>hello</button>
-      </Box>
+    <Container>
+      <Grid container>
+        <Grid item xs={12} sm={6} md={3}>
+          <Paper>
+            <h2>Hello World</h2>
+            <Button onClick={clearAuth}>
+              Logout
+            </Button>
+          </Paper>
+        </Grid>
+        <Grid item xs={12} sm={6} md={3}>
+          <Paper elevation={3}>
+            <h2>Grids</h2>
+          </Paper>
+          
+        </Grid>
+      </Grid>
+
+    </Container>
     </>
   )
 }
