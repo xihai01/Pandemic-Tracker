@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import HealthRegion from "./HealthRegion";
 import { setMapProjection } from "helpers/setMapProjection";
 import * as d3 from "d3";
+import useMapTools from "hooks/useMapTools";
 
 /**
  *
@@ -12,19 +13,11 @@ export default function HealthRegionList(props) {
   // restriction holds restrictions data for health regions
   const [restriction, setRestriction] = useState({});
   const { svgLoad, setSvgLoad, mapData, stageObj, loading } = props;
-  // create a tooltip only once
-  useEffect(() => {
-     /// tooltip
-     d3.select('body')
-     .append('div')
-     .attr('id', 'tooltip')
-     .attr('style', 'position: absolute; opacity: 0');
-     ///
-  }, []);
+  // render tooltip and geoloc marker
+  useMapTools(mapData, loading);
   // wait until mapData is loaded and ready for use
   if (!loading) {
-
-      const path = d3.geoPath().projection(setMapProjection(mapData));
+    const path = d3.geoPath().projection(setMapProjection(mapData));
 
     const healthRegionList = mapData.features.map((data) => {
       // get the stage # and phuID for each health region
@@ -43,28 +36,6 @@ export default function HealthRegionList(props) {
       );
     });
 
-    // get user's current geo coordinates in lat/long
-    const success = function(pos) {
-
-      const coords = [pos.coords.longitude, pos.coords.latitude];
-      const pixels = setMapProjection(mapData, coords);
-      const svg = d3.select("svg");
-      svg.append("rect")
-      .style("position", "absolute")
-      .style("width", 5 + "px")
-      .style("height", 5 + "px")
-      .style("fill", "blue")
-      .style("x", pixels[0] + "px")
-      .style("y", pixels[1] + "px");
-
-      console.log(pixels[0]);
-      console.log(pixels[1]);
-    }
-    const error = function(error) {
-      console.warn(error);
-    }
-    navigator.geolocation.getCurrentPosition(success, error);
-
     return (
       <>
         <svg>
@@ -78,12 +49,8 @@ export default function HealthRegionList(props) {
         >
           enable pan and zoom
         </button>
-        <div>
-          {JSON.stringify(restriction.restrictions)}
-        </div>
-        <div>
-          {JSON.stringify(restriction.stats)}
-        </div>
+        <div>{JSON.stringify(restriction.restrictions)}</div>
+        <div>{JSON.stringify(restriction.stats)}</div>
       </>
     );
   }
