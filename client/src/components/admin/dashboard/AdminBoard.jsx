@@ -7,9 +7,15 @@ import { Typography } from '@material-ui/core';
 import Drawer from '@mui/material/Drawer';
 import { AddCircleOutlined, SubjectOutlined } from '@mui/icons-material';
 import { Card,CardContent } from '@mui/material';
+import AccountCircle from '@mui/icons-material/AccountCircle';
 import { format } from 'date-fns';
 import { Avatar } from '@material-ui/core';
 import { getAuth } from 'helpers/getAuth';
+import { AccountCircleOutlined } from '@material-ui/icons';
+import FingerprintIcon from '@mui/icons-material/Fingerprint';
+import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
+import CenterFocusStrongIcon from '@mui/icons-material/CenterFocusStrong';
+import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 
 
 
@@ -91,27 +97,27 @@ export default function AdminBoard({children}){
   const menuItems = [
     {
       text: "Stages",
-      icon: <SubjectOutlined color="secondary"/>,
+      icon: <LocalHospitalIcon color="secondary"/>,
       path: "/stages",
       
     },
     {
       text: "Public Health Units",
-      icon: <AddCircleOutlined color="secondary"/>,
+      icon: <CenterFocusStrongIcon color="secondary"/>,
       path: "/regions",
       
 
     },
     {
       text: "Users",
-      icon: <AddCircleOutlined color="secondary"/>,
+      icon: <ManageAccountsIcon color="secondary"/>,
       path: "/regions",
       
 
     },
     {
-      text: "Users",
-      icon: <AddCircleOutlined color="secondary"/>,
+      text: "Security",
+      icon: <FingerprintIcon color="secondary"/>,
       path: "/regions",
       
 
@@ -130,6 +136,9 @@ export default function AdminBoard({children}){
           <Typography className={classes.title} variant="h6">
             Dashboard
           </Typography>
+          <Button onClick={clearAuth} size="small"  variant='contained' color='success'>
+            Logout
+          </Button>
 
         {/* list items */}
         <List>
@@ -156,25 +165,22 @@ export default function AdminBoard({children}){
         <AppBar
           className={classes.appbar}
           elevation={0}
-          color="textSecondary"
+          color="transparent"
         >
           <Toolbar>
             <Typography variant="h6" className={classes.date}>
               Hi,Welcome Back
             </Typography>
+            
             <Toolbar>
               {format(new Date(),`do MMMM Y`)}
             </Toolbar>
-            <Avatar>
-              MT
-            </Avatar>
+            <AccountCircleOutlined/>
           </Toolbar>
         </AppBar>
-      
-        <Button onClick={clearAuth} variant='contained' color='primary'>
-          Logout
-        </Button>
         <div className={classes.toolbar}></div>
+        
+          
         <Grid container spacing={3} elevation={1} >
           <Grid item xs={12} sm={6} md={3}>
             <Card style={{background: "#D0F2FF"}}>
