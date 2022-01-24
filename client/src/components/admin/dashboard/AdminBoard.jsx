@@ -87,13 +87,31 @@ export default function AdminBoard({children}){
     {
       text: "Stages",
       icon: <SubjectOutlined color="secondary"/>,
-      path: "/stages"
+      path: "/stages",
+      color: "#D0F2FF"
     },
     {
       text: "Public Health Units",
       icon: <AddCircleOutlined color="secondary"/>,
-      path: "/regions"
+      path: "/regions",
+      color: "#C8FACD"
+
+    },
+    {
+      text: "Users",
+      icon: <AddCircleOutlined color="secondary"/>,
+      path: "/regions",
+      color: "#FFF7CD"
+
+    },
+    {
+      text: "Users",
+      icon: <AddCircleOutlined color="secondary"/>,
+      path: "/regions",
+      color: "#FFE7D9"
+
     }
+
     ]
   return(
     <>
@@ -132,6 +150,8 @@ export default function AdminBoard({children}){
         {/* Appbar */}
         <AppBar
           className={classes.appbar}
+          elevation={0}
+          color="textSecondary"
         >
           <Toolbar>
             <Typography variant="h6">
@@ -146,7 +166,7 @@ export default function AdminBoard({children}){
         <div className={classes.toolbar}></div>
         <Grid container spacing={3} elevation={1} >
           <Grid item xs={12} sm={6} md={3}>
-            <Card>
+            <Card style={{background: "#D0F2FF"}}>
               <CardContent>
                 <Grid align="center">
                 <Typography variant="h3">
@@ -163,7 +183,7 @@ export default function AdminBoard({children}){
 
 
           <Grid item xs={12} sm={6} md={3}>
-            <Card>
+            <Card style={{background: "#C8FACD"}}>
               <CardContent>
                 <Grid align="center">
                 <Typography variant="h3">
@@ -180,7 +200,7 @@ export default function AdminBoard({children}){
 
 
           <Grid item xs={12} sm={6} md={3}>
-            <Card>
+            <Card style={{background: "#FFF7CD" }}>
               <CardContent>
                 <Grid align="center">
                 <Typography variant="h3">
@@ -188,6 +208,22 @@ export default function AdminBoard({children}){
                 </Typography>
                 <Typography variant="body2">
                   Stages
+                </Typography>
+                </Grid>
+
+              </CardContent>
+            </Card> 
+          </Grid>
+
+          <Grid item xs={12} sm={6} md={3}>
+            <Card style={{background: "#FFE7D9"}}>
+              <CardContent>
+                <Grid align="center">
+                <Typography variant="h3">
+                  {state.dashboard.stages}
+                </Typography>
+                <Typography variant="body2">
+                  Bug Reports
                 </Typography>
                 </Grid>
 
