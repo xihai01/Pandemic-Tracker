@@ -9,13 +9,16 @@ import adminReducer, { SET_STAGES } from "reducer/admin_reducer";
 function Stages() {
 
 
-  const {state,editRow}= useStagesData();
+  const {state,data,editRow}= useStagesData();
   
-  const data = state.stages.map(()=>{
-    
-  })
+  
 
-console.log(state);
+
+
+  console.log(state);
+  console.log(`TABLEDATA`,data);
+
+
   return ( 
     <AdminBoard>
       <h2>THIS IS THE STAGE COMPONENT FOR STAGES TABLE</h2>
