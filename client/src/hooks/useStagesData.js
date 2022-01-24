@@ -40,6 +40,32 @@ export default function useStagesData(){
       
   })]
 
+  const columns = [
+    { title: 'Name', field: 'name' },
+    { title: 'Ceremony', field: 'ceremony', initialEditValue: 'initial edit value' },
+    { title: 'Color code', field: 'color_code'},
+    { title: 'Created On', field: 'created_at'},
+    { title: 'Entertainment', field: 'entertainment'},
+    { title: 'Food establishments', field: 'food_establishments'},
+    { title: 'Indoor gatherings', field: 'max_indoor_gathering'},
+    { title: 'Outdoor gatherings', field: 'max_outdoor_gathering'},
+    { title: 'Personal care', field: 'personal_care'},
+    { title: 'Retail', field: 'retail'},
+    { title: 'Sports/Recreation', field: 'sports_recreational'},
+    { title: 'Last Update', field: 'updated_at'}
+
+
+
+
+
+
+    // {
+    //   title: 'Birth Place',
+    //   field: 'birthCity',
+    //   lookup: { 34: 'İstanbul', 63: 'Şanlıurfa' },
+    // },
+  ]
+
   function editRow(id) {
     return axios.put(`/admin/stages/${id}`)
     .then(res=> {
@@ -63,6 +89,7 @@ export default function useStagesData(){
     state,
     editRow,
     data,
+    columns,
     deleteRow
   }
 }

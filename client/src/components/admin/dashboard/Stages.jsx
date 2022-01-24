@@ -9,7 +9,7 @@ import adminReducer, { SET_STAGES } from "reducer/admin_reducer";
 function Stages() {
 
 
-  const {state,data,editRow}= useStagesData();
+  const {state,data,columns,editRow,deleteRow}= useStagesData();
   
   
 
@@ -22,11 +22,7 @@ function Stages() {
   return ( 
     <AdminBoard>
       <h2>THIS IS THE STAGE COMPONENT FOR STAGES TABLE</h2>
-      <h2>THIS IS THE STAGE COMPONENT FOR STAGES TABLE</h2>
-      <h2>THIS IS THE STAGE COMPONENT FOR STAGES TABLE</h2>
-      <h2>THIS IS THE STAGE COMPONENT FOR STAGES TABLE</h2>
-      <h2>THIS IS THE STAGE COMPONENT FOR STAGES TABLE</h2>
-      <h2>THIS IS THE STAGE COMPONENT FOR STAGES TABLE</h2> 
+
 
     </AdminBoard>
     
