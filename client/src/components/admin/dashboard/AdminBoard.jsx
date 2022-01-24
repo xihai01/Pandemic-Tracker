@@ -112,7 +112,7 @@ export default function AdminBoard({children}){
 
     },
     {
-      text: "Users",
+      text: "Settings",
       icon: <AddCircleOutlined color="secondary"/>,
       path: "/regions",
       
@@ -158,7 +158,7 @@ export default function AdminBoard({children}){
         <AppBar
           className={classes.appbar}
           elevation={0}
-          color="textSecondary"
+          color="transparent"
         >
           <Toolbar>
             <Typography variant="h6" className={classes.date}>
