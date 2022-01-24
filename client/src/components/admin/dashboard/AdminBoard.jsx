@@ -7,6 +7,8 @@ import { Typography } from '@material-ui/core';
 import Drawer from '@mui/material/Drawer';
 import { AddCircleOutlined, SubjectOutlined } from '@mui/icons-material';
 import { Card,CardContent } from '@mui/material';
+import { format } from 'date-fns';
+import { Avatar } from '@material-ui/core';
 import { getAuth } from 'helpers/getAuth';
 
 
@@ -37,7 +39,10 @@ const useStyles = makeStyles((theme)=>{
     appbar:{
       width: `calc(100% - ${drawerWidth}px)`
     },
-    toolbar: theme.mixins.toolbar
+    toolbar: theme.mixins.toolbar,
+    date: {
+      flexGrow: 1
+    }
   }
 })
 
@@ -88,27 +93,27 @@ export default function AdminBoard({children}){
       text: "Stages",
       icon: <SubjectOutlined color="secondary"/>,
       path: "/stages",
-      color: "#D0F2FF"
+      
     },
     {
       text: "Public Health Units",
       icon: <AddCircleOutlined color="secondary"/>,
       path: "/regions",
-      color: "#C8FACD"
+      
 
     },
     {
       text: "Users",
       icon: <AddCircleOutlined color="secondary"/>,
       path: "/regions",
-      color: "#FFF7CD"
+      
 
     },
     {
       text: "Users",
       icon: <AddCircleOutlined color="secondary"/>,
       path: "/regions",
-      color: "#FFE7D9"
+      
 
     }
 
@@ -154,9 +159,15 @@ export default function AdminBoard({children}){
           color="textSecondary"
         >
           <Toolbar>
-            <Typography variant="h6">
+            <Typography variant="h6" className={classes.date}>
               Hi,Welcome Back
             </Typography>
+            <Toolbar>
+              {format(new Date(),`do MMMM Y`)}
+            </Toolbar>
+            <Avatar>
+              MT
+            </Avatar>
           </Toolbar>
         </AppBar>
       
