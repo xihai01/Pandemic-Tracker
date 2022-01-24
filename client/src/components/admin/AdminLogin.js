@@ -24,7 +24,7 @@ export default function AdminLogin() {
       .then((res) => {
         if (res.status === 200) {
           localStorage.setItem("auth", "true");
-          setTimeout(() => navigate("/adminboard"), 2000);
+          navigate("/adminboard")
         }
       })
       .catch((e) => {

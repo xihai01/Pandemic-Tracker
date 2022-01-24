@@ -32,9 +32,9 @@ const useStyles = makeStyles({
 
 
 export default function AdminBoard({children}){
-  
+
   const [state, dispatch] = useReducer(adminReducer,{
-    dashboard: [],  
+    dashboard: [],
     loading: true,
     error: null
   });
@@ -60,7 +60,7 @@ export default function AdminBoard({children}){
   },[])
 
 
-  
+
   console.log(`state`, state);
 
 
@@ -87,6 +87,8 @@ export default function AdminBoard({children}){
     ]
 
   return(
+    <>
+    {getAuth() && (
     <div className={classes.root}>
       <Drawer className={classes.drawer}
       variant="permanent"
@@ -110,7 +112,7 @@ export default function AdminBoard({children}){
         </List>
 
       </Drawer>
-      
+
       <Container>
           {/* Appbar */}
           <Button onClick={clearAuth} variant='contained' color='primary'>
@@ -140,12 +142,14 @@ export default function AdminBoard({children}){
               </Typography>
             </Paper>
           </Grid>
-          
+
         </Grid>
 
         {children}
 
       </Container>
     </div>
+      )  }
+      </>
   )
 }
