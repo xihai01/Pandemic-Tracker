@@ -132,6 +132,9 @@ export default function AdminBoard({children}){
           <Typography className={classes.title} variant="h6">
             Dashboard
           </Typography>
+          <Button onClick={clearAuth} variant='contained' color='primary'>
+            Logout
+          </Button>
 
         {/* list items */}
         <List>
@@ -171,11 +174,9 @@ export default function AdminBoard({children}){
             <AccountCircleOutlined/>
           </Toolbar>
         </AppBar>
-      
-        <Button onClick={clearAuth} variant='contained' color='primary'>
-          Logout
-        </Button>
         <div className={classes.toolbar}></div>
+        
+          
         <Grid container spacing={3} elevation={1} >
           <Grid item xs={12} sm={6} md={3}>
             <Card style={{background: "#D0F2FF"}}>
