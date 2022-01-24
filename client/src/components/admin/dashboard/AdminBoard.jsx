@@ -7,9 +7,11 @@ import { Typography } from '@material-ui/core';
 import Drawer from '@mui/material/Drawer';
 import { AddCircleOutlined, SubjectOutlined } from '@mui/icons-material';
 import { Card,CardContent } from '@mui/material';
+import AccountCircle from '@mui/icons-material/AccountCircle';
 import { format } from 'date-fns';
 import { Avatar } from '@material-ui/core';
 import { getAuth } from 'helpers/getAuth';
+import { AccountCircleOutlined } from '@material-ui/icons';
 
 
 
@@ -162,12 +164,11 @@ export default function AdminBoard({children}){
             <Typography variant="h6" className={classes.date}>
               Hi,Welcome Back
             </Typography>
+            
             <Toolbar>
               {format(new Date(),`do MMMM Y`)}
             </Toolbar>
-            <Avatar>
-              MT
-            </Avatar>
+            <AccountCircleOutlined/>
           </Toolbar>
         </AppBar>
       
