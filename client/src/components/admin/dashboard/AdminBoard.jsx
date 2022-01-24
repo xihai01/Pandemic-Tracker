@@ -1,34 +1,49 @@
 import {useReducer, useEffect} from 'react';
 import axios from "axios";
 import adminReducer, { SET_DASHBOARD } from "reducer/admin_reducer";
-import { useNavigate } from 'react-router-dom';
-import { Grid, Container, Button,Paper, ListItemIcon, List, ListItemText, ListItem } from '@material-ui/core';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { Grid, Container, Button,Paper, ListItemIcon, List, ListItemText, ListItem, makeStyles, AppBar, Toolbar } from '@material-ui/core';
 import { Typography } from '@material-ui/core';
 import Drawer from '@mui/material/Drawer';
-import { makeStyles } from '@mui/styles';
 import { AddCircleOutlined, SubjectOutlined } from '@mui/icons-material';
 import { Card,CardContent } from '@mui/material';
+import { format } from 'date-fns';
+import { Avatar } from '@material-ui/core';
 import { getAuth } from 'helpers/getAuth';
 
 
 
 
 const drawerWidth = 180
-const useStyles = makeStyles({
-  drawer:{
-    width: drawerWidth
-  },
-  drawerPaper:{
-    width: drawerWidth
-  },
-  root:{
-    display: "flex"
-  },
-  active:{
-    background: "#f4f4f4"
-    // f4f4f4
+const useStyles = makeStyles((theme)=>{
+  return {
+    drawer:{
+      width: drawerWidth
+    },
+    drawerPaper:{
+      width: drawerWidth
+    },
+    page:{
+      background:"#f9f9f9",
+      width: "100%"
+    },
+    root:{
+      display: "flex"
+    },
+    active:{
+      background: "#f4f4f4"
+    },
+    title:{
+      padding: theme.spacing(2)
+    },
+    appbar:{
+      width: `calc(100% - ${drawerWidth}px)`
+    },
+    toolbar: theme.mixins.toolbar,
+    date: {
+      flexGrow: 1
+    }
   }
-
 })
 
 
@@ -40,6 +55,7 @@ export default function AdminBoard({children}){
     error: null
   });
   const navigate = useNavigate();
+  const location = useLocation();
 
 
 
@@ -53,6 +69,7 @@ export default function AdminBoard({children}){
 
     axios.get('/admin/dashboard')
     .then((res)=>{
+      
       dispatch({type: SET_DASHBOARD, dashboard: res.data});
     })
     .catch(()=>console.log(`Unable to fecth API data`))
@@ -60,9 +77,6 @@ export default function AdminBoard({children}){
 
   },[])
 
-
-
-  console.log(`state`, state);
 
 
   function clearAuth(){
@@ -78,15 +92,32 @@ export default function AdminBoard({children}){
     {
       text: "Stages",
       icon: <SubjectOutlined color="secondary"/>,
-      path: "/"
+      path: "/stages",
+      
     },
     {
       text: "Public Health Units",
       icon: <AddCircleOutlined color="secondary"/>,
-      path: "/"
-    }
-    ]
+      path: "/regions",
+      
 
+    },
+    {
+      text: "Users",
+      icon: <AddCircleOutlined color="secondary"/>,
+      path: "/regions",
+      
+
+    },
+    {
+      text: "Users",
+      icon: <AddCircleOutlined color="secondary"/>,
+      path: "/regions",
+      
+
+    }
+
+    ]
   return(
     <>
     {getAuth() && (
@@ -96,36 +127,61 @@ export default function AdminBoard({children}){
       anchor="left"
       classes={{paper:classes.drawerPaper}}
       >
-          <Typography variant="h6">
-            Starting to build
+          <Typography className={classes.title} variant="h6">
+            Dashboard
           </Typography>
 
         {/* list items */}
         <List>
           {menuItems.map(item=>{
-            return <ListItem  key={item.text} onClick={([])=>{}}>
+            return (
+            <ListItem 
+              button  
+              key={item.text} 
+              onClick={()=>{navigate(item.path)}}
+              className={location.pathname === item.path ? classes.active : null}
+            >
               <ListItemIcon>
                 {item.icon}
               </ListItemIcon>
               <ListItemText primary={item.text}/>
-            </ListItem>
+            </ListItem>)
           })}
         </List>
 
       </Drawer>
 
       <Container>
-          {/* Appbar */}
-          <Button onClick={clearAuth} variant='contained' color='primary'>
-            Logout
-          </Button>
-        <Grid container>
-        <Grid item xs={12} sm={6} md={3}>
-            <Card>
+        {/* Appbar */}
+        <AppBar
+          className={classes.appbar}
+          elevation={0}
+          color="textSecondary"
+        >
+          <Toolbar>
+            <Typography variant="h6" className={classes.date}>
+              Hi,Welcome Back
+            </Typography>
+            <Toolbar>
+              {format(new Date(),`do MMMM Y`)}
+            </Toolbar>
+            <Avatar>
+              MT
+            </Avatar>
+          </Toolbar>
+        </AppBar>
+      
+        <Button onClick={clearAuth} variant='contained' color='primary'>
+          Logout
+        </Button>
+        <div className={classes.toolbar}></div>
+        <Grid container spacing={3} elevation={1} >
+          <Grid item xs={12} sm={6} md={3}>
+            <Card style={{background: "#D0F2FF"}}>
               <CardContent>
                 <Grid align="center">
                 <Typography variant="h3">
-                  6
+                  {state.dashboard.admins}
                 </Typography>
                 <Typography variant="body2">
                   Admin Users
@@ -138,11 +194,11 @@ export default function AdminBoard({children}){
 
 
           <Grid item xs={12} sm={6} md={3}>
-            <Card>
+            <Card style={{background: "#C8FACD"}}>
               <CardContent>
                 <Grid align="center">
                 <Typography variant="h3">
-                  14 
+                  {state.dashboard.health_regions}
                 </Typography>
                 <Typography variant="body2">
                   Public Health Units
@@ -155,11 +211,11 @@ export default function AdminBoard({children}){
 
 
           <Grid item xs={12} sm={6} md={3}>
-            <Card>
+            <Card style={{background: "#FFF7CD" }}>
               <CardContent>
                 <Grid align="center">
                 <Typography variant="h3">
-                  3 
+                  {state.dashboard.stages}
                 </Typography>
                 <Typography variant="body2">
                   Stages
@@ -167,12 +223,29 @@ export default function AdminBoard({children}){
                 </Grid>
 
               </CardContent>
-            </Card>
+            </Card> 
+          </Grid>
+
+          <Grid item xs={12} sm={6} md={3}>
+            <Card style={{background: "#FFE7D9"}}>
+              <CardContent>
+                <Grid align="center">
+                <Typography variant="h3">
+                  {state.dashboard.stages}
+                </Typography>
+                <Typography variant="body2">
+                  Bug Reports
+                </Typography>
+                </Grid>
+
+              </CardContent>
+            </Card> 
           </Grid>
 
         </Grid>
-
-        {children}
+        <div className={classes.page}>
+          {children}
+        </div>
 
       </Container>
     </div>
