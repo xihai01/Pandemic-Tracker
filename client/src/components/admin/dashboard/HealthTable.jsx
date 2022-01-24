@@ -3,10 +3,12 @@ import AdminBoard from './AdminBoard';
 import { getAuth } from 'helpers/getAuth';
 import { useNavigate } from 'react-router-dom';
 import useHealthData from 'hooks/useHealthData';
+import MaterialTable from "material-table";
+
 
 function HealthTable() {
   const navigate = useNavigate();
-  const {state,editRow,deleteRow}=useHealthData();
+  const {state,columns,editRow,deleteRow}=useHealthData();
 
   useEffect(()=>{
 
@@ -16,9 +18,11 @@ function HealthTable() {
 
   },[])
 
+  // console.log(`HEALTHSTATE`,state);
+
   return ( 
     <AdminBoard>
-      <h2>THIS IS THE HEALTH REGION COMPONENT FOR THE HEALTH REGION TABLE@@</h2>
+      <MaterialTable title="Public Health Regions(Ontario)" columns={columns} data={state.healthRegions} />;
     </AdminBoard>
   );
 }

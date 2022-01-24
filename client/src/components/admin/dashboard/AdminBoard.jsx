@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { Grid, Container, Button,Paper, ListItemIcon, List, ListItemText, ListItem, makeStyles, AppBar, Toolbar } from '@material-ui/core';
 import { Typography } from '@material-ui/core';
 import Drawer from '@mui/material/Drawer';
-import { AddCircleOutlined, SubjectOutlined } from '@mui/icons-material';
+import { AccountCircleRounded, AddCircleOutlined, SubjectOutlined } from '@mui/icons-material';
 import { Card,CardContent } from '@mui/material';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import { format } from 'date-fns';
@@ -102,7 +102,7 @@ export default function AdminBoard({children}){
       
     },
     {
-      text: "Public Health Units",
+      text: "Units",
       icon: <CenterFocusStrongIcon color="secondary"/>,
       path: "/regions",
       
@@ -136,7 +136,7 @@ export default function AdminBoard({children}){
           <Typography className={classes.title} variant="h6">
             Dashboard
           </Typography>
-          <Button onClick={clearAuth} size="small"  variant='contained' color='success'>
+          <Button onClick={clearAuth} variant='contained' color='primary'>
             Logout
           </Button>
 
@@ -175,7 +175,7 @@ export default function AdminBoard({children}){
             <Toolbar>
               {format(new Date(),`do MMMM Y`)}
             </Toolbar>
-            <AccountCircleOutlined/>
+            <AccountCircleRounded />
           </Toolbar>
         </AppBar>
         <div className={classes.toolbar}></div>
