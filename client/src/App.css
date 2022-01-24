@@ -1,14 +1,18 @@
+html, #root {
+  height: 100%;
+}
 
-
-svg {
+.map {
   height: 480px;
   width: 960px;
   border: darkgreen;
   border-style: ridge;
 }
 
-
-
-
-
-
+.loading {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
