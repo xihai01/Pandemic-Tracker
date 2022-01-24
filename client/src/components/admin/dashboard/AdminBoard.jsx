@@ -1,8 +1,8 @@
 import {useReducer, useEffect} from 'react';
 import axios from "axios";
 import adminReducer, { SET_DASHBOARD } from "reducer/admin_reducer";
-import { useNavigate } from 'react-router-dom';
-import { Grid, Container, Button,Paper, ListItemIcon, List, ListItemText, ListItem, makeStyles } from '@material-ui/core';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { Grid, Container, Button,Paper, ListItemIcon, List, ListItemText, ListItem, makeStyles, AppBar, Toolbar } from '@material-ui/core';
 import { Typography } from '@material-ui/core';
 import Drawer from '@mui/material/Drawer';
 import { AddCircleOutlined, SubjectOutlined } from '@mui/icons-material';
@@ -13,25 +13,32 @@ import { getAuth } from 'helpers/getAuth';
 
 
 const drawerWidth = 180
-const useStyles = makeStyles({
-  drawer:{
-    width: drawerWidth
-  },
-  drawerPaper:{
-    width: drawerWidth
-  },
-  page:{
-    background:"#f9f9f9",
-    width: "100%"
-  },
-  root:{
-    display: "flex"
-  },
-  active:{
-    background: "#f4f4f4"
-    // f4f4f4
+const useStyles = makeStyles((theme)=>{
+  return {
+    drawer:{
+      width: drawerWidth
+    },
+    drawerPaper:{
+      width: drawerWidth
+    },
+    page:{
+      background:"#f9f9f9",
+      width: "100%"
+    },
+    root:{
+      display: "flex"
+    },
+    active:{
+      background: "#f4f4f4"
+    },
+    title:{
+      padding: theme.spacing(2)
+    },
+    appbar:{
+      width: `calc(100% - ${drawerWidth}px)`
+    },
+    toolbar: theme.mixins.toolbar
   }
-
 })
 
 
@@ -43,6 +50,7 @@ export default function AdminBoard({children}){
     error: null
   });
   const navigate = useNavigate();
+  const location = useLocation();
 
 
 
@@ -79,12 +87,12 @@ export default function AdminBoard({children}){
     {
       text: "Stages",
       icon: <SubjectOutlined color="secondary"/>,
-      path: "/"
+      path: "/stages"
     },
     {
       text: "Public Health Units",
       icon: <AddCircleOutlined color="secondary"/>,
-      path: "/"
+      path: "/regions"
     }
     ]
   return(
@@ -96,19 +104,25 @@ export default function AdminBoard({children}){
       anchor="left"
       classes={{paper:classes.drawerPaper}}
       >
-          <Typography variant="h6">
-            Starting to build
+          <Typography className={classes.title} variant="h6">
+            Dashboard
           </Typography>
 
         {/* list items */}
         <List>
           {menuItems.map(item=>{
-            return <ListItem  key={item.text} onClick={([])=>{}}>
+            return (
+            <ListItem 
+              button  
+              key={item.text} 
+              onClick={()=>{navigate(item.path)}}
+              className={location.pathname === item.path ? classes.active : null}
+            >
               <ListItemIcon>
                 {item.icon}
               </ListItemIcon>
               <ListItemText primary={item.text}/>
-            </ListItem>
+            </ListItem>)
           })}
         </List>
 
@@ -116,9 +130,20 @@ export default function AdminBoard({children}){
 
       <Container>
         {/* Appbar */}
+        <AppBar
+          className={classes.appbar}
+        >
+          <Toolbar>
+            <Typography variant="h6">
+              Hi,Welcome Back
+            </Typography>
+          </Toolbar>
+        </AppBar>
+      
         <Button onClick={clearAuth} variant='contained' color='primary'>
           Logout
         </Button>
+        <div className={classes.toolbar}></div>
         <Grid container spacing={3} elevation={1} >
           <Grid item xs={12} sm={6} md={3}>
             <Card>
@@ -167,12 +192,12 @@ export default function AdminBoard({children}){
                 </Grid>
 
               </CardContent>
-            </Card>
+            </Card> 
           </Grid>
 
         </Grid>
         <div className={classes.page}>
-        {children}
+          {children}
         </div>
 
       </Container>
