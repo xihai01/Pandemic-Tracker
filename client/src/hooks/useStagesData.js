@@ -19,7 +19,7 @@ export default function useStagesData(){
     .catch()
   } ,[]);
 
-  const data = [state.stages.map((stage)=>{
+  const data = state.stages.map((stage)=>{
     
     return (
       { name:  stage.id,
@@ -38,7 +38,7 @@ export default function useStagesData(){
     )
       
       
-  })]
+  })
 
   const columns = [
     { title: 'Stage', field: 'id' },
