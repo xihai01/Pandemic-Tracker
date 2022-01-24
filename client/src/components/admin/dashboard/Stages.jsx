@@ -28,12 +28,19 @@ const testData = [
 
 
   console.log(`TABLEDATANOW`,data);
+  console.log(`COLUMNSANOW`,columns);
+  console.log(`================`);
+  console.log(`================`);
+  console.log(`testCOLUMNSNOW`,testColumn);
+  console.log(`testDATANOW`,testData);
+
+
 
 
   return ( 
     <AdminBoard>
       <h2>THIS IS THE STAGE COMPONENT FOR STAGES TABLE</h2>
-      <MaterialTable title="Lockdown Stages" columns={testColumn} data={testData} />;
+      <MaterialTable title="Lockdown Stages" columns={columns} data={state.stages} />;
 
     </AdminBoard>
     

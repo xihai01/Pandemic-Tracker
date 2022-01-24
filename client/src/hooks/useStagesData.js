@@ -41,7 +41,7 @@ export default function useStagesData(){
   })]
 
   const columns = [
-    { title: 'Name', field: 'name' },
+    { title: 'Stage', field: 'id' },
     { title: 'Ceremony', field: 'ceremony', initialEditValue: 'initial edit value' },
     { title: 'Color code', field: 'color_code'},
     { title: 'Created On', field: 'created_at'},
