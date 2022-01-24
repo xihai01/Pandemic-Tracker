@@ -8,7 +8,12 @@ import adminReducer, { SET_STAGES } from "reducer/admin_reducer";
 
 function Stages() {
 
-const {state,editRow}= useStagesData();
+
+  const {state,editRow}= useStagesData();
+  
+  const data = state.stages.map(()=>{
+    
+  })
 
 console.log(state);
   return ( 
