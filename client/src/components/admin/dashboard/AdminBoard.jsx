@@ -16,6 +16,7 @@ import FingerprintIcon from '@mui/icons-material/Fingerprint';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import CenterFocusStrongIcon from '@mui/icons-material/CenterFocusStrong';
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
+import { Icon } from '@iconify/react';
 
 
 
@@ -102,7 +103,7 @@ export default function AdminBoard({children}){
       
     },
     {
-      text: "Public Health Units",
+      text: "Units",
       icon: <CenterFocusStrongIcon color="secondary"/>,
       path: "/regions",
       
@@ -136,7 +137,7 @@ export default function AdminBoard({children}){
           <Typography className={classes.title} variant="h6">
             Dashboard
           </Typography>
-          <Button onClick={clearAuth} size="small"  variant='contained' color='success'>
+          <Button onClick={clearAuth} variant='contained' color='success'>
             Logout
           </Button>
 
@@ -175,7 +176,7 @@ export default function AdminBoard({children}){
             <Toolbar>
               {format(new Date(),`do MMMM Y`)}
             </Toolbar>
-            <AccountCircleOutlined/>
+              
           </Toolbar>
         </AppBar>
         <div className={classes.toolbar}></div>

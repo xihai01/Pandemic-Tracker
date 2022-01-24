@@ -1,5 +1,5 @@
 import { useReducer, useEffect } from 'react';
-import adminReducer, { SET_DATA } from "reducer/admin_reducer";
+import adminReducer, { SET_STAGES } from "reducer/admin_reducer";
 import axios from 'axios'
 
 
@@ -13,7 +13,7 @@ export default function useStagesData(){
   useEffect(()=>{
     axios.get(`/admin/stages`)
     .then((res)=>{
-      dispatch({type: SET_DATA, stages: res.data});
+      dispatch({type: SET_STAGES, stages: res.data});
     })
     .catch()
   } ,[]);
@@ -22,7 +22,7 @@ export default function useStagesData(){
     return axios.put(`/admin/stages/${id}`)
     .then(res=> {
       
-      dispatch({ type: SET_DATA, id, interview: null });
+      dispatch({ type: SET_STAGES, id, interview: null });
     });
     
   }
@@ -31,7 +31,7 @@ export default function useStagesData(){
     //needs work
     return axios.put(`/api/appointments/${id}`,{interview})
     .then(res=> {
-      dispatch({ type: SET_INTERVIEW, id, interview, mode});
+      dispatch({ type: SET_STAGES, id, interview, mode});
     });
     
 
