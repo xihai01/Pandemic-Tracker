@@ -12,6 +12,10 @@ import { format } from 'date-fns';
 import { Avatar } from '@material-ui/core';
 import { getAuth } from 'helpers/getAuth';
 import { AccountCircleOutlined } from '@material-ui/icons';
+import FingerprintIcon from '@mui/icons-material/Fingerprint';
+import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
+import CenterFocusStrongIcon from '@mui/icons-material/CenterFocusStrong';
+import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 
 
 
@@ -93,27 +97,27 @@ export default function AdminBoard({children}){
   const menuItems = [
     {
       text: "Stages",
-      icon: <SubjectOutlined color="secondary"/>,
+      icon: <LocalHospitalIcon color="secondary"/>,
       path: "/stages",
       
     },
     {
       text: "Public Health Units",
-      icon: <AddCircleOutlined color="secondary"/>,
+      icon: <CenterFocusStrongIcon color="secondary"/>,
       path: "/regions",
       
 
     },
     {
       text: "Users",
-      icon: <AddCircleOutlined color="secondary"/>,
+      icon: <ManageAccountsIcon color="secondary"/>,
       path: "/regions",
       
 
     },
     {
-      text: "Settings",
-      icon: <AddCircleOutlined color="secondary"/>,
+      text: "Security",
+      icon: <FingerprintIcon color="secondary"/>,
       path: "/regions",
       
 
@@ -132,7 +136,7 @@ export default function AdminBoard({children}){
           <Typography className={classes.title} variant="h6">
             Dashboard
           </Typography>
-          <Button onClick={clearAuth} variant='contained' color='primary'>
+          <Button onClick={clearAuth} size="small"  variant='contained' color='success'>
             Logout
           </Button>
 
