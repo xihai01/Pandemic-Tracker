@@ -2,7 +2,10 @@ import { useState } from "react";
 import HealthRegion from "./HealthRegion";
 import { setMapProjection } from "helpers/setMapProjection";
 import * as d3 from "d3";
+import { Box } from "@material-ui/core";
 import useMapTools from "hooks/useMapTools";
+import LinearWithValueLabel from "styleComponents/LinearProgressWithLabel";
+import { CircularProgress } from "@material-ui/core";
 
 /**
  *
@@ -35,10 +38,11 @@ export default function HealthRegionList(props) {
         />
       );
     });
+    console.log(loading);
 
     return (
       <>
-        <svg>
+        <svg className="map">
           <g>{healthRegionList}</g>
         </svg>
         <button
@@ -53,6 +57,9 @@ export default function HealthRegionList(props) {
         <div>{JSON.stringify(restriction.stats)}</div>
       </>
     );
+  } else {
+  return <div className="loading">
+    <CircularProgress color="primary" size="250px" />
+  </div>
   }
-  return <h1>Loading...</h1>;
 }
