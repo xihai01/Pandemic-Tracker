@@ -17,11 +17,12 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    //height: "5%",
+    height: "5%",
     fontFamily: "Nunito",
   },
   appbar: {
     background: "none",
+    backgroundColor: "#829AB1",
   },
   appbarWrapper: {
     width: "80%",
@@ -90,6 +91,7 @@ export default function Nav() {
   ];
   return (
     <div className={classes.root} id="header">
+       <Scroll to="card-scroll" smooth={true}>
       <AppBar className={classes.appbar} elevation={0}>
         <Toolbar className={classes.appbarWrapper}>
           <h1 className={classes.appbarTitle}>
@@ -153,6 +155,7 @@ export default function Nav() {
           </List>
         </SwipeableDrawer>
       </div>
+       </Scroll>
     </div>
   );
 }

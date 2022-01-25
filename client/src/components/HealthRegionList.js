@@ -7,6 +7,7 @@ import { CircularProgress } from "@material-ui/core";
 import useMapTools from "hooks/useMapTools";
 import Navbar from "./Navbar";
 import { Button } from "@material-ui/core";
+import { Container } from "@mui/material";
 
 /**
  *
@@ -44,23 +45,26 @@ export default function HealthRegionList(props) {
     console.log(loading);
 
     return (
+      <Container maxWidth="sm">
       <div className="map-page">
         <Navbar />
         <svg className="image">
           <g>{healthRegionList}</g>
         </svg>
+        <div  className="zoom-button">
         <Button
           onClick={() => {
             console.log("hi");
             svgLoad ? setSvgLoad(0) : setSvgLoad(1);
           }}
           variant="contained"
-
         >
           Zoom In
         </Button>
-<DisplayRestrictions status={status} restriction={restriction} />
+        </div>
+        <DisplayRestrictions status={status} restriction={restriction} />
       </div>
+      </Container>
     );
   } else {
     return (

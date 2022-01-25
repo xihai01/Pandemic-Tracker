@@ -1,21 +1,26 @@
 .path {
   fill: blueviolet;
   stroke: cornsilk;
+  stroke-width: 1px;
 }
 
 .path:hover {
   cursor: pointer;
-  fill: darkgoldenrod;
+  fill: whitesmoke;
+  fill-opacity: 0.5;
 }
 
 .path--stage_one {
   fill: red;
+  fill-opacity: 0.9;
 }
 
 .path--stage_two {
   fill: orange;
+  fill-opacity: 0.9;
 }
 
 .path--stage_three {
   fill: green;
+  fill-opacity: 0.9;
 }
