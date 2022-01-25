@@ -5,6 +5,8 @@ import { DisplayRestrictions } from "./DisplayRestrictions";
 import * as d3 from "d3";
 import { CircularProgress } from "@material-ui/core";
 import useMapTools from "hooks/useMapTools";
+import Navbar from "./Navbar";
+import { Button } from "@material-ui/core";
 
 /**
  *
@@ -42,20 +44,23 @@ export default function HealthRegionList(props) {
     console.log(loading);
 
     return (
-      <>
-        <svg className="map">
+      <div className="map-page">
+        <Navbar />
+        <svg className="image">
           <g>{healthRegionList}</g>
         </svg>
-        <button
+        <Button
           onClick={() => {
             console.log("hi");
             svgLoad ? setSvgLoad(0) : setSvgLoad(1);
           }}
+          variant="contained"
+
         >
-          enable pan and zoom
-        </button>
-        <DisplayRestrictions status={status} restriction={restriction} />
-      </>
+          Zoom In
+        </Button>
+<DisplayRestrictions status={status} restriction={restriction} />
+      </div>
     );
   } else {
     return (

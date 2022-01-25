@@ -1,7 +1,7 @@
 import * as d3 from "d3";
 
 export const handleZoom = function (e) {
-  d3.select("g").attr("transform", e.transform);
+  d3.select(".image g").attr("transform", e.transform);
 };
 
 export const zoomMap = function (svgLoad) {
@@ -16,6 +16,6 @@ export const zoomMap = function (svgLoad) {
         [960, 480],
       ])
       .on("zoom", handleZoom);
-    d3.select("svg").call(zoom);
+    d3.select(".image").call(zoom);
   }
 };
