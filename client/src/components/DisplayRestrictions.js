@@ -122,7 +122,7 @@ export const DisplayRestrictions = function (props) {
         </Container>
       </>
     );
-  } else if (Object.keys(restriction).length !== 0) {
+  } else if ((Object.keys(restriction).length !== 0) || (status && Object.keys(restriction).length === 0)) {
     return (
       <>
         <Skeleton width={500} />
