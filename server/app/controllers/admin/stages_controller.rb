@@ -8,14 +8,31 @@ class Admin::StagesController < ApplicationController
     render json: @stages
   end
 
+  # create a new stage
+  def create
+    @stage = Stage.new(stage_params)
+
+    if @stage.save
+      render json: {message:'Successfully created'}, status: 200
+    else
+      render json: {error: 'Unable to create new stage'}, status: 400
+    end
+  end
+
+
   #PUT /admin/stages/:id 
   def update
     if @stage
-      Stage.update(stage_params)
+      Stage.update(params[:id],stage_params)
       render json: {message:'Successfully updated'}, status: 200
     else 
       render json: {error: 'Unable to update health region'}, status: 400
     end
+  end
+
+  def destroy
+    @stage.destroy
+    render json: {message:'Successfully deleted'}, status: 200
   end
 
   private
