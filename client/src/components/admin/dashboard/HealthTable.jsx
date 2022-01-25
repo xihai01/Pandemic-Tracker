@@ -28,7 +28,8 @@ function HealthTable() {
         options={{
         exportButton: true,
         actionsColumnIndex: -1,
-        selection: true
+        selection: true,
+        filtering: true
         }}
 
         editable={{
