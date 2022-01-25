@@ -18,6 +18,8 @@ export default function useHealthData(){
     .catch()
   } ,[]);
 
+  console.log(`useHealthDATA`,state);
+
   const columns = [
     { title: 'Region code', field: 'region_code' },
     { title: 'Name', field: 'region_name',filtering: false},
@@ -37,12 +39,13 @@ export default function useHealthData(){
   ]
 
 
-  function editRow(id) {
-    return axios.put(`/admin/stages/${id}`)
-    .then(res=> {
-      
-      dispatch({ type: SET_REGIONS, id});
-    });
+  function editRow(data) {
+    return Promise.all([axios.put(`/admin/health_regions/${data.id}`,{region_name:data.region_name,region_code:data.region_code,stage_id:data.stage_id}),axios.get(`/admin/health_regions`)])
+    .then(([res1,res2])=> {
+      console.log(`data edited sucessfully`);
+      dispatch({type: SET_REGIONS, healthRegions: res2.data});
+    })
+    .catch(()=> console.log(`error editing data in DB`));
     
   }
 

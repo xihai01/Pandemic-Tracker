@@ -45,13 +45,17 @@ function HealthTable() {
           onRowUpdate: (newData, oldData) =>
               new Promise((resolve, reject) => {
                   // setTimeout(() => {
-                  //     const dataUpdate = [...data];
+                  //     const dataUpdate = [...state];
                   //     const index = oldData.tableData.id;
                   //     dataUpdate[index] = newData;
-                  //     setData([...dataUpdate]);
-                      console.log(`oldData========>`,oldData);
+                      editRow(newData).then(()=>{
+                        console.log(`oldData========>`,oldData);
+                        console.log(`newData+++++++++>`,newData);
+                        resolve();
+                      })
+                  
 
-                      resolve();
+
                   // }, 1000);
               }),
           onRowDelete: oldData =>
