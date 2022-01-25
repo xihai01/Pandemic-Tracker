@@ -26,14 +26,7 @@ export default function useHealthData(){
     { title: 'Lockdown Stage', field: 'stage_id'},
     { title: 'Created On', field: 'created_at',editable: 'never',filtering: false},
     { title: 'Last Update', field: 'updated_at',editable: 'never',filtering: false}
-
-
-    // {
-    //   title: 'Birth Place',
-    //   field: 'birthCity',
-    //   lookup: { 34: 'İstanbul', 63: 'Şanlıurfa' },
-    // },
-
+    
   ]
 
 

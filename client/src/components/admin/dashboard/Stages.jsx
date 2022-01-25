@@ -50,8 +50,10 @@ function Stages() {
                 //     const index = oldData.tableData.id;
                 //     dataDelete.splice(index, 1);
                 //     setData([...dataDelete]);
-
+                  deleteRow(oldData).then(()=>{
+                    console.log(`oldDATA`,oldData);
                     resolve();
+                  })
                 // }, 1000);
             })
     }}

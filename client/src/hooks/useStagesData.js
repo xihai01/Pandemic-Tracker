@@ -80,12 +80,13 @@ export default function useStagesData(){
     
   }
 
-  function deleteRow(id, interview, mode) {
-    //needs work
-    return axios.put(`/api/appointments/${id}`,{interview})
-    .then(res=> {
-      dispatch({ type: SET_STAGES, id, interview, mode});
-    });
+  function deleteRow(data) {
+    return Promise.all([axios.delete(`/admin/stages/${data.id}`),axios.get(`/admin/stages`)])
+    .then(([res1,res2])=> {
+      console.log(`data deleted sucessfully`);
+      dispatch({type: SET_STAGES, stages: res2.data});
+    })
+    .catch(()=> console.log(`error deleting data in DB`));
     
 
   }
