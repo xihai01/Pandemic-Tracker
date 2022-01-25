@@ -33,7 +33,7 @@ align-items: center;
 
 .map-page {
   position: relative;
-  top: 10em;
+  top: 5em;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -42,6 +42,12 @@ align-items: center;
   align-items: center;
 }
 
+#footer {
+  width: 1833px;
+  height: 100%;
+  margin-top: 2em;
+  background-color: #829ab1;
+}
 
 .info-table {
   color: #829ab1;
@@ -64,6 +70,7 @@ align-items: center;
 
 .zoom-button {
   border-color: #fff;
+  margin-top: 1.5em;
   margin-bottom: 1.5em;
 }
 

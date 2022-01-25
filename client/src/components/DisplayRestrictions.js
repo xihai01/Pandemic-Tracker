@@ -47,7 +47,7 @@ export const DisplayRestrictions = function (props) {
     console.log(restriction);
     return (
       <>
-        <Container sx={{ flexGrow: 1 }}>
+        <Container sx={{ marginTop: "1.5em" , flexGrow: 1 }}>
           <Grid container spacing={3}>
             <Grid item xs={4} className={classes.cards}>
               <Item>
@@ -75,7 +75,7 @@ export const DisplayRestrictions = function (props) {
             <Grid item xs={4} className={classes.cards}>
               <Item>
                 <RestaurantMenuIcon />
-                <h3 className={classes.title}>Resturants</h3>
+                <h3 className={classes.title}>Restaurants</h3>
                 <p>{restriction.restrictions.food_establishments}</p>
               </Item>
             </Grid>
