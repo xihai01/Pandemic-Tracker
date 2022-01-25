@@ -18,7 +18,8 @@ export default function AdminLogin() {
   const [state, setState] = useState({ email: "", password: "", error: false });
   const navigate = useNavigate();
 
-  function validate() {
+  function validate(e) {
+    e.preventDefault();
     axios
       .get(`/admin/login?email=${state.email}&password=${state.password}`)
       .then((res) => {
@@ -71,36 +72,38 @@ export default function AdminLogin() {
             </Alert>
           )}
         </Grid>
-        <TextField
-          fullWidth
-          required
-          type="email"
-          name="email"
-          placeholder="Enter Email address"
-          label="Email"
-          value={state.email}
-          onChange={handleChange}
-        />
-        <TextField
-          fullWidth
-          required
-          name="password"
-          type="password"
-          placeholder="Enter valid password"
-          label="Password"
-          value={state.password}
-          onChange={handleChange}
-        />
-        <Button
-          type="submit"
-          onClick={validate}
-          color="primary"
-          variant="contained"
-          fullWidth
-          style={btnStyle}
-        >
-          SIGN IN
-        </Button>
+        <form onSubmit={validate}>
+          <TextField
+            fullWidth
+            required
+            type="email"
+            name="email"
+            placeholder="Enter Email address"
+            label="Email"
+            value={state.email}
+            onChange={handleChange}
+          />
+          <TextField
+            fullWidth
+            required
+            name="password"
+            type="password"
+            placeholder="Enter valid password"
+            label="Password"
+            value={state.password}
+            onChange={handleChange}
+          />
+          <Button
+            type="submit"
+            onClick={validate}
+            color="primary"
+            variant="contained"
+            fullWidth
+            style={btnStyle}
+          >
+            SIGN IN
+          </Button>
+        </form>
         <Typography>
           <Link href="#">Forgot Password</Link>
         </Typography>
