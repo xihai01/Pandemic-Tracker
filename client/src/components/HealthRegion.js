@@ -10,7 +10,7 @@ import axios from "axios";
  * component takes in a SVG path data string and renders a health region
  */
 export default function HealthRegion(props) {
-  const { setRestriction, phuID, tooltipData, stageID } = props;
+  const { setRestriction, setStatus, phuID, tooltipData, stageID } = props;
   // render health region with a fill color depending on stage #
   const pathClass = classNames("path", {
     "path--stage_one": stageID === 1,
@@ -21,7 +21,7 @@ export default function HealthRegion(props) {
     <path
       className={pathClass}
       onClick={() => {
-        handleClick(setRestriction, phuID);
+        handleClick(setRestriction, setStatus, phuID);
       }}
       onMouseOver={() => {
         // display region name and key covid stats when hovered over

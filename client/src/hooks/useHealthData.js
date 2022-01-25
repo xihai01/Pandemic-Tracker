@@ -18,6 +18,25 @@ export default function useHealthData(){
     .catch()
   } ,[]);
 
+  const columns = [
+    { title: 'Region code', field: 'region_code' },
+    { title: 'Name', field: 'region_name', initialEditValue: 'initial edit value' },
+    { title: 'Lockdown Stage', field: 'stage_id'},
+    { title: 'Created On', field: 'created_at'},
+    { title: 'Last Update', field: 'updated_at'}
+
+
+
+
+
+    // {
+    //   title: 'Birth Place',
+    //   field: 'birthCity',
+    //   lookup: { 34: 'İstanbul', 63: 'Şanlıurfa' },
+    // },
+  ]
+
+
   function editRow(id) {
     return axios.put(`/admin/stages/${id}`)
     .then(res=> {
@@ -39,6 +58,7 @@ export default function useHealthData(){
 
   return {
     state,
+    columns,
     editRow,
     deleteRow
   }

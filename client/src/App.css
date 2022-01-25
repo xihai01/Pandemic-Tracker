@@ -4,6 +4,7 @@
 }
 
 .image {
+
   height: 480px;
   width: 960px;
   border: none;
@@ -36,4 +37,12 @@
 .info2-text {
   border-bottom: solid;
   border-color:#fff;
+
+.loading {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 }

@@ -1,7 +1,9 @@
 import { useState } from "react";
 import HealthRegion from "./HealthRegion";
 import { setMapProjection } from "helpers/setMapProjection";
+import { DisplayRestrictions } from "./DisplayRestrictions";
 import * as d3 from "d3";
+import { CircularProgress } from "@material-ui/core";
 import useMapTools from "hooks/useMapTools";
 import Navbar from "./Navbar";
 import { Button } from "@material-ui/core";
@@ -14,6 +16,7 @@ import { Button } from "@material-ui/core";
 export default function HealthRegionList(props) {
   // restriction holds restrictions data for health regions
   const [restriction, setRestriction] = useState({});
+  const [status, setStatus] = useState(false);
   const { svgLoad, setSvgLoad, mapData, stageObj, loading } = props;
   // render tooltip and geoloc marker
   useMapTools(mapData, loading);
@@ -32,11 +35,13 @@ export default function HealthRegionList(props) {
           pathData={path(data)}
           stageID={stageID}
           setRestriction={setRestriction}
+          setStatus={setStatus}
           phuID={phuID}
           tooltipData={region_name}
         />
       );
     });
+    console.log(loading);
 
     return (
       <div className="map-page">
@@ -54,18 +59,14 @@ export default function HealthRegionList(props) {
         >
           Zoom In
         </Button>
-        <div>
-          <section className="info-table">
-            <div className="info1-text">
-              {JSON.stringify(restriction.restrictions)}
-            </div>
-            <div className="info2-text">
-              {JSON.stringify(restriction.stats)}
-            </div>
-          </section>
-        </div>
+<DisplayRestrictions status={status} restriction={restriction} />
+      </div>
+    );
+  } else {
+    return (
+      <div className="loading">
+        <CircularProgress color="primary" size="250px" />
       </div>
     );
   }
-  return <h1>Loading...</h1>;
 }
