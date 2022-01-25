@@ -47,12 +47,13 @@ export default function useHealthData(){
     
   }
 
-  function deleteRow(id, interview, mode) {
-    //needs work
-    // return axios.put(`/api/appointments/${id}`,{interview})
-    // .then(res=> {
-    //   dispatch({ type: SET_INTERVIEW, id, interview, mode});
-    // });
+  function deleteRow(data) {
+    return Promise.all([axios.delete(`/admin/health_regions/${data.id}`),axios.get(`/admin/health_regions`)])
+    .then(([res1,res2])=> {
+      console.log(`data deleted sucessfully`);
+      dispatch({type: SET_REGIONS, healthRegions: res2.data});
+    })
+    .catch(()=> console.log(`error editing data in DB`));
     
 
   }

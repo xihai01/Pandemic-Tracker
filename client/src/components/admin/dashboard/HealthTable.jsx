@@ -18,7 +18,6 @@ function HealthTable() {
 
   },[])
 
-  // console.log(`HEALTHSTATE`,state);
 
   return ( 
     <AdminBoard>
@@ -49,8 +48,7 @@ function HealthTable() {
                   //     const index = oldData.tableData.id;
                   //     dataUpdate[index] = newData;
                       editRow(newData).then(()=>{
-                        console.log(`oldData========>`,oldData);
-                        console.log(`newData+++++++++>`,newData);
+                        // console.log(`newData+++++++++>`,newData);
                         resolve();
                       })
                   
@@ -65,8 +63,9 @@ function HealthTable() {
                   //     const index = oldData.tableData.id;
                   //     dataDelete.splice(index, 1);
                   //     setData([...dataDelete]);
-  
-                      resolve();
+                  deleteRow(oldData).then(()=>{
+                    resolve();
+                  })
                   // }, 1000);
               })
       }}
@@ -75,7 +74,11 @@ function HealthTable() {
         {
           tooltip: 'Remove All Selected Users',
           icon: 'delete',
-          onClick: (evt, data) => alert('You want to delete ' + data.length + ' rows')
+          onClick: (evt, data) => {
+            data.forEach((item)=>{
+              deleteRow(item)
+            })
+          } 
         }
       ]}
         
