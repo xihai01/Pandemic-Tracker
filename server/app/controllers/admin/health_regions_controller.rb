@@ -11,7 +11,7 @@ class Admin::HealthRegionsController < ApplicationController
   #PUT /health_region/:id 
   def update
     if @health_region
-      HealthRegion.update(health_params)
+      HealthRegion.update(params[:id],health_params)
       render json: {message:'Successfully updated'}, status: 200
     else 
       render json: {error: 'Unable to update health region'}, status: 400
@@ -20,7 +20,7 @@ class Admin::HealthRegionsController < ApplicationController
 
   private
   def health_params
-    params.require(:health_region).permit(:region_code, :region_name)
+    params.require(:health_region).permit(:region_code, :region_name, :stage_id)
   end
 
   def find_region
