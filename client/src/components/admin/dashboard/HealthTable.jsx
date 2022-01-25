@@ -27,7 +27,8 @@ function HealthTable() {
         columns={columns} data={state.healthRegions} 
         options={{
         exportButton: true,
-        actionsColumnIndex: -1
+        actionsColumnIndex: -1,
+        selection: true
         }}
 
         editable={{
@@ -64,6 +65,14 @@ function HealthTable() {
                   // }, 1000);
               })
       }}
+
+      actions={[
+        {
+          tooltip: 'Remove All Selected Users',
+          icon: 'delete',
+          onClick: (evt, data) => alert('You want to delete ' + data.length + ' rows')
+        }
+      ]}
         
       />;
     </AdminBoard>

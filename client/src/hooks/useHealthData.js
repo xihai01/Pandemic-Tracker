@@ -20,7 +20,7 @@ export default function useHealthData(){
 
   const columns = [
     { title: 'Region code', field: 'region_code' },
-    { title: 'Name', field: 'region_name', initialEditValue: 'initial edit value'},
+    { title: 'Name', field: 'region_name'},
     { title: 'Lockdown Stage', field: 'stage_id'},
     { title: 'Created On', field: 'created_at',editable: 'never'},
     { title: 'Last Update', field: 'updated_at',editable: 'never'}
