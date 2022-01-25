@@ -7,7 +7,7 @@ import MaterialTable from "material-table";
 function Stages() {
 
 
-  const {state,columns,editRow,deleteRow}= useStagesData();
+  const {state,columns,editRow,addRow,deleteRow}= useStagesData();
   
   
   return ( 
@@ -22,15 +22,15 @@ function Stages() {
       }}
       
       editable={{
-        onRowAddCancelled: rowData => console.log('Row adding cancelled'),
         onRowAdd: newData =>
-            new Promise((resolve, reject) => {
-                setTimeout(() => {
-                    /* setData([...data, newData]); */
-
-                    resolve();
-                }, 1000);
-            }),
+              new Promise((resolve, reject) => {
+                  // setTimeout(() => {
+                      /* setData([...data, newData]); */
+                      addRow(newData).then(()=>{
+                        resolve();
+                      })
+                  // }, 1000);
+              }),
         onRowUpdate: (newData, oldData) =>
             new Promise((resolve, reject) => {
                 // setTimeout(() => {
