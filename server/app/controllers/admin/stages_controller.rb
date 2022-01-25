@@ -11,7 +11,7 @@ class Admin::StagesController < ApplicationController
   #PUT /admin/stages/:id 
   def update
     if @stage
-      Stage.update(stage_params)
+      Stage.update(params[:id],stage_params)
       render json: {message:'Successfully updated'}, status: 200
     else 
       render json: {error: 'Unable to update health region'}, status: 400
