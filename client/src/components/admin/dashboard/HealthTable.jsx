@@ -8,7 +8,7 @@ import MaterialTable from "material-table";
 
 function HealthTable() {
   const navigate = useNavigate();
-  const {state,columns,editRow,deleteRow}=useHealthData();
+  const {state,columns,editRow,deleteRow,addRow}=useHealthData();
 
   useEffect(()=>{
 
@@ -32,14 +32,14 @@ function HealthTable() {
         }}
 
         editable={{
-          onRowAddCancelled: rowData => console.log('Row adding cancelled'),
           onRowAdd: newData =>
               new Promise((resolve, reject) => {
-                  setTimeout(() => {
+                  // setTimeout(() => {
                       /* setData([...data, newData]); */
-  
-                      resolve();
-                  }, 1000);
+                      addRow(newData).then(()=>{
+                        resolve();
+                      })
+                  // }, 1000);
               }),
           onRowUpdate: (newData, oldData) =>
               new Promise((resolve, reject) => {

@@ -18,7 +18,6 @@ export default function useHealthData(){
     .catch()
   } ,[]);
 
-  console.log(`useHealthDATA`,state);
 
   const columns = [
     { title: 'Region code', field: 'region_code' },
@@ -26,7 +25,7 @@ export default function useHealthData(){
     { title: 'Lockdown Stage', field: 'stage_id'},
     { title: 'Created On', field: 'created_at',editable: 'never',filtering: false},
     { title: 'Last Update', field: 'updated_at',editable: 'never',filtering: false}
-    
+
   ]
 
 
@@ -51,10 +50,21 @@ export default function useHealthData(){
 
   }
 
+  function addRow(data) {
+    return Promise.all([axios.post(`/admin/health_regions/`,{region_name:data.region_name,region_code:data.region_code,stage_id:data.stage_id}),axios.get(`/admin/health_regions`)])
+    .then(([res1,res2])=> {
+      console.log(`data created sucessfully`);
+      dispatch({type: SET_REGIONS, healthRegions: res2.data});
+    })
+    .catch(()=> console.log(`error creating data in DB`));
+    
+  }
+
   return {
     state,
     columns,
     editRow,
+    addRow,
     deleteRow
   }
 }
