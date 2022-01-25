@@ -3,6 +3,12 @@
   width: 100vw;
 }
 
+.main {
+  height: 1500px;
+  padding-right: 5em;
+  padding-left: 5em;
+}
+
 .image {
   height: 480px;
   width: 960px;
@@ -12,6 +18,18 @@
   color: #fff;
   background-color: #829ab1;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19);
+}
+
+.mapcontainer {
+   flex-direction: row;
+   display: flex;
+   align-items: stretch;
+   align-content: space-evenly;
+}
+
+.sidetablemap {
+margin-right: 60px;
+align-items: center;
 }
 
 .map-page {
@@ -24,6 +42,7 @@
   justify-content: center;
   align-items: center;
 }
+
 
 .info-table {
   color: #829ab1;
@@ -46,8 +65,7 @@
 
 .zoom-button {
   border-color: #fff;
-  margin-top: 10px;
-  margin-right: 100px;
+  margin-bottom: 1.5em;
 }
 
 .loading {
@@ -104,4 +122,16 @@
 .imageForCard {
   width: 100px;
   height: 100px;
+}
+
+.stageone {
+  color:red;
+}
+
+.stagetwo {
+  color: orange;
+}
+
+.stageone {
+  color:green ;
 }

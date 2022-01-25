@@ -8,6 +8,7 @@ class Api::RestrictionsController < ApplicationController
       region_code: healthRegion.region_code,
       max_indoor_gathering: stage[0].max_indoor_gathering,
       max_outdoor_gathering: stage[0].max_outdoor_gathering,
+      food_establishments: stage[0].food_establishments,
       retail: stage[0].retail,
       ceremony: stage[0].ceremony,
       sports_recreational: stage[0].sports_recreational,
