@@ -46,8 +46,8 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: "1",
   },
   gridItem: {
-   alignItems: "center",
-   marginleft: "200px",
+    alignItems: "center",
+    marginleft: "200px",
   },
   title: {
     textAlign: "center",
@@ -58,7 +58,6 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: "18px",
     color: "#ba000d",
   },
-
 }));
 /**
  *
@@ -103,7 +102,8 @@ export default function HealthRegionList(props) {
           <div className={classes.title}>
             <h1 className={classes.headtitle}>Ontario's COVID Restrictions</h1>
             <h3>
-  Click on a health region  down below to display the restrictions in your area.
+              Click on a health region down below to display the restrictions in
+              your area.
             </h3>
           </div>
           <div className="mapcontainer">
@@ -111,12 +111,46 @@ export default function HealthRegionList(props) {
               <g>{healthRegionList}</g>
             </svg>
             {Object.keys(restriction).length !== 0 && (
-              <Box sx={{ display: "flex", justifyContent: "center", flexGrow: 1 }} className={classes.box}>
+              <Box
+                sx={{ display: "flex", justifyContent: "center", flexGrow: 1 }}
+                className={classes.box}
+              >
                 <section className="sidetablemap">
-                  <Grid justifyContent="space-evenly" alignItems="center" container spacing={3}>
+                  <Grid
+                    justifyContent="space-evenly"
+                    alignItems="center"
+                    container
+                    spacing={3}
+                  >
+                    <Grid item xs={4}>
+                      <Item>
+                        <h3>Legend</h3>
+                      </Item>
+                      <Item>
+                        <p>
+                          <CircleIcon className={classes.stageone} /> Stage 1,
+                          it is completely closed check the restrictions below.
+                        </p>
+                      </Item>
+                      <Item>
+                        <p>
+                          <CircleIcon className={classes.stagetwo} /> This
+                          region is in Stage 2, caution stage check where there
+                          are restrictions.
+                        </p>
+                      </Item>
+                      <Item>
+                        <p>
+                          <CircleIcon className={classes.stagethree} /> This
+                          region is in Stage 3, this area is open.
+                        </p>
+                      </Item>
+                    </Grid>
                     <Grid item xs={4} className={classes.gridItem}>
                       <Item>
-                        <h3>Covid Statistics <MasksIcon /> </h3>
+                        <h3>
+                          Covid Statistics <MasksIcon />{" "}
+                        </h3>
                       </Item>
                       <Item>
                         <p>
@@ -148,31 +182,6 @@ export default function HealthRegionList(props) {
                         <p>
                           Total Deaths:{" "}
                           {JSON.stringify(restriction.stats.culmulative_deaths)}
-                        </p>
-                      </Item>
-                    </Grid>
-                    <Grid item xs={4}>
-                      <Item>
-                        <h3>Lengend</h3>
-                      </Item>
-                      <Item>
-                        <p>
-                          <CircleIcon className={classes.stageone} /> This
-                          region is in Stage 1, it is completely closed check
-                          the restrictions below.
-                        </p>
-                      </Item>
-                      <Item>
-                        <p>
-                          <CircleIcon className={classes.stagetwo} /> This
-                          region is in Stage 2, caution stage check where there
-                          are restrictions.
-                        </p>
-                      </Item>
-                      <Item>
-                        <p>
-                          <CircleIcon className={classes.stagethree} /> This
-                          region is in Stage 3, this area is open.
                         </p>
                       </Item>
                     </Grid>
