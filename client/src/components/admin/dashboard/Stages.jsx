@@ -20,19 +20,41 @@ function Stages() {
         exportButton: true,
         actionsColumnIndex: -1
       }}
-      actions={[
-        {
-          icon: 'save',
-          tooltip: 'Save User',
-          onClick: (event, rowData) => alert("You saved " + rowData.name)
-        },
-        rowData => ({
-          icon: 'delete',
-          tooltip: 'Delete User',
-          onClick: (event, rowData) => console.log("You want to delete " + rowData.name),
-          // disabled: rowData.birthYear < 2000
-        })
-      ]}
+      
+      editable={{
+        isEditable: (rowData) => { return console.log(`RowDATA`,rowData);},
+        onRowAddCancelled: rowData => console.log('Row adding cancelled'),
+        onRowAdd: newData =>
+            new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    /* setData([...data, newData]); */
+
+                    resolve();
+                }, 1000);
+            }),
+        onRowUpdate: (newData, oldData) =>
+            new Promise((resolve, reject) => {
+                // setTimeout(() => {
+                //     const dataUpdate = [...data];
+                //     const index = oldData.tableData.id;
+                //     dataUpdate[index] = newData;
+                //     setData([...dataUpdate]);
+                    console.log(`oldData========>`,oldData);
+                    resolve();
+                // }, 1000);
+            }),
+        onRowDelete: oldData =>
+            new Promise((resolve, reject) => {
+                // setTimeout(() => {
+                //     const dataDelete = [...data];
+                //     const index = oldData.tableData.id;
+                //     dataDelete.splice(index, 1);
+                //     setData([...dataDelete]);
+
+                    resolve();
+                // }, 1000);
+            })
+    }}
       
       />;
     </AdminBoard>
@@ -41,3 +63,5 @@ function Stages() {
 }
 
 export default Stages;
+
+
