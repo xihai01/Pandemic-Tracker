@@ -8,6 +8,16 @@ class Admin::HealthRegionsController < ApplicationController
     render json: @health_regions
   end
 
+  def create
+    @health_region = HealthRegion.new(health_params)
+
+    if @health_region.save
+      render json: {message:'Successfully updated'}, status: 200
+    else
+      render json: {error: 'Unable to create health region'}, status: 400
+    end
+  end
+
   #PUT /health_region/:id 
   def update
     if @health_region
@@ -18,6 +28,7 @@ class Admin::HealthRegionsController < ApplicationController
     end
   end
 
+  # delete data entry
   def destroy
     @health_region.destroy
     render json: {message:'Successfully deleted'}, status: 200
