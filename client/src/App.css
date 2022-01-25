@@ -1,14 +1,39 @@
-
-
-svg {
-  height: 480px;
-  width: 960px;
-  border: darkgreen;
-  border-style: ridge;
+#root {
+  height: 100vh;
+  width: 100vw;
 }
 
+.image {
+  height: 480px;
+  width: 960px;
+  border: none;
+  border-style: ridge;
+  border-color: #00897b;
+  color: #fff;
+  background-color: #829AB1;
+}
 
+.map-page {
+  background-color: #486581;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
+.info-table {
+ color: #fff;
+ font-weight: bold;
 
+}
 
+.info1-text {
+    border-bottom: solid;
+    border-color:#fff;
+}
 
+.info2-text {
+  border-bottom: solid;
+  border-color:#fff;
+}

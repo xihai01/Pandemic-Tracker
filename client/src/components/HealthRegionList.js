@@ -3,6 +3,8 @@ import HealthRegion from "./HealthRegion";
 import { setMapProjection } from "helpers/setMapProjection";
 import * as d3 from "d3";
 import useMapTools from "hooks/useMapTools";
+import Navbar from "./Navbar";
+import { Button } from "@material-ui/core";
 
 /**
  *
@@ -37,21 +39,32 @@ export default function HealthRegionList(props) {
     });
 
     return (
-      <>
-        <svg>
+      <div className="map-page">
+        <Navbar />
+        <svg className="image">
           <g>{healthRegionList}</g>
         </svg>
-        <button
+        <Button
           onClick={() => {
             console.log("hi");
             svgLoad ? setSvgLoad(0) : setSvgLoad(1);
           }}
+          variant="contained"
+
         >
-          enable pan and zoom
-        </button>
-        <div>{JSON.stringify(restriction.restrictions)}</div>
-        <div>{JSON.stringify(restriction.stats)}</div>
-      </>
+          Zoom In
+        </Button>
+        <div>
+          <section className="info-table">
+            <div className="info1-text">
+              {JSON.stringify(restriction.restrictions)}
+            </div>
+            <div className="info2-text">
+              {JSON.stringify(restriction.stats)}
+            </div>
+          </section>
+        </div>
+      </div>
     );
   }
   return <h1>Loading...</h1>;

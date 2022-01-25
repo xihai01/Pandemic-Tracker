@@ -49,16 +49,16 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "3.5rem",
   },
   menuWrapper: {
-   
+
   },
   link: {
     color: "#fff",
     fontSize: "1.5rem",
     marginTop: "15px",
   },
- 
+
   close: {
-    backgroundColor: "#ba000d", 
+    backgroundColor: "#ba000d",
     minWidth: "250px",
     alignItems: "left",
     color: "#fff",
@@ -66,17 +66,17 @@ const useStyles = makeStyles((theme) => ({
 
   chevronIcon: {
     color: "#fff",
-  }, 
+  },
   listcontainer: {
-   backgroundColor: "#ba000d", 
-   height: "100%", 
-  }, 
+   backgroundColor: "#ba000d",
+   height: "100%",
+  },
   about: {
-    alignItems: "center", 
-    marginRight: "4.5px", 
-    marginLeft: "15px", 
-    marginTop: "240px", 
-    color: "#fff", 
+    alignItems: "center",
+    marginRight: "4.5px",
+    marginLeft: "15px",
+    marginTop: "240px",
+    color: "#fff",
   },
 }));
 export default function Nav() {
@@ -87,8 +87,8 @@ export default function Nav() {
   }, []);
 
   const navigationLinks = [
-    { name: "Home", href: "" },
-    { name: "Map", href: "" },
+    { name: "Home", href: "localhost:3002" },
+    { name: "Map", href: "localhost:3002/map" },
     { name: "Tweet Us", href: "https://twitter.com/pandemicpt" }
   ];
   const [open, setOpen] = useState(false);
@@ -107,13 +107,13 @@ export default function Nav() {
           </IconButton>
         </Toolbar>
       </AppBar>
-      <div className={classes.menuwrapper}> 
+      <div className={classes.menuwrapper}>
       <SwipeableDrawer
         anchor="right"
         open={open}
         onOpen={() => setOpen(true)}
         onClose={() => setOpen(false)}
-        
+
       >
         <div onClick={() => setOpen(false)} className={classes.close}>
           <IconButton>
@@ -138,7 +138,7 @@ export default function Nav() {
           <br />
           <div className={classes.about}>
                     <h2> About Us <br /> </h2>
-             March 2019 our lives changed forever. 
+             March 2019 our lives changed forever.
             <br /> Life as we knew it became a distant memory <br />
              one that we long for. It was diffcult to <br />
             accept our new normal.Difficult to understand that <br />
@@ -150,7 +150,7 @@ export default function Nav() {
             provide relief to every Ontario resident by simply <br />
             and easily informing them of Ontario's <br />
             Covid restrictions. <br />
-            <p>Follow us on twitter @pandemictracker </p> 
+            <p>Follow us on twitter @pandemictracker </p>
 
           </div>
         </List>
