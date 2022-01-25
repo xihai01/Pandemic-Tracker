@@ -7,7 +7,7 @@ import MaterialTable from "material-table";
 function Stages() {
 
 
-  const {state,data,columns,editRow,deleteRow}= useStagesData();
+  const {state,columns,editRow,deleteRow}= useStagesData();
   
   
   return ( 
@@ -22,7 +22,6 @@ function Stages() {
       }}
       
       editable={{
-        isEditable: (rowData) => { return console.log(`RowDATA`,rowData);},
         onRowAddCancelled: rowData => console.log('Row adding cancelled'),
         onRowAdd: newData =>
             new Promise((resolve, reject) => {
@@ -39,8 +38,9 @@ function Stages() {
                 //     const index = oldData.tableData.id;
                 //     dataUpdate[index] = newData;
                 //     setData([...dataUpdate]);
-                    console.log(`oldData========>`,oldData);
-                    resolve();
+                editRow(newData).then(()=>{
+                  resolve();
+                })
                 // }, 1000);
             }),
         onRowDelete: oldData =>

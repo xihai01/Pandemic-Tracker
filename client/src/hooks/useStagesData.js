@@ -19,26 +19,7 @@ export default function useStagesData(){
     .catch()
   } ,[]);
 
-  const data = state.stages.map((stage)=>{
-    
-    return (
-      { name:  stage.id,
-        ceremony: stage.ceremony,
-        color_code: stage.color_code,
-        created_at: stage.created_at,
-        entertainment: stage.created_at,
-        food_establishments: stage.food_establishments,
-        max_indoor_gathering: stage.max_indoor_gathering,
-        max_outdoor_gathering: stage.max_outdoor_gathering,
-        personal_care: stage.personal_care,
-        retail: stage.retail,
-        sports_recreational: stage.sports_recreational,
-        updated_at: stage.updated_at
-      }
-    )
-      
-      
-  })
+ 
 
   const columns = [
     { title: 'Stage', field: 'id' },
@@ -66,12 +47,36 @@ export default function useStagesData(){
     // },
   ]
 
-  function editRow(id) {
-    return axios.put(`/admin/stages/${id}`)
-    .then(res=> {
-      
-      dispatch({ type: SET_STAGES, id, interview: null });
-    });
+  function editRow(data) {
+    const {
+      color_code,
+      personal_care,
+      entertainment,
+      sports_recreational,
+      ceremony,
+      retail,
+      food_establishments,
+      max_outdoor_gathering,
+      max_indoor_gathering
+    } = data
+    return Promise.all([axios.put(`/admin/stages/${data.id}`,
+    {
+      color_code,
+      personal_care,
+      entertainment,
+      sports_recreational,
+      ceremony,
+      retail,
+      food_establishments,
+      max_outdoor_gathering,
+      max_indoor_gathering
+    }),
+      axios.get(`/admin/stages`)])
+    .then(([res1,res2])=> {
+      console.log(`data edited sucessfully`);
+      dispatch({type: SET_STAGES, stages: res2.data});
+    })
+    .catch(()=> console.log(`error editing data in DB`));
     
   }
 
@@ -88,7 +93,6 @@ export default function useStagesData(){
   return {
     state,
     editRow,
-    data,
     columns,
     deleteRow
   }

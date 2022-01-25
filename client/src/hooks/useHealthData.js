@@ -28,14 +28,12 @@ export default function useHealthData(){
     { title: 'Last Update', field: 'updated_at',editable: 'never',filtering: false}
 
 
-
-
-
     // {
     //   title: 'Birth Place',
     //   field: 'birthCity',
     //   lookup: { 34: 'İstanbul', 63: 'Şanlıurfa' },
     // },
+
   ]
 
 
