@@ -18,6 +18,11 @@ class Admin::HealthRegionsController < ApplicationController
     end
   end
 
+  def destroy
+    @health_region.destroy
+    render json: {message:'Successfully deleted'}, status: 200
+  end
+
   private
   def health_params
     params.require(:health_region).permit(:region_code, :region_name, :stage_id)

@@ -18,6 +18,11 @@ class Admin::StagesController < ApplicationController
     end
   end
 
+  def destroy
+    @stage.destroy
+    render json: {message:'Successfully deleted'}, status: 200
+  end
+
   private
   def stage_params
     params.require(:stage).permit(:max_indoor_gathering, :max_outdoor_gathering, 
