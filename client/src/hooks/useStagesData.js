@@ -19,32 +19,13 @@ export default function useStagesData(){
     .catch()
   } ,[]);
 
-  const data = state.stages.map((stage)=>{
-    
-    return (
-      { name:  stage.id,
-        ceremony: stage.ceremony,
-        color_code: stage.color_code,
-        created_at: stage.created_at,
-        entertainment: stage.created_at,
-        food_establishments: stage.food_establishments,
-        max_indoor_gathering: stage.max_indoor_gathering,
-        max_outdoor_gathering: stage.max_outdoor_gathering,
-        personal_care: stage.personal_care,
-        retail: stage.retail,
-        sports_recreational: stage.sports_recreational,
-        updated_at: stage.updated_at
-      }
-    )
-      
-      
-  })
+ 
 
   const columns = [
     { title: 'Stage', field: 'id' },
-    { title: 'Ceremony', field: 'ceremony', initialEditValue: 'initial edit value' },
+    { title: 'Ceremony', field: 'ceremony'},
     { title: 'Color code', field: 'color_code'},
-    { title: 'Created On', field: 'created_at'},
+    { title: 'Created On', field: 'created_at', editable: 'never'},
     { title: 'Entertainment', field: 'entertainment'},
     { title: 'Food establishments', field: 'food_establishments'},
     { title: 'Indoor gatherings', field: 'max_indoor_gathering'},
@@ -52,43 +33,93 @@ export default function useStagesData(){
     { title: 'Personal care', field: 'personal_care'},
     { title: 'Retail', field: 'retail'},
     { title: 'Sports/Recreation', field: 'sports_recreational'},
-    { title: 'Last Update', field: 'updated_at'}
+    { title: 'Last Update', field: 'updated_at',editable: 'never'}
 
 
-
-
-
-
-    // {
-    //   title: 'Birth Place',
-    //   field: 'birthCity',
-    //   lookup: { 34: 'İstanbul', 63: 'Şanlıurfa' },
-    // },
   ]
 
-  function editRow(id) {
-    return axios.put(`/admin/stages/${id}`)
-    .then(res=> {
-      
-      dispatch({ type: SET_STAGES, id, interview: null });
-    });
+  function editRow(data) {
+    const {
+      color_code,
+      personal_care,
+      entertainment,
+      sports_recreational,
+      ceremony,
+      retail,
+      food_establishments,
+      max_outdoor_gathering,
+      max_indoor_gathering
+    } = data
+    return Promise.all([axios.put(`/admin/stages/${data.id}`,
+    {
+      color_code,
+      personal_care,
+      entertainment,
+      sports_recreational,
+      ceremony,
+      retail,
+      food_establishments,
+      max_outdoor_gathering,
+      max_indoor_gathering
+    }),
+      axios.get(`/admin/stages`)])
+    .then(([res1,res2])=> {
+      console.log(`data edited sucessfully`);
+      dispatch({type: SET_STAGES, stages: res2.data});
+    })
+    .catch(()=> console.log(`error editing data in DB`));
     
   }
 
-  function deleteRow(id, interview, mode) {
-    //needs work
-    return axios.put(`/api/appointments/${id}`,{interview})
-    .then(res=> {
-      dispatch({ type: SET_STAGES, id, interview, mode});
-    });
+  function deleteRow(data) {
+    return Promise.all([axios.delete(`/admin/stages/${data.id}`),axios.get(`/admin/stages`)])
+    .then(([res1,res2])=> {
+      console.log(`data deleted sucessfully`);
+      dispatch({type: SET_STAGES, stages: res2.data});
+    })
+    .catch(()=> console.log(`error deleting data in DB`));
     
 
+  }
+
+  function addRow(data) {
+    const {
+      color_code,
+      personal_care,
+      entertainment,
+      sports_recreational,
+      ceremony,
+      retail,
+      food_establishments,
+      max_outdoor_gathering,
+      max_indoor_gathering
+    } = data
+    
+    return Promise.all([axios.post(`/admin/stages`,
+    {
+      color_code,
+      personal_care,
+      entertainment,
+      sports_recreational,
+      ceremony,
+      retail,
+      food_establishments,
+      max_outdoor_gathering,
+      max_indoor_gathering
+    }),
+    axios.get(`/admin/stages`)])
+    .then(([res1,res2])=> {
+      console.log(`data created sucessfully`);
+      dispatch({type: SET_STAGES, stages: res2.data});
+    })
+    .catch(()=> console.log(`error creating data in DB`));
+    
   }
 
   return {
     state,
     editRow,
-    data,
+    addRow,
     columns,
     deleteRow
   }

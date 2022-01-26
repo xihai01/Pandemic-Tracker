@@ -8,19 +8,35 @@ class Admin::HealthRegionsController < ApplicationController
     render json: @health_regions
   end
 
+  def create
+    @health_region = HealthRegion.new(health_params)
+
+    if @health_region.save
+      render json: {message:'Successfully updated'}, status: 200
+    else
+      render json: {error: 'Unable to create health region'}, status: 400
+    end
+  end
+
   #PUT /health_region/:id 
   def update
     if @health_region
-      HealthRegion.update(health_params)
+      HealthRegion.update(params[:id],health_params)
       render json: {message:'Successfully updated'}, status: 200
     else 
       render json: {error: 'Unable to update health region'}, status: 400
     end
   end
 
+  # delete data entry
+  def destroy
+    @health_region.destroy
+    render json: {message:'Successfully deleted'}, status: 200
+  end
+
   private
   def health_params
-    params.require(:health_region).permit(:region_code, :region_name)
+    params.require(:health_region).permit(:region_code, :region_name, :stage_id)
   end
 
   def find_region

@@ -1,7 +1,7 @@
 import {useReducer, useEffect} from 'react';
 import axios from "axios";
 import adminReducer, { SET_DASHBOARD } from "reducer/admin_reducer";
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Grid, Container, Button,Paper, ListItemIcon, List, ListItemText, ListItem, makeStyles, AppBar, Toolbar } from '@material-ui/core';
 import { Typography } from '@material-ui/core';
 import Drawer from '@mui/material/Drawer';
@@ -37,7 +37,8 @@ const useStyles = makeStyles((theme)=>{
       display: "flex"
     },
     active:{
-      background: "#f4f4f4"
+      background: "#f4f4f4",
+      borderRight: "3px solid #005249"
     },
     title:{
       padding: theme.spacing(2)
@@ -111,14 +112,14 @@ export default function AdminBoard({children}){
     {
       text: "Users",
       icon: <ManageAccountsIcon color="secondary"/>,
-      path: "/regions",
+      path: "/users",
       
 
     },
     {
       text: "Security",
       icon: <FingerprintIcon color="secondary"/>,
-      path: "/regions",
+      path: "/security",
       
 
     }
@@ -133,7 +134,7 @@ export default function AdminBoard({children}){
       anchor="left"
       classes={{paper:classes.drawerPaper}}
       >
-          <Typography className={classes.title} variant="h6">
+          <Typography className={classes.title} variant="h6"component={Link} to="/adminboard">
             Dashboard
           </Typography>
           <Button onClick={clearAuth} variant='contained' color='primary'>
