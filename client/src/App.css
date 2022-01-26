@@ -1,42 +1,77 @@
 #root {
   height: 100vh;
-  width: 100vw;
+}
+
+.main {
+  height: 1500px;
+  padding-right: 5em;
+  padding-left: 5em;
 }
 
 .image {
-
   height: 480px;
   width: 960px;
   border: none;
   border-style: ridge;
-  border-color: #00897b;
+  border-color: #fff;
   color: #fff;
-  background-color: #829AB1;
+  background-color: #829ab1;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19);
+}
+
+.mapcontainer {
+   flex-direction: row;
+   display: flex;
+   align-items: stretch;
+   align-content: space-evenly;
+}
+
+.sidetablemap {
+margin-right: 60px;
+align-items: center;
 }
 
 .map-page {
-  background-color: #486581;
-  height: 100%;
+  position: relative;
+  top: 5em;
   display: flex;
   flex-direction: column;
+  height: 100%;
+  background-color: #fff;
   justify-content: center;
   align-items: center;
 }
 
+#footer {
+  width: 1833px;
+  height: 100%;
+  margin-top: 2em;
+  background-color: #829ab1;
+}
+
 .info-table {
- color: #fff;
- font-weight: bold;
-
+  color: #829ab1;
+  font-weight: bold;
+  padding: 20px;
 }
 
-.info1-text {
-    border-bottom: solid;
-    border-color:#fff;
+.info-box {
+  font-weight: bold;
+  color: #000;
+  margin-left: 15px;
+  width: 100%;
+  padding: 2em;
 }
 
-.info2-text {
-  border-bottom: solid;
-  border-color:#fff;
+.info-text {
+  border: solid;
+  border-color: #829ab1;
+}
+
+.zoom-button {
+  border-color: #fff;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
 }
 
 .loading {
@@ -45,5 +80,64 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
 
+.singleRestrictionCard {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+}
+
+.singleRestrictionCard:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.containerForRestriction {
+  padding: 2px 16px;
+}
+
+.columnForRestriction {
+  float: left;
+  width: 43%;
+  padding: 0 10px;
+  border-radius: 12px;
+  border-color: #829ab1;
+  border: solid;
+}
+
+.rowForRestriction {
+  margin: 0 -5px;
+  padding-top: 5px;
+}
+
+.rowForRestriction:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.cardForRestriction {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+  padding: 10px;
+  text-align: center;
+  background-color: #f1f1f1;
+  width: 50%;
+  height: 600px;
+}
+
+.imageForCard {
+  width: 100px;
+  height: 100px;
+}
+
+.stageone {
+  color:red;
+}
+
+.stagetwo {
+  color: orange;
+}
+
+.stageone {
+  color:green ;
 }

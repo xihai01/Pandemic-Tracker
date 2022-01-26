@@ -17,11 +17,12 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    //height: "5%",
+    height: "5%",
     fontFamily: "Nunito",
   },
   appbar: {
     background: "none",
+    backgroundColor: "#829AB1",
   },
   appbarWrapper: {
     width: "80%",
@@ -77,18 +78,19 @@ const useStyles = makeStyles((theme) => ({
 }));
 export default function Nav() {
   const classes = useStyles();
-  const [open, setOpen] = useState(false);
   const [checked, setChecked] = useState(false);
   useEffect(() => {
     setChecked(true);
   }, []);
 
   const navigationLinks = [
-    { name: "Home", href: "localhost:3002" },
-    { name: "Map", href: "localhost:3002/map" },
-    { name: "Tweet Us", href: "https://twitter.com/pandemicpt" },
+    { name: "Home", href: "/" },
+    { name: "Map", href: "/map" },
+    { name: "Tweet Us", href: "https://twitter.com/pandemicpt" }
   ];
+  const [open, setOpen] = useState(false);
   return (
+
     <div className={classes.root} id="header">
       <AppBar className={classes.appbar} elevation={0}>
         <Toolbar className={classes.appbarWrapper}>
@@ -104,55 +106,54 @@ export default function Nav() {
         </Toolbar>
       </AppBar>
       <div className={classes.menuwrapper}>
-        <SwipeableDrawer
-          anchor="right"
-          open={open}
-          onOpen={() => setOpen(true)}
-          onClose={() => setOpen(false)}
-        >
-          <div onClick={() => setOpen(false)} className={classes.close}>
-            <IconButton>
-              <ChevronRightIcon className={classes.chevronIcon} />
-            </IconButton>
+      <SwipeableDrawer
+        anchor="right"
+        open={open}
+        onOpen={() => setOpen(true)}
+        onClose={() => setOpen(false)}
+
+      >
+        <div onClick={() => setOpen(false)} className={classes.close}>
+          <IconButton>
+            <ChevronRightIcon className={classes.chevronIcon} />
+          </IconButton>
+        </div>
+        <Divider />
+        <List className={classes.listcontainer}>
+          {navigationLinks.map((item) => (
+            <ListItem>
+              <Link
+                className={classes.link}
+                color="textPrimary"
+                varaint="button"
+                underline="none"
+                href={item.href}
+              >
+                {item.name}
+              </Link>
+            </ListItem>
+          ))}
+          <br />
+          <div className={classes.about}>
+                    <h2> About Us <br /> </h2>
+             March 2019 our lives changed forever.
+            <br /> Life as we knew it became a distant memory <br />
+             one that we long for. It was diffcult to <br />
+            accept our new normal.Difficult to understand that <br />
+            after almost two long years there is still no end <br />
+             in sight. With the constant open <br />
+            and closing of many businesses it became diffcult to <br />
+            keep up to what is open and closed. <br />
+             With the Pandemic Tracker, our hope is to <br />
+            provide relief to every Ontario resident by simply <br />
+            and easily informing them of Ontario's <br />
+            Covid restrictions. <br />
+            <p>Follow us on twitter @pandemictracker </p>
+
           </div>
-          <Divider />
-          <List className={classes.listcontainer}>
-            {navigationLinks.map((item) => (
-              <ListItem>
-                <Link
-                  className={classes.link}
-                  color="textPrimary"
-                  varaint="button"
-                  underline="none"
-                  href={item.href}
-                >
-                  {item.name}
-                </Link>
-              </ListItem>
-            ))}
-            <br />
-            <div className={classes.about}>
-              <h2>
-                {" "}
-                About Us <br />{" "}
-              </h2>
-              March 2019 our lives changed forever.
-              <br /> Life as we knew it became a distant memory <br />
-              one that we long for. It was diffcult to <br />
-              accept our new normal.Difficult to understand that <br />
-              after almost two long years there is still no end <br />
-              in sight. With the constant open <br />
-              and closing of many businesses it became diffcult to <br />
-              keep up to what is open and closed. <br />
-              With the Pandemic Tracker, our hope is to <br />
-              provide relief to every Ontario resident by simply <br />
-              and easily informing them of Ontario's <br />
-              Covid restrictions. <br />
-              <p>Follow us on twitter @pandemictracker </p>
-            </div>
-          </List>
-        </SwipeableDrawer>
+        </List>
+      </SwipeableDrawer>
       </div>
-    </div>
+      </div>
   );
 }
