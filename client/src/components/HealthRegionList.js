@@ -13,14 +13,19 @@ import { Container } from "@mui/material";
 import { makeStyles } from "@material-ui/core/styles";
 import * as React from "react";
 
+
 const useStyles = makeStyles((theme) => ({
   title: {
+    fontFamily: "Nunito",
     textAlign: "center",
     marginBottom: "20px",
   },
   headtitle: {
+    fontWeight: "800",
+    fontSize: '3em',
     marginLeft: "18px",
-    color: "#ba000d",
+    paddingRight: "18px",
+    color: "#829ab1",
   },
 }));
 
@@ -36,7 +41,7 @@ export default function HealthRegionList(props) {
   const [status, setStatus] = useState(false);
   const { svgLoad, setSvgLoad, mapData, stageObj, loading } = props;
   // render tooltip and geoloc marker
-  useMapTools(mapData, loading);
+  useMapTools(mapData, loading, restriction);
   // wait until mapData is loaded and ready for use
   if (!loading) {
     const path = d3.geoPath().projection(setMapProjection(mapData));
@@ -72,11 +77,17 @@ export default function HealthRegionList(props) {
             </h3>
           </div>
           <div className="mapcontainer">
-            <svg className="image">
-              <g>{healthRegionList}</g>
-            </svg>
+            {Object.keys(restriction).length === 0 && (
+              <svg className="image">
+                <g>{healthRegionList}</g>
+              </svg>
+            )}
             {Object.keys(restriction).length !== 0 && (
-              <LegendAndCovidStats restriction={restriction} />
+              <LegendAndCovidStats
+              status={status}
+                restriction={restriction}
+                healthRegionList={healthRegionList}
+              />
             )}
           </div>
           <br />
@@ -94,7 +105,7 @@ export default function HealthRegionList(props) {
           </div>
           <br />
           <DisplayRestrictions status={status} restriction={restriction} />
-      <footer id="footer"></footer>
+          <footer id="footer"></footer>
         </div>
       </Container>
     );

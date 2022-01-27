@@ -21,44 +21,52 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "Nunito",
   },
   appbar: {
-    background: "none",
+    backgroundColor: "rgba(255, 255, 255, .15)",
+    backdropFilter: "blur(5px)",
   },
   appbarWrapper: {
-    width: "80%",
+    width: "85%",
     margin: "0 auto",
   },
   appbarTitle: {
+    display: "flex",
     flexGrow: "1",
+    fontSize: "3em",
   },
   icon: {
     color: "#fff",
-    fontSize: "2rem",
+    fontSize: "2.5em",
   },
   dotcolor: {
-    color: "#ba000d",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    marginLeft: "0.25em",
+    color: "#D37506",
+    fontWeight: "bold",
   },
   container: {
     textAlign: "center",
   },
   quote: {
     color: "#fff",
-    fontSize: "2rem",
+    fontSize: "3rem",
   },
   goDown: {
     color: "#fff",
     fontSize: "3.5rem",
   },
-  menuWrapper: {
-
-  },
+  menuWrapper: {},
   link: {
     color: "#fff",
+    fontFamily: "Lexend Deca",
+    fontWeight: "800",
     fontSize: "1.5rem",
     marginTop: "15px",
   },
 
   close: {
-    backgroundColor: "#ba000d",
+    backgroundColor: "#D37506",
     minWidth: "250px",
     alignItems: "left",
     color: "#fff",
@@ -68,10 +76,12 @@ const useStyles = makeStyles((theme) => ({
     color: "#fff",
   },
   listcontainer: {
-   backgroundColor: "#ba000d",
-   height: "100%",
+    backgroundColor: "#D37506",
+    height: "100%",
   },
   about: {
+    fontFamily: "Lexend Deca",
+    fontWeight: "300",
     alignItems: "center",
     marginRight: "4.5px",
     marginLeft: "15px",
@@ -89,9 +99,11 @@ export default function Nav() {
   const navigationLinks = [
     { name: "Home", href: "/" },
     { name: "Map", href: "/map" },
-    { name: "Tweet Us", href: "https://twitter.com/pandemicpt" }
+    { name: "Tweet Us", href: "https://twitter.com/pandemicpt" },
   ];
   const [open, setOpen] = useState(false);
+  // flex
+  // flex, align items center, 0.25em
   return (
     <div className={classes.root} id="header">
       <AppBar className={classes.appbar} elevation={0}>
@@ -102,59 +114,63 @@ export default function Nav() {
               <AdjustIcon />
             </span>
           </h1>
-          <IconButton onClick={() => setOpen(true)}>
+          <IconButton
+            sx={{ width: "100", height: "100" }}
+            onClick={() => setOpen(true)}
+          >
             <SortIcon className={classes.icon} />
           </IconButton>
         </Toolbar>
       </AppBar>
       <div className={classes.menuwrapper}>
-      <SwipeableDrawer
-        anchor="right"
-        open={open}
-        onOpen={() => setOpen(true)}
-        onClose={() => setOpen(false)}
-
-      >
-        <div onClick={() => setOpen(false)} className={classes.close}>
-          <IconButton>
-            <ChevronRightIcon className={classes.chevronIcon} />
-          </IconButton>
-        </div>
-        <Divider />
-        <List className={classes.listcontainer}>
-          {navigationLinks.map((item) => (
-            <ListItem>
-              <Link
-                className={classes.link}
-                color="textPrimary"
-                varaint="button"
-                underline="none"
-                href={item.href}
-              >
-                {item.name}
-              </Link>
-            </ListItem>
-          ))}
-          <br />
-          <div className={classes.about}>
-                    <h2> About Us <br /> </h2>
-             March 2019 our lives changed forever.
-            <br /> Life as we knew it became a distant memory <br />
-             one that we long for. It was diffcult to <br />
-            accept our new normal.Difficult to understand that <br />
-            after almost two long years there is still no end <br />
-             in sight. With the constant open <br />
-            and closing of many businesses it became diffcult to <br />
-            keep up to what is open and closed. <br />
-             With the Pandemic Tracker, our hope is to <br />
-            provide relief to every Ontario resident by simply <br />
-            and easily informing them of Ontario's <br />
-            Covid restrictions. <br />
-            <p>Follow us on twitter @pandemictracker </p>
-
+        <SwipeableDrawer
+          anchor="right"
+          open={open}
+          onOpen={() => setOpen(true)}
+          onClose={() => setOpen(false)}
+        >
+          <div onClick={() => setOpen(false)} className={classes.close}>
+            <IconButton>
+              <ChevronRightIcon className={classes.chevronIcon} />
+            </IconButton>
           </div>
-        </List>
-      </SwipeableDrawer>
+          <Divider />
+          <List className={classes.listcontainer}>
+            {navigationLinks.map((item) => (
+              <ListItem>
+                <Link
+                  className={classes.link}
+                  color="textPrimary"
+                  varaint="button"
+                  underline="none"
+                  href={item.href}
+                >
+                  {item.name}
+                </Link>
+              </ListItem>
+            ))}
+            <br />
+            <div className={classes.about}>
+              <h2>
+                {" "}
+                About Us <br />{" "}
+              </h2>
+              March 2020 our lives changed forever.
+              <br /> Life as we knew it became a distant memory <br />
+              one that we long for. It was diffcult to <br />
+              accept our new normal.Difficult to understand that <br />
+              after almost two long years there is still no end <br />
+              in sight. With the constant open <br />
+              and closing of many businesses it became diffcult to <br />
+              keep up to what is open and closed. <br />
+              With the Pandemic Tracker, our hope is to <br />
+              provide relief to every Ontario resident by simply <br />
+              and easily informing them of Ontario's <br />
+              Covid restrictions. <br />
+              <p>Follow us on twitter @pandemictracker </p>
+            </div>
+          </List>
+        </SwipeableDrawer>
       </div>
       <Collapse
         in={checked}
@@ -168,7 +184,7 @@ export default function Nav() {
             divided."
             <br /> <span className={classes.dotcolor}>J.K. Rowling</span>
           </h2>
-          <Scroll to="card-scroll" smooth={true}>
+          <Scroll to="article-scroll" smooth={true}>
             <IconButton>
               <ExpandMoreIcon className={classes.goDown} />
             </IconButton>

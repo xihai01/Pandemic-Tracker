@@ -19,11 +19,11 @@ import MasksIcon from "@mui/icons-material/Masks";
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
-  padding: theme.spacing(1),
+  padding: "2em",
   textAlign: "center",
   color: theme.palette.text.secondary,
   height: "100%",
-  boxSizing: "border-box"
+  boxSizing: "border-box",
 }));
 const useStyles = makeStyles((theme) => ({
   cards: {
@@ -34,8 +34,26 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "stretch",
   },
   title: {
-    color: "#ba000d",
+    fontFamily: "Lexend Deca",
+    fontWeight: "800",
+    fontSize: "2em",
+    color: "#829ab1",
   },
+  para: {
+    fontFamily: "Lexend Deca",
+    fontSize: "1.2em",
+    padding: "2em",
+  },
+  icon: {
+    transform: "scale(1.5)"
+  },
+  tr: {
+    background: "#f1f1f1",
+    '&:hover': {
+       background: "#ffa500",
+       boxShadow: " rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;",
+    },
+  }
 }));
 /**
  *
@@ -49,87 +67,109 @@ export const DisplayRestrictions = function (props) {
     console.log(restriction);
     return (
       <>
-        <Container sx={{ marginTop: "1.5em" , flexGrow: 1 }}>
+        <Container sx={{ marginTop: "1.5em", flexGrow: 1 }}>
           <Grid container spacing={3}>
             <Grid item xs={4} className={classes.cards}>
-              <Item>
-                <LocationOnIcon />
+              <Item className={classes.tr}>
+                <LocationOnIcon className={classes.icon} />
                 <h3 className={classes.title}>Region Name</h3>
-                <p>{restriction.restrictions.region_name}</p>
+                <p className={classes.para}>
+                  {restriction.restrictions.region_name}
+                </p>
               </Item>
             </Grid>
             <Grid item xs={4} className={classes.cards}>
-              <Item>
-                <HomeIcon />
-                <h3 className={classes.title}>Max Indoor Gathering</h3>
-                <p>{restriction.restrictions.max_indoor_gathering} people</p>
+              <Item className={classes.tr}>
+                <HomeIcon className={classes.icon} />
+                <h3 className={classes.title}>Max Indoor</h3>
+                <p className={classes.para}>
+                  {restriction.restrictions.max_indoor_gathering} people
+                </p>
               </Item>
             </Grid>
             <Grid item xs={4} className={classes.cards}>
-              <Item>
-                <DeckIcon />
-                <h3 className={classes.title}>Max Outdoor Gathering</h3>
-                <p>{restriction.restrictions.max_outdoor_gathering} people</p>
+              <Item className={classes.tr}>
+                <DeckIcon className={classes.icon} />
+                <h3 className={classes.title}>Max Outdoor</h3>
+                <p className={classes.para}>
+                  {restriction.restrictions.max_outdoor_gathering} people
+                </p>
               </Item>
             </Grid>
           </Grid>
           <Grid container spacing={3}>
             <Grid item xs={4} className={classes.cards}>
-              <Item>
-                <RestaurantMenuIcon />
+              <Item className={classes.tr}>
+                <RestaurantMenuIcon className={classes.icon} />
                 <h3 className={classes.title}>Restaurants</h3>
-                <p>{restriction.restrictions.food_establishments}</p>
+                <p className={classes.para}>
+                  {restriction.restrictions.food_establishments}
+                </p>
               </Item>
             </Grid>
             <Grid item xs={4} className={classes.cards}>
-              <Item>
-                <AddShoppingCartIcon />
+              <Item className={classes.tr}>
+                <AddShoppingCartIcon className={classes.icon} />
                 <h3 className={classes.title}>Retail</h3>
-                <p>{restriction.restrictions.retail}</p>
+                <p className={classes.para}>
+                  {restriction.restrictions.retail}
+                </p>
               </Item>
             </Grid>
             <Grid item xs={4} className={classes.cards}>
-              <Item>
-                <ChurchIcon />
+              <Item className={classes.tr}>
+                <ChurchIcon className={classes.icon} />
                 <h3 className={classes.title}>Ceremony</h3>
-                <p>{restriction.restrictions.ceremony}</p>
+                <p className={classes.para}>
+                  {restriction.restrictions.ceremony}
+                </p>
               </Item>
             </Grid>
           </Grid>
           <Grid container spacing={3}>
             <Grid item xs={4} className={classes.cards}>
-              <Item>
-                <AttractionsIcon />
+              <Item className={classes.tr}>
+                <AttractionsIcon  className={classes.icon}/>
                 <h3>
                   <h3 className={classes.title}>Entertainment</h3>
                 </h3>
-                <p>{restriction.restrictions.entertainment}</p>
+                <p className={classes.para}>
+                  {restriction.restrictions.entertainment}
+                </p>
               </Item>
             </Grid>
             <Grid item xs={4} className={classes.cards}>
-              <Item>
-                <DownhillSkiingIcon />
+              <Item className={classes.tr}>
+                <DownhillSkiingIcon className={classes.icon} />
                 <h3 className={classes.title}>Sports & Recreation</h3>
-                <p>{restriction.restrictions.sports_recreational}</p>
+                <p className={classes.para}>
+                  {restriction.restrictions.sports_recreational}
+                </p>
               </Item>
             </Grid>
             <Grid item xs={4} className={classes.cards}>
-              <Item>
-                <WcIcon />
+              <Item className={classes.tr}>
+                <WcIcon className={classes.icon}/>
                 <h3 className={classes.title}>Personal Care</h3>
-                <p> {restriction.restrictions.personal_care}</p>
+                <p className={classes.para}>
+                  {" "}
+                  {restriction.restrictions.personal_care}
+                </p>
               </Item>
             </Grid>
           </Grid>
         </Container>
       </>
     );
-  } else if ((Object.keys(restriction).length !== 0) || (status && Object.keys(restriction).length === 0)) {
+  } else if (
+    Object.keys(restriction).length !== 0 ||
+    (status && Object.keys(restriction).length === 0)
+  ) {
     return (
       <>
-        <Skeleton width={500} />
-        <Skeleton width={500} />
-        <Skeleton width={500} />
+        <Skeleton width={1500} />
+        <Skeleton width={1500} />
+        <Skeleton width={1500} />
       </>
     );
   }

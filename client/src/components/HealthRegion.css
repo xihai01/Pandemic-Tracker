@@ -1,12 +1,12 @@
 .path {
-  fill: blueviolet;
+  fill: grey;
   stroke: cornsilk;
   stroke-width: 1px;
 }
 
 .path:hover {
   cursor: pointer;
-  fill: whitesmoke;
+  fill: rgb(117, 174, 240);
   fill-opacity: 0.5;
 }
 
