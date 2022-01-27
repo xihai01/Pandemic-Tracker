@@ -37,7 +37,8 @@ export default function CardAdmin({state}) {
   return (
     <RootStyle>
       <IconWrapperStyle>
-        <Icon icon="clarity:building-line" width="30" height="30" />
+        {/* <Icon icon="clarity:building-line" width="30" height="30" /> */}
+        <Icon icon="eos-icons:admin" width="30" height="30" />
         {/* <Icon icon="clarity:building-line" width="30" height="30" /> */}
       </IconWrapperStyle>
       <Typography variant="h3">{state.dashboard.admins}</Typography>
