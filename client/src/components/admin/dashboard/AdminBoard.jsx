@@ -191,6 +191,7 @@ export default function AdminBoard({children}){
               {format(new Date(),`do MMMM Y`)}
             </Toolbar>
             {/* <AccountCircleRounded /> */}
+            <Icon icon="emojione:flag-for-canada" width="28" />
             <Icon icon="fa-solid:user-check" width="28" height="28" />
             <Button>
               <Icon icon="ls:logout" width="28" height="28" onClick={clearAuth}/>
