@@ -47,7 +47,9 @@ const useStyles = makeStyles((theme)=>{
       padding: theme.spacing(2)
     },
     appbar:{
-      width: `calc(100% - ${drawerWidth}px)`
+      width: `calc(100% - ${drawerWidth}px)`,
+      backgroundColor: "rgba(255, 255, 255, .15)",
+      backdropFilter: "blur(5px)"
     },
     toolbar: theme.mixins.toolbar,
     date: {
@@ -196,14 +198,14 @@ export default function AdminBoard({children}){
             <Icon icon="emojione:flag-for-canada" width="28" />
             <Icon icon="fa-solid:user-check" width="28" height="28" />
             <Button>
-              <Icon icon="ls:logout" width="28" height="28" onClick={clearAuth}/>
+              <Icon icon="ls:logout" width="28" height="28" onClick={clearAuth} tooltip="logout"/>
             </Button>
           </Toolbar>
         </AppBar>
         <div className={classes.toolbar}></div>
         
           
-        <Grid container spacing={3} elevation={1} >
+        <Grid container spacing={3} elevation={3} >
           <Grid item xs={12} sm={6} md={3}>
             <CardAdmin state={state} />
           </Grid>
@@ -222,9 +224,9 @@ export default function AdminBoard({children}){
             <DashboardBugCard />
           </Grid>
 
-          
-
         </Grid>
+        
+        <div className={classes.toolbar}></div>
         <div className={classes.page}>
           {children}
         </div>

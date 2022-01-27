@@ -41,7 +41,7 @@ export default function DashboardBugCard() {
       </IconWrapperStyle>
       <Typography variant="h3">1</Typography>
       <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
-        Bug Reports
+        Bug Report
       </Typography>
     </RootStyle>
   );

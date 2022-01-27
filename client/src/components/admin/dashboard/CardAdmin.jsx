@@ -42,7 +42,7 @@ export default function CardAdmin({state}) {
       </IconWrapperStyle>
       <Typography variant="h3">{state.dashboard.admins}</Typography>
       <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
-        Health Regions
+        Admin Users
       </Typography>
     </RootStyle>
   );
