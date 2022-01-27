@@ -16,6 +16,8 @@ import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import DashboardBugCard from './DashboardBugCard';
 import { Icon } from '@iconify/react';
 import CardStages from './CardStages';
+import CardRegions from './CardRegions';
+import CardAdmin from './CardAdmin';
 
 
 
@@ -203,36 +205,12 @@ export default function AdminBoard({children}){
           
         <Grid container spacing={3} elevation={1} >
           <Grid item xs={12} sm={6} md={3}>
-            <Card style={{background: "#D0F2FF"}}>
-              <CardContent>
-                <Grid align="center">
-                <Typography variant="h3">
-                  {state.dashboard.admins}
-                </Typography>
-                <Typography variant="body2">
-                  Admin Users
-                </Typography>
-                </Grid>
-
-              </CardContent>
-            </Card>
+            <CardAdmin state={state} />
           </Grid>
 
 
           <Grid item xs={12} sm={6} md={3}>
-            <Card style={{background: "#C8FACD"}}>
-              <CardContent>
-                <Grid align="center">
-                <Typography variant="h3">
-                  {state.dashboard.health_regions}
-                </Typography>
-                <Typography variant="body2">
-                  Public Health Units
-                </Typography>
-                </Grid>
-
-              </CardContent>
-            </Card>
+            <CardRegions state={state} />
           </Grid>
 
 
