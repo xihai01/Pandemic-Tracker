@@ -196,7 +196,7 @@ export default function AdminBoard({children}){
             </Toolbar>
             {/* <AccountCircleRounded /> */}
             <Icon icon="emojione:flag-for-canada" width="28" />
-            <Icon icon="fa-solid:user-check" width="28" height="28" />
+            <Icon icon="bx:bx-user-circle" width="30" height="30" />
             <Button>
               <Icon icon="ls:logout" width="28" height="28" onClick={clearAuth} tooltip="logout"/>
             </Button>
