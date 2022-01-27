@@ -5,17 +5,17 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Grid, Container, Button,Paper, ListItemIcon, List, ListItemText, ListItem, makeStyles, AppBar, Toolbar } from '@material-ui/core';
 import { Typography } from '@material-ui/core';
 import Drawer from '@mui/material/Drawer';
-import { AccountCircleRounded, AddCircleOutlined, SubjectOutlined } from '@mui/icons-material';
+import { AccountCircleRounded} from '@mui/icons-material';
 import { Card,CardContent } from '@mui/material';
-import AccountCircle from '@mui/icons-material/AccountCircle';
 import { format } from 'date-fns';
-import { Avatar } from '@material-ui/core';
 import { getAuth } from 'helpers/getAuth';
-import { AccountCircleOutlined } from '@material-ui/icons';
 import FingerprintIcon from '@mui/icons-material/Fingerprint';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import CenterFocusStrongIcon from '@mui/icons-material/CenterFocusStrong';
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
+import DashboardBugCard from './DashboardBugCard';
+import { Icon } from '@iconify/react';
+import CardStages from './CardStages';
 
 
 
@@ -24,7 +24,8 @@ const drawerWidth = 180
 const useStyles = makeStyles((theme)=>{
   return {
     drawer:{
-      width: drawerWidth
+      width: drawerWidth,
+      background: "#343a40"
     },
     drawerPaper:{
       width: drawerWidth
@@ -52,6 +53,8 @@ const useStyles = makeStyles((theme)=>{
     }
   }
 })
+
+
 
 
 export default function AdminBoard({children}){
@@ -97,33 +100,47 @@ export default function AdminBoard({children}){
 
   const menuItems = [
     {
-      text: "Stages",
-      icon: <LocalHospitalIcon color="secondary"/>,
-      path: "/stages",
-      
+      text: "Dashboard",
+      icon: <Icon icon="dashicons:clipboard" width="26" height="26" />,
+      path: "/adminboard",
     },
-    {
-      text: "Units",
-      icon: <CenterFocusStrongIcon color="secondary"/>,
-      path: "/regions",
-      
 
+    {
+      text: "Stages",
+      icon: <Icon icon="ant-design:alert-filled" width="24" height="24" />,
+      path: "/stages",
     },
+
+    {
+      text: "Regions",
+      icon: <Icon icon="healthicons:rural-post" width="26" height="26" />,
+      path: "/regions",
+    },
+
     {
       text: "Users",
-      icon: <ManageAccountsIcon color="secondary"/>,
+      icon: <Icon icon="dashicons:groups" width="26" />,
       path: "/users",
-      
-
     },
+
+    {
+      text: "Chat",
+      icon:  <Icon icon="bx:bx-chat" width="28" height="28" />,
+      path: "/chat",
+    },
+
+
+    {
+      text: "Team",
+      icon: <Icon icon="ph:microsoft-teams-logo-fill" width="28" height="28" />,
+      path: "/team",
+    },
+
     {
       text: "Security",
-      icon: <FingerprintIcon color="secondary"/>,
+      icon: <Icon icon="dashicons:privacy" width="26" height="26" />,
       path: "/security",
-      
-
     }
-
     ]
   return(
     <>
@@ -134,12 +151,9 @@ export default function AdminBoard({children}){
       anchor="left"
       classes={{paper:classes.drawerPaper}}
       >
-          <Typography className={classes.title} variant="h6"component={Link} to="/adminboard">
-            Dashboard
-          </Typography>
-          <Button onClick={clearAuth} variant='contained' color='primary'>
-            Logout
-          </Button>
+        <Typography className={classes.title} variant="h3">
+          Admin
+        </Typography>
 
         {/* list items */}
         <List>
@@ -176,7 +190,11 @@ export default function AdminBoard({children}){
             <Toolbar>
               {format(new Date(),`do MMMM Y`)}
             </Toolbar>
-            <AccountCircleRounded />
+            {/* <AccountCircleRounded /> */}
+            <Icon icon="fa-solid:user-check" width="28" height="28" />
+            <Button>
+              <Icon icon="ls:logout" width="28" height="28" onClick={clearAuth}/>
+            </Button>
           </Toolbar>
         </AppBar>
         <div className={classes.toolbar}></div>
@@ -218,36 +236,14 @@ export default function AdminBoard({children}){
 
 
           <Grid item xs={12} sm={6} md={3}>
-            <Card style={{background: "#FFF7CD" }}>
-              <CardContent>
-                <Grid align="center">
-                <Typography variant="h3">
-                  {state.dashboard.stages}
-                </Typography>
-                <Typography variant="body2">
-                  Stages
-                </Typography>
-                </Grid>
-
-              </CardContent>
-            </Card> 
+            <CardStages state={state} />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <Card style={{background: "#FFE7D9"}}>
-              <CardContent>
-                <Grid align="center">
-                <Typography variant="h3">
-                  {state.dashboard.stages}
-                </Typography>
-                <Typography variant="body2">
-                  Bug Reports
-                </Typography>
-                </Grid>
-
-              </CardContent>
-            </Card> 
+            <DashboardBugCard />
           </Grid>
+
+          
 
         </Grid>
         <div className={classes.page}>
