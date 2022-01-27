@@ -22,19 +22,39 @@ export default function useStagesData(){
  
 
   const columns = [
-    { title: 'Stage', field: 'id' },
-    { title: 'Ceremony', field: 'ceremony'},
+    { title: 'Stage', field: 'id',width: null },
+    { title: 'Ceremony', field: 'ceremony',cellStyle: {
+      width: 500,
+      minWidth: 500
+
+      }},
     { title: 'Color code', field: 'color_code'},
     { title: 'Created On', field: 'created_at', editable: 'never'},
-    { title: 'Entertainment', field: 'entertainment'},
-    { title: 'Food establishments', field: 'food_establishments'},
+    { title: 'Entertainment', field: 'entertainment',cellStyle: {
+      width: 500,
+      minWidth: 500
+
+      }},
+    { title: 'Food establishments', field: 'food_establishments',cellStyle: {
+      width: 300,
+      minWidth: 300
+
+      }},
     { title: 'Indoor gatherings', field: 'max_indoor_gathering'},
     { title: 'Outdoor gatherings', field: 'max_outdoor_gathering'},
     { title: 'Personal care', field: 'personal_care'},
-    { title: 'Retail', field: 'retail'},
-    { title: 'Sports/Recreation', field: 'sports_recreational'},
-    { title: 'Last Update', field: 'updated_at',editable: 'never'}
+    { title: 'Retail', field: 'retail',cellStyle: {
+      width: 300,
+      minWidth: 300
 
+      }},
+    { title: 'Sports/Recreation', field: 'sports_recreational',cellStyle: {
+      width: 500,
+      minWidth: 500
+
+      }},
+    { title: 'Last Update', field: 'updated_at',editable: 'never'}
+    // cellStyle: { textOverflow: 'ellipsis', whiteSpace: 'nowrap', overflow: 'hidden', maxWidth: 100} for ellipsis columns
 
   ]
 
