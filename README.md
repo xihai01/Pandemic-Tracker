@@ -9,7 +9,7 @@ This application also has an admin route allowing owners to create, view, edit a
 | Front-End  | Back-End | Database | Testing | Deployment |
 | ------------- | ------------- | ------ | ---------- | --------- |
 | React | Rails  | SQlite | RSpec | **Heroku** for API server (coming soon)|
-| material UI | Ruby | | | **Netifly** (coming soon) |
+| material UI | Ruby | | | **Netlify** (coming soon) |
 | d3.js | bcrypt | |  |
 | CSS | | | | | |
 
@@ -63,7 +63,7 @@ Fork and git clone this repo
 ### Rails Setup
 1. bundle install
 2. setup database -> run rake db:migrate and run rake db:seed
-3. rails server -p 3001 (note: if using a different port #, make sure to change proxy url in package.json to match)
+3. rails server -p 3001 (note: if using a different port #, make sure to change proxy url in client's package.json to match)
 
 ### React setup
 1. npm install
