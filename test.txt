@@ -1,0 +1,2 @@
+psql -h ec2-52-72-125-94.compute-1.amazonaws.com -p 5432 -U emjqgfllnofvah -d d84p0c37vej1rb
+054fbd243b578c6ed4d0fa2342481bc5e5e779399b12d97a042c02a2c7ecc8c6
