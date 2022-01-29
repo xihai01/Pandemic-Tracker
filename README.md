@@ -15,8 +15,10 @@ This application also has an admin route allowing owners to create, view, edit a
 
 ## Demo
 Interactive map implemented using d3.js
+!["map"](https://github.com/xihai01/Pandemic-Tracker/blob/master/docs/interactive-map.gif?raw=true)
 
 Admin Dashboard for performing CRUD operations on restrictions data
+!["Admin dashboard"](https://github.com/xihai01/Pandemic-Tracker/blob/master/docs/admin.png?raw=true)
 
 ## Packages and Gems
 ```javascript
