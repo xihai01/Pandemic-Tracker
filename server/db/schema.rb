@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20220118040714) do
+ActiveRecord::Schema.define(version: 20220204215503) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "admins", force: :cascade do |t|
     t.string   "first_name"
@@ -20,6 +23,7 @@ ActiveRecord::Schema.define(version: 20220118040714) do
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "position"
   end
 
   create_table "health_regions", force: :cascade do |t|
@@ -30,7 +34,7 @@ ActiveRecord::Schema.define(version: 20220118040714) do
     t.integer  "stage_id"
   end
 
-  add_index "health_regions", ["stage_id"], name: "index_health_regions_on_stage_id"
+  add_index "health_regions", ["stage_id"], name: "index_health_regions_on_stage_id", using: :btree
 
   create_table "stages", force: :cascade do |t|
     t.integer  "max_indoor_gathering"

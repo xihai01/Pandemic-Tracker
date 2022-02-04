@@ -12,8 +12,18 @@ require('faker')
 end
 
 6.times do
-  Admin.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: 'test@test.com', password: '123')
+  Admin.create(first_name: Faker::Name.first_name, 
+  last_name: Faker::Name.last_name, email: 'test@test.com', password: '123',
+  position: 'team member')
 end
+
+2.times do
+  Admin.create(first_name: Faker::Name.first_name, 
+  last_name: Faker::Name.last_name, email: 'test@test.com', password: '123',
+  position: 'team lead')
+end
+
+
 
 Stage.create(max_indoor_gathering: 5, max_outdoor_gathering: 10,
   food_establishments: "Indoor dining is closed. Takeout & Outdoor dining: Maximum of 4 people per table exclusing
