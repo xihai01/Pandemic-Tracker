@@ -8,17 +8,17 @@
 require('faker')
 
 3.times do
-  Admin.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: 'test@test.com', password: '123')
+  User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: 'test@test.com', password: '123')
 end
 
 6.times do
-  Admin.create(first_name: Faker::Name.first_name, 
+  User.create(first_name: Faker::Name.first_name, 
   last_name: Faker::Name.last_name, email: 'test@test.com', password: '123',
   position: 'team member')
 end
 
 2.times do
-  Admin.create(first_name: Faker::Name.first_name, 
+  User.create(first_name: Faker::Name.first_name, 
   last_name: Faker::Name.last_name, email: 'test@test.com', password: '123',
   position: 'team lead')
 end

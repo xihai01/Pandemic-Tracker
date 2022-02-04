@@ -3,7 +3,7 @@ class Admin::DashboardController < ApplicationController
 
   def index
     @data = {
-      admins: Admin.all.count,
+      Admin_users: User.all.count,
       health_regions: HealthRegion.all.count,
       stages: Stage.all.count 
     }

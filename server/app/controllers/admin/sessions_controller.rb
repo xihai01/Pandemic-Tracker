@@ -2,10 +2,10 @@ class Admin::SessionsController < ApplicationController
   #/login endpoint creates a session and redirects to user controller for data
   def create
     # If the user exists AND the password entered is correct.
-    if admin = Admin.authenticate_with_credentials(params[:email], params[:password])
+    if user = User.authenticate_with_credentials(params[:email], params[:password])
       # Save the user id inside the browser cookie. This is how we keep the user 
       # logged in when they navigate around our website.
-      session[:user_id] = admin.id
+      session[:user_id] = user.id
       
       render json: { message: "User authorization successful" }, status: 200
 

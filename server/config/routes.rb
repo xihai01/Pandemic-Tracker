@@ -1,5 +1,21 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+  get 'users/index'
+  end
+
+  namespace :admin do
+  get 'users/create'
+  end
+
+  namespace :admin do
+  get 'users/update'
+  end
+
+  namespace :admin do
+  get 'users/destroy'
+  end
+
   # admin/.. => secure api
   namespace :admin do
     get '/login' => 'sessions#create'
