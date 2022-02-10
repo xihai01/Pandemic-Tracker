@@ -1,6 +1,8 @@
 export const SET_REGIONS = "SET_REGIONS";
 export const SET_STAGES = "SET_STAGES";
 export const SET_DASHBOARD = "SET_DASHBOARD";
+export const SET_USER = "SET_USER";
+
 
 
 
@@ -28,6 +30,14 @@ const adminReducer = (state, action) => {
             loading: false,
             error: null
           };
+
+          case SET_USER:
+            return {
+              ...state,
+              user: action.user,
+              loading: false,
+              error: null
+            };
     
     default:
       return state;
