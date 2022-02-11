@@ -1,5 +1,6 @@
 import { useReducer, useEffect } from 'react';
 import adminReducer, { SET_REGIONS } from "reducer/admin_reducer";
+import { filteredArray } from 'helpers/filterFunc';
 import axios from 'axios'
 
 
@@ -40,10 +41,11 @@ export default function useHealthData(){
   }
 
   function deleteRow(data) {
-    return Promise.all([axios.delete(`/admin/health_regions/${data.id}`),axios.get(`/admin/health_regions`)])
-    .then(([res1,res2])=> {
+    return axios.delete(`/admin/health_regions/${data.id}`)
+    .then(()=> {
       console.log(`data deleted sucessfully`);
-      dispatch({type: SET_REGIONS, healthRegions: res2.data});
+      const newArray = filteredArray(state.healthRegions,data.id);
+      dispatch({type: SET_REGIONS, healthRegions: newArray});
     })
     .catch(()=> console.log(`error editing data in DB`));
     
