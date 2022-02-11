@@ -18,6 +18,7 @@ function Stages() {
       data={state.stages}
       options={{
         exportButton: true,
+        selection: true,
         actionsColumnIndex: -1
       }}
       
@@ -57,6 +58,20 @@ function Stages() {
                 // }, 1000);
             })
     }}
+
+    actions={[
+      {
+        tooltip: "Remove All Selected Stages",
+        icon: "delete",
+        onClick: (evt, data) => {
+          data.forEach((item) => {
+            deleteRow(item);
+          });
+        },
+      },
+    ]}
+
+
       
       />;
     </AdminBoard>
