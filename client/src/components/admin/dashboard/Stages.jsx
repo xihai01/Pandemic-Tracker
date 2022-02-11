@@ -25,7 +25,7 @@ function Stages() {
         onRowAdd: newData =>
               new Promise((resolve, reject) => {
                   // setTimeout(() => {
-                      /* setData([...data, newData]); */
+                      // setData([...data, newData]); 
                       addRow(newData).then(()=>{
                         resolve();
                       })
