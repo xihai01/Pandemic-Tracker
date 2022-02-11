@@ -94,10 +94,11 @@ export default function useStagesData(){
   }
 
   function deleteRow(data) {
-    return Promise.all([axios.delete(`/admin/stages/${data.id}`),axios.get(`/admin/stages`)])
-    .then(([res1,res2])=> {
+    return axios.delete(`/admin/stages/${data.id}`)
+    .then(()=> {
       console.log(`data deleted sucessfully`);
-      dispatch({type: SET_STAGES, stages: res2.data});
+      const newArray = filteredArray(state.stages,data.id);
+      dispatch({type: SET_STAGES, stages: newArray});
     })
     .catch(()=> console.log(`error deleting data in DB`));
     
