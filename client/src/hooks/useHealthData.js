@@ -1,6 +1,6 @@
 import { useReducer, useEffect } from 'react';
 import adminReducer, { SET_REGIONS } from "reducer/admin_reducer";
-import { filteredArray } from 'helpers/filterFunc';
+import { filteredArray, newObject } from 'helpers/tableFuncs';
 import axios from 'axios'
 
 
@@ -53,10 +53,10 @@ export default function useHealthData(){
   }
 
   function addRow(data) {
-    return Promise.all([axios.post(`/admin/health_regions/`,{region_name:data.region_name,region_code:data.region_code,stage_id:data.stage_id}),axios.get(`/admin/health_regions`)])
-    .then(([res1,res2])=> {
+    return axios.post(`/admin/health_regions/`,newObject(data))
+    .then(()=> {
       console.log(`data created sucessfully`);
-      dispatch({type: SET_REGIONS, healthRegions: res2.data});
+      dispatch({type: SET_REGIONS, healthRegions: [...state.healthRegions,newObject(data)]});
     })
     .catch(()=> console.log(`error creating data in DB`));
     

@@ -1,6 +1,6 @@
 import { useReducer, useEffect } from 'react';
 import adminReducer, { SET_STAGES } from "reducer/admin_reducer";
-import { filteredArray } from 'helpers/filterFunc';
+import { filteredArray } from 'helpers/tableFuncs';
 import axios from 'axios'
 
 
