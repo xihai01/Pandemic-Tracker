@@ -8,10 +8,12 @@ This application also has an admin route allowing owners to create, view, edit a
 ## Tech Stack and Tools
 | Front-End  | Back-End | Database | Testing | Deployment |
 | ------------- | ------------- | ------ | ---------- | --------- |
-| React | Rails  | SQlite | RSpec | **Heroku** for API server (coming soon)|
-| material UI | Ruby | | | **Netlify** (coming soon) |
+| React | Rails  | SQlite | RSpec | **Heroku** for API server |
+| material UI | Ruby | | | **Netlify** |
 | d3.js | bcrypt | |  |
 | CSS | | | | | |
+
+Live website here: https://jolly-panini-44dac4.netlify.app/
 
 ## Demo
 Interactive map implemented using d3.js
